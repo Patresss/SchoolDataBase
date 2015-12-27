@@ -1,77 +1,43 @@
 package com.patres.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
-	 // JDBC driver name and database URL
-	   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	   static final int PORT = 1001; 
-	   static final String DATABASE_NAME = "school";
-	   static final String DB_URL = "jdbc:mysql://localhost:"+ PORT +"/"+ DATABASE_NAME;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.container.DefaultFlowContainer;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
 
-	   //  Database credentials
-	   static final String USER = "root";
-	   static final String PASS = "pass";
-	   
-	   public static void main(String[] args) {
-	   Connection conn = null;
-	   Statement stmt = null;
-	   try{
-	      //STEP 2: Register JDBC driver
-	      Class.forName("com.mysql.jdbc.Driver");
+import com.jfoenix.controls.JFXDecorator;
+import com.patres.database.gui.controller.MainController;
 
-	      //STEP 3: Open a connection
-	      System.out.println("Connecting to database...");
-	      conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
-	      //STEP 4: Execute a query
-	      System.out.println("Creating statement...");
-	      stmt = conn.createStatement();
-	      String sql;
-	      sql = "SELECT id, name FROM subject";
-	      ResultSet rs = stmt.executeQuery(sql);
+public class Main extends Application {
+	@FXMLViewFlowContext private ViewFlowContext flowContext;
 
-	      //STEP 5: Extract data from result set
-	      while(rs.next()){
-	         //Retrieve by column name
-	         int id  = rs.getInt("id");
-	         String name = rs.getString("name");
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-	         //Display values
-	         System.out.print("ID: " + id);
-	         System.out.print(", Name: " + name);
-	         System.out.print("\n");
-	      }
-	      //STEP 6: Clean-up environment
-	      rs.close();
-	      stmt.close();
-	      conn.close();
-	   }catch(SQLException se){
-	      //Handle errors for JDBC
-	      se.printStackTrace();
-	   }catch(Exception e){
-	      //Handle errors for Class.forName
-	      e.printStackTrace();
-	   }finally{
-	      //finally block used to close resources
-	      try{
-	         if(stmt!=null)
-	            stmt.close();
-	      }catch(SQLException se2){
-	      }// nothing we can do
-	      try{
-	         if(conn!=null)
-	            conn.close();
-	      }catch(SQLException se){
-	         se.printStackTrace();
-	      }//end finally try
-	   }//end try
-	   System.out.println("\nGoodbye!");
-	   
-	   
-	}//end main
+	public void start(Stage stage) throws Exception {
+
+
+		Flow flow = new Flow(MainController.class);
+		DefaultFlowContainer container = new DefaultFlowContainer();
+		flowContext = new ViewFlowContext();
+		flowContext.register("Stage", stage);
+		flow.createHandler(flowContext).start(container);
+		
+		Scene scene = new Scene(new JFXDecorator(stage, container.getView()), 800, 800);
+		scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-fonts.css").toExternalForm());
+		scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-design.css").toExternalForm());
+		scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-main-demo.css").toExternalForm());
+//		stage.initStyle(StageStyle.UNDECORATED);
+//		stage.setFullScreen(true);
+		stage.setMinWidth(700);
+		stage.setMinHeight(700);
+		stage.setScene(scene);
+		stage.show();
+	}
 }
