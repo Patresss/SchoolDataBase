@@ -15,8 +15,9 @@ import javafx.scene.control.Label;
 import javax.annotation.PostConstruct;
 
 import com.jfoenix.controls.JFXListView;
+import com.patres.database.Main;
 
-@FXMLController(value = "/resources/fxml/SideMenu.fxml", title = "Material Design Example")
+
 public class SideMenuController {
 
 	@FXMLViewFlowContext
@@ -87,6 +88,7 @@ public class SideMenuController {
 		sideList.propagateMouseEventsToParent();
 		FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
 		Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+		contentFlow.getViewConfiguration().setResources(Main.getBundle());
 		bindNodeToController(button, WelcomeController.class, contentFlow, contentFlowHandler);
 //		bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
 //		bindNodeToController(combobox, ComboBoxController.class, contentFlow, contentFlowHandler);

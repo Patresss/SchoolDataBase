@@ -1,36 +1,21 @@
 package com.patres.database.gui.controller;
 
-import io.datafx.controller.FXMLController;
-import io.datafx.controller.flow.Flow;
-import io.datafx.controller.flow.FlowException;
-import io.datafx.controller.flow.FlowHandler;
-import io.datafx.controller.flow.container.ContainerAnimations;
-import io.datafx.controller.flow.context.FXMLViewFlowContext;
-import io.datafx.controller.flow.context.ViewFlowContext;
-import io.datafx.controller.util.VetoException;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
-
-import javax.annotation.PostConstruct;
+import java.io.IOException;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPopup;
-import com.jfoenix.controls.JFXPopup.PopupHPosition;
-import com.jfoenix.controls.JFXPopup.PopupVPosition;
 import com.jfoenix.controls.JFXRippler;
+import com.patres.database.Main;
 
-import demos.datafx.AnimatedFlowContainer;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 
-
-@FXMLController(value = "/resources/fxml/Main.fxml", title = "Material Design Example")
 public class MainController {
-
-	@FXMLViewFlowContext
-	private ViewFlowContext context;
 
 	@FXML private StackPane root;
 	@FXML private StackPane content;
@@ -46,60 +31,29 @@ public class MainController {
 	@FXML private JFXPopup toolbarPopup;
 	@FXML private Label exit;
 
-	private FlowHandler flowHandler;
-	private FlowHandler sideMenuFlowHandler;
+	public void setPane(Node node) {
+		content.getChildren().setAll(node);
+		content.setAlignment(Pos.CENTER);
+	}
 
-	private int counter = 0;
+	public void initialize() {
+		
+		System.out.println("diiisd");
+//		
+//		FXMLLoader loader2 = new FXMLLoader();
+//		loader2.setLocation(MainController.class.getResource("/resources/fxml/ui/Welcome.fxml"));
+//		loader2.setController(WelcomeController.class);
+//		loader2.setResources(Main.getBundle());
+//
+//		try {
+//			content = loader2.load();
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 
-	@PostConstruct
-	public void init() throws FlowException, VetoException {
-
-		// inut the title hamburger icon
-		drawer.setOnDrawingAction((e) -> {
-			titleBurger.getAnimation().setRate(1);
-			titleBurger.getAnimation().setOnFinished((event) -> counter = 1);
-			titleBurger.getAnimation().play();
-		});
-		drawer.setOnHidingAction((e) -> {
-			titleBurger.getAnimation().setRate(-1);
-			titleBurger.getAnimation().setOnFinished((event) -> counter = 0);
-			titleBurger.getAnimation().play();
-		});
-		titleBurgerContainer.setOnMouseClicked((e)->{
-			if (counter == 0)
-				drawer.draw();
-			else if (counter == 1)
-				drawer.hide();
-			counter = -1;
-		});
-
-		// init Popup 
-		toolbarPopup.setPopupContainer(root);
-		toolbarPopup.setSource(optionsRippler);
-		optionsBurger.setOnMouseClicked((e) -> {
-			toolbarPopup.show(PopupVPosition.TOP, PopupHPosition.RIGHT, -12, 15);
-		});
-
-		// close application
-		exit.setOnMouseClicked((e) -> {
-			Platform.exit();
-		});
-
+		
 		// create the inner flow and content
-		context = new ViewFlowContext();
-		// set the default controller 
-		Flow innerFlow = new Flow(WelcomeController.class);
-
-		flowHandler = innerFlow.createHandler(context);
-		context.register("ContentFlowHandler", flowHandler);
-		context.register("ContentFlow", innerFlow);
-		context.register("ContentPane", content);
-		content.getChildren().add(flowHandler.start(new AnimatedFlowContainer(Duration.millis(320), ContainerAnimations.SWIPE_LEFT)));
-
-		// side controller will add links to the content flow
-		Flow sideMenuFlow = new Flow(SideMenuController.class);
-		sideMenuFlowHandler = sideMenuFlow.createHandler(context);
-		sideContent.getChildren().add(sideMenuFlowHandler.start(new AnimatedFlowContainer(Duration.millis(320), ContainerAnimations.SWIPE_LEFT)));
 
 	}
 }
