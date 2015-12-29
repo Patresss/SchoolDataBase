@@ -29,7 +29,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
-	xmlns="http://javafx.com/javafx/2.2" fx:controller="com.patres.database.gui.controller.MainController">
+	xmlns="http://javafx.com/javafx/2.2" fx:controller="com.patres.school.gui.controller.MainController">
 	<!-- Header -->
 	<BorderPane>
 
@@ -44,7 +44,7 @@
 								</JFXHamburger>
 							</StackPane>
 						</JFXRippler>
-						<Label>Material Design</Label>
+						<Label text="%name"/>
 					</leftItems>
 					<rightItems>
 						<JFXRippler fx:id="optionsRippler" maskType="CIRCLE"

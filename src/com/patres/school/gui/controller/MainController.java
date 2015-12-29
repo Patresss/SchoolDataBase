@@ -1,4 +1,4 @@
-package com.patres.database.gui.controller;
+package com.patres.school.gui.controller;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -7,11 +7,13 @@ import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXPopup.PopupHPosition;
 import com.jfoenix.controls.JFXPopup.PopupVPosition;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 public class MainController {
 
@@ -49,7 +51,7 @@ public class MainController {
 		System.out.println("diiisd");
 		initComponents();
 	}
-	
+
 	private void initComponents() {
 		initOptionsBurger();
 		initDrawer();
@@ -93,6 +95,11 @@ public class MainController {
 	// Other metohds
 	// ================================================================================
 	public void setPane(Node node) {
+		TranslateTransition tt = new TranslateTransition(Duration.millis(200), content);
+		tt.setByX(content.getWidth());
+		tt.setAutoReverse(true);
+		tt.play();
+		//content.setTranslateX(-200);
 		content.getChildren().setAll(node);
 		content.setAlignment(Pos.CENTER);
 	}

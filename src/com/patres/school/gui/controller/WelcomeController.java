@@ -1,4 +1,4 @@
-package com.patres.database.gui.controller;
+package com.patres.school.gui.controller;
 
 public class WelcomeController {
 

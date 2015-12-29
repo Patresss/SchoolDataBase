@@ -1,4 +1,4 @@
-package com.patres.database;
+package com.patres.school;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -8,8 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jfoenix.controls.JFXDecorator;
-import com.patres.database.gui.controller.MainController;
-import com.patres.database.helper.PaneSetter;
+import com.patres.school.gui.helper.PaneSetter;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +31,7 @@ public class Main extends Application {
 		launch(args);
 	}
 
-	public void start(Stage stage) throws Exception {
+	public void start(Stage stage) {
 
 		try {
 			mainStage = stage;
@@ -45,7 +44,7 @@ public class Main extends Application {
 			mainStage.setMinHeight(500);
 			mainStage.show();
 		} catch (IOException e) {
-			LOGGER.error("Error in start method: " + e.toString());
+			LOGGER.error("Error in start method - I/O Exception");
 		}
 	}
 
@@ -56,9 +55,7 @@ public class Main extends Application {
 
 		mainPane = (Pane) loader.load();
 
-		MainController mainController = loader.getController();
-		PaneSetter.setMainController(mainController);
-
+		PaneSetter.setMainController(loader.getController());
 		PaneSetter.loadNewContent("/resources/fxml/ui/Welcome.fxml");
 		PaneSetter.loadSideMenu("/resources/fxml/SideMenu.fxml");
 		return mainPane;
