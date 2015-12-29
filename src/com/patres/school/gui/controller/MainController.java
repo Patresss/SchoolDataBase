@@ -3,11 +3,14 @@ package com.patres.school.gui.controller;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPopup;
-import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXPopup.PopupHPosition;
 import com.jfoenix.controls.JFXPopup.PopupVPosition;
+import com.jfoenix.controls.JFXRippler;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -92,16 +95,29 @@ public class MainController {
 	}
 
 	// ================================================================================
-	// Other metohds
+	// Other methods
 	// ================================================================================
 	public void setPane(Node node) {
-		TranslateTransition tt = new TranslateTransition(Duration.millis(200), content);
+		TranslateTransition tt = new TranslateTransition(Duration.millis(300), content);
 		tt.setByX(content.getWidth());
 		tt.setAutoReverse(true);
 		tt.play();
-		//content.setTranslateX(-200);
-		content.getChildren().setAll(node);
-		content.setAlignment(Pos.CENTER);
+		
+		tt.setOnFinished(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+				content.setTranslateX(0);
+				content.getChildren().setAll(node);
+				content.setAlignment(Pos.CENTER);
+				content.setOpacity(0.0);
+				FadeTransition ft = new FadeTransition(Duration.millis(300), content);
+				ft.setFromValue(0.0);
+				ft.setToValue(1.0);
+				ft.play();
+		    }
+		});
+		
+
 	}
 
 	public void setSideMenu(Node node) {
