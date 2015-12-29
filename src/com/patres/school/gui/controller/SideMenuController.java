@@ -20,10 +20,10 @@ public class SideMenuController {
 	// ================================================================================
 	public void initialize() {
 		welcomeLabel.setOnMouseClicked((e) -> {
-			PaneSetter.loadNewContent("/resources/fxml/ui/Welcome.fxml");
+			PaneSetter.loadNewContent(SchoolPane.WELCOME);
 		});
 		listTeacherLabel.setOnMouseClicked((e) -> {
-			PaneSetter.loadNewContent("/resources/fxml/ui/ListTeacher.fxml");
+			PaneSetter.loadNewContent(SchoolPane.LIST_TEACHER);
 		});
 	}
 

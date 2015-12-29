@@ -51,7 +51,6 @@ public class MainController {
 	// Configuration methods
 	// ================================================================================
 	public void initialize() {
-		System.out.println("diiisd");
 		initComponents();
 	}
 

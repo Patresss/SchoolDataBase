@@ -1,10 +1,15 @@
 package com.patres.school.gui.controller;
 
-public class WelcomeController extends AbstractController {
+import com.jfoenix.controls.JFXListView;
 
+public class ListTeacherController extends AbstractController {
+
+	private JFXListView teacherListView;
+	
 	// ================================================================================
 	// Configuration methods
 	// ================================================================================
 	public void initialize() {
+		
 	}
 }

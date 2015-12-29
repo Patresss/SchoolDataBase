@@ -1,6 +1,7 @@
 package com.patres.school;
 
 import java.io.IOException;
+import java.sql.Statement;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -8,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jfoenix.controls.JFXDecorator;
+import com.patres.school.database.Connector;
+import com.patres.school.gui.controller.SchoolPane;
 import com.patres.school.gui.helper.PaneSetter;
 
 import javafx.application.Application;
@@ -20,14 +23,15 @@ import lombok.Getter;
 
 public class Main extends Application {
 
-	@Getter
-	private static ResourceBundle bundle = ResourceBundle.getBundle("resources/language/Bundle", new Locale("pl"));
+	@Getter	private static ResourceBundle bundle = ResourceBundle.getBundle("resources/language/Bundle", new Locale("pl"));
 	private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 	private Stage mainStage;
 	private Pane mainPane;
 	private final static String TITTLE = "School DataBase";
+	@Getter private static Statement statement;
 
 	public static void main(String[] args) {
+		statement = Connector.getStatement();
 		launch(args);
 	}
 
@@ -56,7 +60,7 @@ public class Main extends Application {
 		mainPane = (Pane) loader.load();
 
 		PaneSetter.setMainController(loader.getController());
-		PaneSetter.loadNewContent("/resources/fxml/ui/Welcome.fxml");
+		PaneSetter.loadNewContent(SchoolPane.WELCOME);
 		PaneSetter.loadSideMenu("/resources/fxml/SideMenu.fxml");
 		return mainPane;
 	}
