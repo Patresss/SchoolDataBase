@@ -4,6 +4,7 @@
 
 .root {
 	-fx-font-family: "Roboto";	
+	-color-contrast: BLACK;
 }
 
 .side-menu{
@@ -15,7 +16,7 @@
 .title-label{
 	-fx-font-size: 16.0px;
 	-fx-padding	: 14.0px;
-	-fx-text-fill: rgba(0.0, 0.0, 0.0, 0.87);
+	-fx-text-fill: -color-contrast;
 }
 .radio-button-title-label {
 	-fx-font-size: 16.0px;
@@ -391,113 +392,7 @@
 	-fx-font-size: 1.0em;
 }
 
-/*******************************************************************************
-*                                                                              *
-* JFX List View                                                                *
-*                                                                              *
-*******************************************************************************/
 
-.jfx-list-cell-content-container {
-	-fx-alignment: center-left;
-}
-.jfx-list-cell-container > .label {
-  	-fx-text-fill: BLACK ;
-}
-
-.jfx-list-cell:odd:selected .jfx-list-cell-container,
-.jfx-list-cell:even:selected .jfx-list-cell-container { 
-	-fx-background-color: rgba(0.0,0.0,255.0,0.2);
-}
-
-.jfx-list-cell {
-	-fx-background-insets: 0.0 ; 
-	-fx-text-fill: BLACK; 
-}
-.jfx-list-cell:odd, 
-.jfx-list-cell:even {
-	-fx-background-color:  WHITE;
-}
-.jfx-list-cell:filled:hover { 
-	-fx-text-fill: black;
-}
-
-.jfx-list-cell .jfx-rippler {
-	-fx-rippler-fill: #5264AE;
-}
-
-.jfx-list-view {
-	-fx-background-insets: 0.0;
-  	-fx-cell-horizontal-margin: 0.0;
-  	-fx-cell-vertical-margin: 5.0;
-  	-fx-vertical-gap : 10.0;
-  	-fx-expanded : false;
-}
-
-.custom-jfx-list-view .jfx-list-cell-content-container {
-	-fx-alignment: center;
-}
-.custom-jfx-list-view .jfx-list-cell-container .label {
-  	-fx-text-fill: BLACK ;
-}
-
-.custom-jfx-list-view .jfx-list-cell:odd:selected .jfx-list-cell-container,
-.custom-jfx-list-view .jfx-list-cell:even:selected .jfx-list-cell-container { 
-	-fx-background-color: rgba(255,0,0,0.2) ;
-}
-
-.custom-jfx-list-view .jfx-list-cell {
-	-fx-background-insets: 0.0 ; 
-	-fx-text-fill: BLACK; 
-}
-.custom-jfx-list-view .jfx-list-cell:odd, 
-.custom-jfx-list-view .jfx-list-cell:even {
-	-fx-background-color:  WHITE;
-}
-.custom-jfx-list-view .jfx-list-cell:filled:hover { 
-	-fx-text-fill: black;
-}
-
-.custom-jfx-list-view{
-	-fx-background-insets: 0.0;
-  	-fx-cell-horizontal-margin: 0.0;
-  	-fx-cell-vertical-margin: 5.0;
-  	-fx-expanded : false;
-  	-fx-max-width : 200.0px;   	
-  	/* important to hide the list change of height */
-  	-fx-background-color:TRANSPARENT;
-  	
-}
-.custom-jfx-list-view .jfx-rippler {
-	-fx-rippler-fill : RED;
-}
-
-.custom-jfx-list-view1{
-	-fx-vertical-gap : 15.0;
-  	-fx-pref-width: 150px;
-  	-fx-background-color: transparent ;
-}
-
-.custom-jfx-list-view1 .jfx-list-cell .jfx-list-cell-container{
-}
-
-.custom-jfx-list-view-icon {
-	-fx-text-fill: #5264AE;
-	-fx-padding: 0.0 10.0 0.0 5.0  ;
-	-fx-cursor: hand;
-}
-
-
-
-.custom-jfx-list-view .sublist-item {
-	-fx-border-color: #e0e0e0;
-	-fx-border-width: 1 0 1 0;
-}
-.custom-jfx-list-view .jfx-list-cell .sublist-header > .drop-icon{
-	-fx-background-color: GRAY;
-}
-.custom-jfx-list-view .jfx-list-cell:filled:hover .sublist-header > .drop-icon{
-	-fx-background-color: BLACK;
-}
 
 /*******************************************************************************/
 /*******************************************************************************/
@@ -706,9 +601,7 @@
 
 
 /*******************************************************************************
-*                                                                              *
 * JFX Combo Box                                                                *
-*                                                                              *
 *******************************************************************************/
 .combo-box-popup .list-view .jfx-list-cell .jfx-list-cell-container .label {
   	-fx-text-fill: BLACK ;
@@ -741,9 +634,7 @@
 
 
 /*******************************************************************************
-*                                                                              *
 * JFX Decorator                                                                *
-*                                                                              *
 *******************************************************************************/
 
 .jfx-decorator {
@@ -755,4 +646,148 @@
 .jfx-decorator .resize-border{
 	-fx-border-color:-fx-decorator-color;
 	-fx-border-width: 0 4 4 4;
+}
+
+/*******************************************************************************
+* MY                                                                           *
+*******************************************************************************/
+.label-duty {
+    -fx-font-size: 15px;
+}
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .corner {
+    -fx-background-insets: 0;
+}
+
+
+/*******************************************************************************
+*                                                                              *
+* JFX List View                                                                *
+*                                                                              *
+*******************************************************************************/
+
+.jfx-list-cell-content-container {
+	-fx-alignment: center-left;
+}
+.jfx-list-cell-container > .label {
+  	-fx-text-fill: RED ;
+}
+
+.jfx-list-cell:odd:selected .jfx-list-cell-container,
+.jfx-list-cell:even:selected .jfx-list-cell-container { 
+	-fx-background-color: rgba(0.0,0.0,255.0,0.2);
+}
+
+.jfx-list-cell {
+	-fx-background-insets: 0.0 ; 
+	-fx-text-fill: BLACK; 
+}
+.jfx-list-cell:odd, 
+.jfx-list-cell:even {
+	-fx-background-color:  WHITE;
+}
+.jfx-list-cell:filled:hover { 
+	-fx-text-fill: black;
+}
+
+.jfx-list-cell .jfx-rippler {
+	-fx-rippler-fill: #5264AE;
+}
+
+.jfx-list-view {
+	-fx-background-insets: 0.0;
+  	-fx-cell-horizontal-margin: 0.0;
+  	-fx-cell-vertical-margin: 5.0;
+  	-fx-vertical-gap : 10.0;
+  	-fx-expanded : false;
+}
+
+.custom-jfx-list-view .jfx-list-cell-content-container {
+	-fx-alignment: center;
+}
+.custom-jfx-list-view .jfx-list-cell-container .label {
+  	-fx-text-fill: BLACK ;
+}
+
+.custom-jfx-list-view .jfx-list-cell:odd:selected .jfx-list-cell-container,
+.custom-jfx-list-view .jfx-list-cell:even:selected .jfx-list-cell-container { 
+	-fx-background-color: rgba(255,0,0,0.2) ;
+}
+
+.custom-jfx-list-view .jfx-list-cell {
+	-fx-background-insets: 0.0 ; 
+	-fx-text-fill: BLACK; 
+}
+.custom-jfx-list-view .jfx-list-cell:odd, 
+.custom-jfx-list-view .jfx-list-cell:even {
+	-fx-background-color:  WHITE;
+}
+.custom-jfx-list-view .jfx-list-cell:filled:hover { 
+	-fx-text-fill: black;
+}
+
+.custom-jfx-list-view{
+	-fx-background-insets: 0.0;
+  	-fx-cell-horizontal-margin: 0.0;
+  	-fx-cell-vertical-margin: 5.0;
+  	-fx-expanded : false;
+  	-fx-max-width : 200.0px;   	
+  	/* important to hide the list change of height */
+  	-fx-background-color:TRANSPARENT;
+  	
+}
+.custom-jfx-list-view .jfx-rippler {
+	-fx-rippler-fill : RED;
+}
+
+.custom-jfx-list-view1{
+	-fx-vertical-gap : 15.0;
+  	-fx-pref-width: 150px;
+  	-fx-background-color: transparent ;
+}
+
+.custom-jfx-list-view1 .jfx-list-cell .jfx-list-cell-container{
+}
+
+.custom-jfx-list-view-icon {
+	-fx-text-fill: #5264AE;
+	-fx-padding: 0.0 10.0 0.0 5.0  ;
+	-fx-cursor: hand;
+}
+
+
+
+.custom-jfx-list-view .sublist-item {
+	-fx-border-color: #e0e0e0;
+	-fx-border-width: 1 0 1 0;
+}
+.custom-jfx-list-view .jfx-list-cell .sublist-header > .drop-icon{
+	-fx-background-color: GRAY;
+}
+.custom-jfx-list-view .jfx-list-cell:filled:hover .sublist-header > .drop-icon{
+	-fx-background-color: BLACK;
+}
+
+/**************************** */
+.list-cell .label {
+    -fx-text-fill: -color-contrast;
+}
+
+.list-cell:disabled .label {
+    -fx-opacity: 1.0 ;
+}
+
+.list-view .scroll-bar:horizontal .increment-arrow,
+.list-view .scroll-bar:horizontal .decrement-arrow,
+.list-view .scroll-bar:horizontal .increment-button,
+.list-view .scroll-bar:horizontal .decrement-button {
+    -fx-padding:0;
 }

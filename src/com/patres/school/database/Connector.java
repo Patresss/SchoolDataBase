@@ -8,6 +8,8 @@ import java.sql.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import lombok.Getter;
+
 public class Connector {
 
 	private static final String DATABASE_NAME = "school";
@@ -19,11 +21,13 @@ public class Connector {
 	private static final String PASS = "pass";
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Connector.class);
+	
+	@Getter
+	private Statement statement;
+	private Connection connection;
 
-	public static Statement getStatement() {
-		Connection connection = null;
-		Statement statement = null;
 
+	public Connector() {
 		try {
 			Class.forName(JDBC_DRIVER);
 
@@ -33,26 +37,28 @@ public class Connector {
 
 			LOGGER.info("Creating statement...");
 			statement = connection.createStatement();
+			LOGGER.info("Created statement");
 		} catch (SQLException e) {
 			LOGGER.error("SQLException: {}", e);
 		} catch (ClassNotFoundException e) {
 			LOGGER.error("ClassNotFoundException: {}", e);
-		} finally{
-		      try{
-		         if(statement!=null)
-		        	 statement.close();
-		      }catch(SQLException se2){
-		    	  LOGGER.error("SQLException: {}", se2);
-		      }
-		      try{
-		         if(connection!=null)
-		        	 connection.close();
-		      }catch(SQLException se){
-		    	  LOGGER.error("SQLException: {}", se);
-		      }
-		   }
-
-		// String sqlQuery = "SELECT id, degree, first_name, last_name FROM teacher";
-		return statement;
+		} 
+	}
+	
+	public void closeConncetion() {
+		LOGGER.info("Closing connection...");
+		try {
+			if (statement != null)
+				statement.close();
+		} catch (SQLException se2) {
+			LOGGER.error("SQLException in statement: {}", se2);
+		}
+		try {
+			if (connection != null)
+				connection.close();
+		} catch (SQLException se) {
+			LOGGER.error("SQLException in connection: {}", se);
+		}
+		LOGGER.info("Closed connection");
 	}
 }

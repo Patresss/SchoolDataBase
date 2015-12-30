@@ -7,7 +7,6 @@ import com.jfoenix.controls.JFXPopup.PopupHPosition;
 import com.jfoenix.controls.JFXPopup.PopupVPosition;
 import com.jfoenix.controls.JFXRippler;
 
-import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -97,7 +96,8 @@ public class MainController {
 	// Other methods
 	// ================================================================================
 	public void setPane(Node node) {
-		TranslateTransition tt = new TranslateTransition(Duration.millis(300), content);
+		int durationTime = 150;
+		TranslateTransition tt = new TranslateTransition(Duration.millis(durationTime), content);
 		tt.setByX(content.getWidth());
 		tt.setAutoReverse(true);
 		tt.play();
@@ -105,14 +105,19 @@ public class MainController {
 		tt.setOnFinished(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
-				content.setTranslateX(0);
+				content.setTranslateX(-content.getWidth());
 				content.getChildren().setAll(node);
 				content.setAlignment(Pos.CENTER);
-				content.setOpacity(0.0);
-				FadeTransition ft = new FadeTransition(Duration.millis(300), content);
-				ft.setFromValue(0.0);
-				ft.setToValue(1.0);
-				ft.play();
+				
+				TranslateTransition tt2 = new TranslateTransition(Duration.millis(durationTime), content);
+				tt2.setByX(content.getWidth());
+				tt2.setAutoReverse(true);
+				tt2.play();
+//				content.setOpacity(0.0);
+//				FadeTransition ft = new FadeTransition(Duration.millis(300), content);
+//				ft.setFromValue(0.0);
+//				ft.setToValue(1.0);
+//				ft.play();
 		    }
 		});
 		

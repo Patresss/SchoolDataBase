@@ -23,16 +23,19 @@ import lombok.Getter;
 
 public class Main extends Application {
 
-	@Getter	private static ResourceBundle bundle = ResourceBundle.getBundle("resources/language/Bundle", new Locale("pl"));
+	@Getter
+	private static ResourceBundle bundle = ResourceBundle.getBundle("resources/language/Bundle", new Locale("pl"));
 	private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 	private Stage mainStage;
-	private Pane mainPane;
 	private final static String TITTLE = "School DataBase";
-	@Getter private static Statement statement;
+	@Getter
+	private static Statement statement;
 
 	public static void main(String[] args) {
-		statement = Connector.getStatement();
+		Connector connector = new Connector();
+		statement = connector.getStatement();
 		launch(args);
+		connector.closeConncetion();
 	}
 
 	public void start(Stage stage) {
@@ -57,7 +60,7 @@ public class Main extends Application {
 		loader.setLocation(Main.class.getResource("/resources/fxml/Main.fxml"));
 		loader.setResources(bundle);
 
-		mainPane = (Pane) loader.load();
+		Pane mainPane = (Pane) loader.load();
 
 		PaneSetter.setMainController(loader.getController());
 		PaneSetter.loadNewContent(SchoolPane.WELCOME);
@@ -70,10 +73,10 @@ public class Main extends Application {
 		setStyle(scene);
 		return scene;
 	}
-	
+
 	private void setStyle(Scene scene) {
-		scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-fonts.css").toExternalForm());
-		scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-design.css").toExternalForm());
+	//	scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-fonts.css").toExternalForm());
+	//	scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-design.css").toExternalForm());
 		scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-main-demo.css").toExternalForm());
 	}
 
