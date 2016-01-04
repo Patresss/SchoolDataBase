@@ -1,0 +1,30 @@
+﻿DROP TABLE IF EXISTS class;
+
+CREATE TABLE class (
+	id INTEGER NOT NULL,
+	year INTEGER NOT NULL,
+	letter_class CHAR,
+	children_count INTEGER  NOT NULL  ,
+	PRIMARY KEY(id)
+);
+
+INSERT INTO class VALUES (11, 1, 'A', 30);
+INSERT INTO class VALUES (12, 1, 'B', 30);
+INSERT INTO class VALUES (13, 1, 'C', 30);
+INSERT INTO class VALUES (14, 1, 'D', 30);
+INSERT INTO class VALUES (15, 1, 'E', 30);
+INSERT INTO class VALUES (16, 1, 'F', 30);
+
+INSERT INTO class VALUES (21, 2, 'A', 30);
+INSERT INTO class VALUES (22, 2, 'B', 30);
+INSERT INTO class VALUES (23, 2, 'C', 30);
+INSERT INTO class VALUES (24, 2, 'D', 30);
+INSERT INTO class VALUES (25, 2, 'E', 30);
+INSERT INTO class VALUES (26, 2, 'F', 30);
+
+INSERT INTO class VALUES (31, 2, 'A', 30);
+INSERT INTO class VALUES (32, 2, 'B', 30);
+INSERT INTO class VALUES (33, 2, 'C', 30);
+INSERT INTO class VALUES (34, 2, 'D', 30);
+INSERT INTO class VALUES (35, 2, 'E', 30);
+INSERT INTO class VALUES (36, 2, 'F', 30);

@@ -1,5 +1,9 @@
 package com.patres.school.gui.controller;
 
+import com.patres.school.gui.controller.content.AbstractController;
+import com.patres.school.gui.controller.content.ListTeacherController;
+import com.patres.school.gui.controller.content.WelcomeController;
+
 import lombok.Getter;
 
 public enum SchoolPane {

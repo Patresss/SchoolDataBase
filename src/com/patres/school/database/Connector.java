@@ -12,12 +12,12 @@ import lombok.Getter;
 
 public class Connector {
 
-	private static final String DATABASE_NAME = "school";
-	private static final int PORT = 1001;
-	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://localhost:" + PORT + "/" + DATABASE_NAME;
-
-	private static final String USER = "root";
+	private static final String DATABASE_NAME = "School";
+	private static final int PORT = 5432;
+	private static final String JDBC_DRIVER = "org.postgresql.Driver";
+	private static final String DB_URL = "jdbc:postgresql://localhost:" + PORT + "/" + DATABASE_NAME;
+	
+	private static final String USER = "postgres";
 	private static final String PASS = "pass";
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Connector.class);
