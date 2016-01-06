@@ -1,11 +1,11 @@
-package com.patres.school.database;
+package com.patres.school.database.connector;
 
 import java.util.LinkedList;
 
-public class Personnel extends TeachingStaff {
+public class PersonnelConnector extends TeachingStaffConnector {
 
 	public LinkedList<String> getSpecificHeader() {
-		String sql = "SELECT * FROM list_duty;";
+		String sql = "SELECT duty_name FROM list_duty;";
 		String column = "duty_name";
 		return getHeader(sql, column);
 	}

@@ -3,12 +3,9 @@ package com.patres.school.gui.controller.content;
 import java.util.LinkedList;
 
 import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXPopup.PopupHPosition;
-import com.jfoenix.controls.JFXPopup.PopupVPosition;
-import com.patres.school.database.Personnel;
-import com.patres.school.database.Teacher;
-import com.patres.school.database.TeachingStaff;
-import com.patres.school.hellper.MapStaffDuty;
+import com.patres.school.database.connector.PersonnelConnector;
+import com.patres.school.database.connector.TeacherConnector;
+import com.patres.school.database.connector.TeachingStaffConnector;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,8 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.VBox;
 
-public class ListTeacherController extends AbstractController {
+public class ViewTeacherController extends AbstractController {
 
+	// ================================================================================
+	// Components
+	// ================================================================================
 	@FXML
 	private VBox staffSchoolVBox;
 	@FXML
@@ -42,16 +42,16 @@ public class ListTeacherController extends AbstractController {
 	// Initialize components
 	// ================================================================================
 	private void initStaffSchoolVBox() {
-		TeachingStaff teachingStaff = new Personnel();
+		TeachingStaffConnector teachingStaff = new PersonnelConnector();
 		initTeachingStaff(teachingStaff, staffSchoolVBox);
 	}
 	
 	private void initTeacherVBox() {
-		TeachingStaff teachingStaff = new Teacher();
+		TeachingStaffConnector teachingStaff = new TeacherConnector();
 		initTeachingStaff(teachingStaff, teacherVBox);
 	}
 	
-	private void initTeachingStaff(TeachingStaff teachingStaff, VBox vBox) {
+	private void initTeachingStaff(TeachingStaffConnector teachingStaff, VBox vBox) {
 		LinkedList<String> headerList = teachingStaff.getSpecificHeader();
 
 		for (String header : headerList) {

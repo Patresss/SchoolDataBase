@@ -13,6 +13,7 @@ public class SideMenuController {
 	// ================================================================================
 	@FXML private Label welcomeLabel;
 	@FXML private Label listTeacherLabel;
+	@FXML private Label listRoomLabel;
 	@FXML private JFXListView<?> sideList;
 
 	// ================================================================================
@@ -22,8 +23,13 @@ public class SideMenuController {
 		welcomeLabel.setOnMouseClicked((e) -> {
 			PaneSetter.loadNewContent(SchoolPane.WELCOME);
 		});
+		
 		listTeacherLabel.setOnMouseClicked((e) -> {
 			PaneSetter.loadNewContent(SchoolPane.LIST_TEACHER);
+		});
+		
+		listRoomLabel.setOnMouseClicked((e) -> {
+			PaneSetter.loadNewContent(SchoolPane.LIST_ROOM);
 		});
 	}
 

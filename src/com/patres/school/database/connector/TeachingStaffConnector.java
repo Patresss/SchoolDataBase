@@ -1,4 +1,4 @@
-package com.patres.school.database;
+package com.patres.school.database.connector;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,13 +9,14 @@ import org.slf4j.LoggerFactory;
 
 import com.patres.school.Main;
 
-public abstract class TeachingStaff {
+public abstract class TeachingStaffConnector {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(TeachingStaff.class);
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(TeachingStaffConnector.class);
+
 	public abstract LinkedList<String> getSpecificHeader();
+
 	public abstract LinkedList<String> getSpecificStaff(String header);
-	
+
 	protected LinkedList<String> getHeader(String sql, String column) {
 		LinkedList<String> list = new LinkedList<String>();
 		try {
@@ -25,12 +26,13 @@ public abstract class TeachingStaff {
 				String header_name = resultSet.getString(column);
 				list.add(header_name);
 			}
+			resultSet.close();
 		} catch (SQLException e) {
 			LOGGER.error("SQLException: {}", e);
 		}
 		return list;
 	}
-	
+
 	public LinkedList<String> getStaff(String header, String sql) {
 		LinkedList<String> list = new LinkedList<String>();
 		try {
@@ -42,11 +44,11 @@ public abstract class TeachingStaff {
 				String last_name = resultSet.getString("last_name");
 				list.add(degree + " " + first_name + " " + last_name);
 			}
+			resultSet.close();
 		} catch (SQLException e) {
 			LOGGER.error("SQLException: {}", e);
 		}
 		return list;
 	}
-	
 
 }

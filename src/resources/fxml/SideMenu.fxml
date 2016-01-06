@@ -14,5 +14,6 @@
 	<JFXListView  fx:id="sideList">
 		<Label fx:id="welcomeLabel" text="%welcome.tittle"/>
 		<Label fx:id="listTeacherLabel" text="%list.teacher.tittle"/>
+		<Label fx:id="listRoomLabel" text="%list.room.header"/>
 	</JFXListView>
 </StackPane>

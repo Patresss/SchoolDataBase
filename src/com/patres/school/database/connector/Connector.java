@@ -1,4 +1,4 @@
-package com.patres.school.database;
+package com.patres.school.database.connector;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

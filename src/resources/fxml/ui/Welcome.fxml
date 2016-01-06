@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -10,4 +11,12 @@
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
 	<Label styleClass="title-label" text="%welcome.header" />
+   <StackPane >
+
+         <Button mnemonicParsing="false" text="Button" />
+
+      <padding>
+         <Insets left="50.0" />
+      </padding>
+   </StackPane>
 </StackPane>

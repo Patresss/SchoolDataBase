@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.jfoenix.controls.JFXDecorator;
-import com.patres.school.database.Connector;
+import com.patres.school.database.connector.Connector;
 import com.patres.school.gui.controller.SchoolPane;
 import com.patres.school.gui.helper.PaneSetter;
 
@@ -51,6 +51,7 @@ public class Main extends Application {
 			mainStage.setMinHeight(500);
 			mainStage.show();
 		} catch (IOException e) {
+			System.out.println(e.getMessage());e.getStackTrace();
 			LOGGER.error("Error in start method - I/O Exception");
 		}
 	}

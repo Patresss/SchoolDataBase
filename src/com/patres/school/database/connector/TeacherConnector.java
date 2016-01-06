@@ -1,8 +1,8 @@
-package com.patres.school.database;
+package com.patres.school.database.connector;
 
 import java.util.LinkedList;
 
-public class Teacher extends TeachingStaff {
+public class TeacherConnector extends TeachingStaffConnector {
 
 	public LinkedList<String> getSpecificHeader() {
 		String sql = "SELECT subject_name FROM subject;";

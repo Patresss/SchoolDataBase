@@ -27,6 +27,7 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXPopup?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.*?>
 
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
 	xmlns="http://javafx.com/javafx/2.2" fx:controller="com.patres.school.gui.controller.MainController">
@@ -44,7 +45,7 @@
 								</JFXHamburger>
 							</StackPane>
 						</JFXRippler>
-						<Label text="%name"/>
+						<Label text="%name" />
 					</leftItems>
 					<rightItems>
 						<JFXRippler fx:id="optionsRippler" maskType="CIRCLE"
@@ -61,7 +62,9 @@
 
 		<!-- Content Area -->
 		<center>
-			<JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
+			<JFXDrawer fx:id="drawer" defaultDrawerSize="250"
+				direction="LEFT">
+
 				<styleClass>
 					<String fx:value="body" />
 				</styleClass>
@@ -70,8 +73,15 @@
 					</StackPane>
 				</sidePane>
 				<content>
-					<StackPane fx:id="content" >
-					</StackPane>
+					<ScrollPane fx:id="contentScrollPane">
+						<content>
+							<StackPane fx:id="content">
+								<padding>
+									<Insets left="50.0" />
+								</padding>
+							</StackPane>
+						</content>
+					</ScrollPane>
 				</content>
 			</JFXDrawer>
 		</center>

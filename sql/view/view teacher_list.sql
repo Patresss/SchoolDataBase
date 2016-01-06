@@ -13,5 +13,3 @@ INNER JOIN
 INNER JOIN 
 	subject s 
     ON sh.subject_id = s.id;
-
-SELECT * FROM teacher_list;

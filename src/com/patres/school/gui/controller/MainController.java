@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
@@ -26,6 +27,8 @@ public class MainController {
 	private StackPane root;
 	@FXML
 	private StackPane content;
+	@FXML
+	private ScrollPane contentScrollPane;
 	@FXML
 	private StackPane sideContent;
 
@@ -98,19 +101,19 @@ public class MainController {
 	public void setPane(Node node) {
 		int durationTime = 150;
 		TranslateTransition tt = new TranslateTransition(Duration.millis(durationTime), content);
-		tt.setByX(content.getWidth());
+		tt.setByX(contentScrollPane.getWidth());
 		tt.setAutoReverse(true);
 		tt.play();
 		
 		tt.setOnFinished(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent event) {
-				content.setTranslateX(-content.getWidth());
+				content.setTranslateX(-contentScrollPane.getWidth());
 				content.getChildren().setAll(node);
 				content.setAlignment(Pos.CENTER);
 				
 				TranslateTransition tt2 = new TranslateTransition(Duration.millis(durationTime), content);
-				tt2.setByX(content.getWidth());
+				tt2.setByX(contentScrollPane.getWidth());
 				tt2.setAutoReverse(true);
 				tt2.play();
 //				content.setOpacity(0.0);
