@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import com.jfoenix.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+			<VBox>
+				<children>
+					<Label styleClass="title-label" text="%room.add.header" />
+         <GridPane hgap="10.0">
+           <columnConstraints>
+             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+             <ColumnConstraints hgrow="SOMETIMES" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints vgrow="SOMETIMES" />
+             <RowConstraints vgrow="SOMETIMES" />
+             <RowConstraints vgrow="SOMETIMES" />
+           </rowConstraints>
+            <children>
+               <Label fx:id="nameLabel" text="nameLabel" />
+               <Label fx:id="limitLabel" text="limitLabel" GridPane.rowIndex="1" />
+               <JFXTextField fx:id="nameTextField" GridPane.columnIndex="1" />
+               <JFXTextField fx:id="limitTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               <JFXButton fx:id="addButton" mnemonicParsing="false" onAction="#addToDatabase" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+         </GridPane>
+				</children>
+			</VBox>
+</StackPane>

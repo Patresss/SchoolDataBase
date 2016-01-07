@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import com.jfoenix.*?>
+<?import com.jfoenix.controls.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+	<BorderPane>
+		<left>
+			<ScrollPane BorderPane.alignment="CENTER">
+				<content>
+					<TableView fx:id="roomsTable">
+						<columns>
+						<TableColumn fx:id="idTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%id" />
+							<TableColumn fx:id="nameTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.name" />
+							<TableColumn fx:id="limitTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.limit" />
+						</columns>
+					</TableView>
+				</content>
+				<opaqueInsets>
+					<Insets />
+				</opaqueInsets>
+			</ScrollPane>
+		</left>
+		<center>
+			<StackPane BorderPane.alignment="CENTER">
+				<BorderPane.margin>
+					<Insets left="50.0" />
+				</BorderPane.margin>
+				<children>
+					<VBox prefHeight="200.0" prefWidth="100.0">
+						<children>
+							<GridPane>
+								<columnConstraints>
+									<ColumnConstraints halignment="RIGHT" prefWidth="200.0" />
+									<ColumnConstraints />
+								</columnConstraints>
+								<rowConstraints>
+									<RowConstraints vgrow="SOMETIMES" />
+									<RowConstraints vgrow="SOMETIMES" />
+									<RowConstraints vgrow="SOMETIMES" />
+								</rowConstraints>
+								<children>
+									<Label fx:id="nameLabel" text="nameLabel" />
+									<Label fx:id="limitLabel" text="limitLabel" GridPane.rowIndex="1" />
+									<JFXTextField fx:id="nameTextField" GridPane.columnIndex="1" />
+									<JFXTextField fx:id="limitTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+								</children>
+							</GridPane>
+							<ButtonBar prefHeight="40.0" prefWidth="200.0">
+								<buttons>
+									<JFXButton fx:id="removeButton" mnemonicParsing="false" onAction="#removeRoom" text="Button" />
+									<JFXButton fx:id="editButton" mnemonicParsing="false" onAction="#editRoom" text="Button" />
+									<JFXButton fx:id="addButton" mnemonicParsing="false" onAction="#addRoom" text="Button" />
+								</buttons>
+							</ButtonBar>
+						</children>
+					</VBox>
+				</children>
+			</StackPane>
+		</center>
+		<top>
+			<Label styleClass="title-label" text="%room.list.header" BorderPane.alignment="CENTER" />
+		</top>
+	</BorderPane>
+</StackPane>

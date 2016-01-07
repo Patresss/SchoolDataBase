@@ -51,7 +51,6 @@ public class Main extends Application {
 			mainStage.setMinHeight(500);
 			mainStage.show();
 		} catch (IOException e) {
-			System.out.println(e.getMessage());e.getStackTrace();
 			LOGGER.error("Error in start method - I/O Exception");
 		}
 	}

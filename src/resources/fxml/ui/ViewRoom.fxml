@@ -14,11 +14,11 @@
 		<content>
 			<VBox>
 				<children>
-					<Label styleClass="title-label" text="%list.room.header" />
+					<Label styleClass="title-label" text="%room.list.header" />
 					<TableView fx:id="roomsTable">
 						<columns>
-							<TableColumn text="%list.room.column.room" />
-							<TableColumn text="%list.room.column.limit" />
+							<TableColumn fx:id="nameTableColumn" text="%room.name" />
+							<TableColumn fx:id="limitTableColumn" text="%room.limit" />
 						</columns>
 					</TableView>
 				</children>
