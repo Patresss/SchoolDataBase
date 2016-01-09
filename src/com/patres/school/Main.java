@@ -1,6 +1,7 @@
 package com.patres.school;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.jfoenix.controls.JFXDecorator;
 import com.patres.school.database.connector.Connector;
+import com.patres.school.database.connector.table.Table;
 import com.patres.school.gui.controller.SchoolPane;
 import com.patres.school.gui.helper.PaneSetter;
 
@@ -30,10 +32,14 @@ public class Main extends Application {
 	private final static String TITTLE = "School DataBase";
 	@Getter
 	private static Statement statement;
+	@Getter
+	private static Connection connection;
 
 	public static void main(String[] args) {
 		Connector connector = new Connector();
 		statement = connector.getStatement();
+		connection = connector.getConnection();
+		Table.ROOM.getClass();
 		launch(args);
 		connector.closeConncetion();
 	}
@@ -76,8 +82,7 @@ public class Main extends Application {
 
 	private void setStyle(Scene scene) {
 	//	scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-fonts.css").toExternalForm());
-	//	scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-design.css").toExternalForm());
-		scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-main-demo.css").toExternalForm());
+		scene.getStylesheets().add(Main.class.getResource("/resources/css/style_day.css").toExternalForm());
 	}
 
 }

@@ -56,9 +56,9 @@
 							</GridPane>
 							<ButtonBar prefHeight="40.0" prefWidth="200.0">
 								<buttons>
-									<JFXButton fx:id="removeButton" mnemonicParsing="false" onAction="#removeRoom" text="Button" />
-									<JFXButton fx:id="editButton" mnemonicParsing="false" onAction="#editRoom" text="Button" />
-									<JFXButton fx:id="addButton" mnemonicParsing="false" onAction="#addRoom" text="Button" />
+									<JFXButton fx:id="removeButton" mnemonicParsing="false" onAction="#removeRoom" text="%button.remove" />
+									<JFXButton fx:id="editButton" mnemonicParsing="false" onAction="#editRoom" text="%button.edit" />
+									<JFXButton fx:id="addButton" mnemonicParsing="false" onAction="#addRoom" text="%button.add" />
 								</buttons>
 							</ButtonBar>
 						</children>

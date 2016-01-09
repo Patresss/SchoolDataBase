@@ -1,0 +1,182 @@
+.root {
+	-fx-font-family: "Roboto";	
+	
+	-color-primary: #03A9F4;
+	-color-primary-dark: #0288D1;
+	-color-primary-ligth: #B3E5FC;
+	
+	-color-primary-text: #01547a;
+	
+	-color-background: #FFFFFF;
+	-color-accent: #FFC107;
+	-color-accent-ligth: #ffd351;
+	-color-divider: #B6B6B6
+	
+	
+	}
+.pane-content {
+    -fx-background-color: red;
+}
+
+/* ================================================================================*\
+ * SQL Query
+\* ================================================================================*/
+.side-menu{
+	-fx-padding: 20.0,10.0;
+	-fx-font-size: 15.0;
+	-fx-font-weight: NORMAL;
+}
+
+/* ================================================================================*\
+ * Label
+\* ================================================================================*/
+.label{
+	-fx-text-fill: -color-primary-text;
+}
+
+.text{
+	-fx-text-fill: -color-primary-text;
+}
+
+.title-label{
+	-fx-font-size: 16.0px;
+	-fx-padding	: 14.0px;
+}
+
+.label-staff-header {
+    -fx-font-size: 15px;
+}
+
+/* ================================================================================*\
+ * Drawer
+\* ================================================================================*/
+.jfx-drawer-overlay-pane {
+	-fx-background-color: rgba(0.0,0.0,0.0,0.1)	
+}
+
+/* ================================================================================*\
+ * JFX Hamburger Icon  
+\* ================================================================================*/
+.jfx-hamburger{
+	-fx-padding: 10.0;
+	-fx-spacing: 4px;
+	-fx-cursor: hand;
+}
+
+.jfx-hamburger StackPane{
+	-fx-pref-width: 30px;
+	-fx-pref-height: 4px;
+	-fx-background-color: -color-background;
+	-fx-background-radius: 5px;	
+}
+
+/* ================================================================================*\
+ * Tool Bar 
+\* ================================================================================*/
+.jfx-tool-bar{
+	-fx-font-size: 20.0;
+	-fx-font-weight: BOLD;
+	-fx-background-color: -color-primary;
+	-fx-pref-width: 100.0%;
+	-fx-pref-height: 64.0px;
+}
+
+.jfx-tool-bar HBox {
+	-fx-alignment:center;
+	-fx-spacing: 25.0;
+	-fx-padding: 0.0 10.0;
+}
+
+.jfx-tool-bar Label{
+	-fx-text-fill: -color-background;
+}
+
+.jfx-tool-bar .jfx-options-burger{
+	-fx-padding: 22px;
+}
+
+.jfx-tool-bar .jfx-options-burger StackPane{
+	-fx-pref-width:4px;
+}
+
+.jfx-tool-bar .jfx-rippler {
+	-fx-rippler-fill: -color-background;
+}
+
+.option-list-view {
+  	-fx-pref-width: 160.0px;
+  	-fx-background-color: -color-background ;
+}
+
+
+/* ================================================================================*\
+ * JFX Decorator
+\* ================================================================================*/
+.jfx-decorator {
+	-fx-decorator-color: -color-primary-dark;
+}
+.jfx-decorator .jfx-decorator-buttons-container{
+	-fx-background-color: -fx-decorator-color;
+}
+.jfx-decorator .resize-border{
+	-fx-border-color:-fx-decorator-color;
+	-fx-border-width: 0 4 4 4;
+}
+
+/* ================================================================================*\
+ * Scroll Pane
+\* ================================================================================*/
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
+}
+
+.scroll-pane .corner {
+    -fx-background-insets: 0;
+}
+
+/* ================================================================================*\
+ * List View   
+\* ================================================================================*/
+.jfx-list-cell-content-container {
+	-fx-alignment: center-left;
+}
+
+.jfx-list-cell:odd:selected .jfx-list-cell-container,
+.jfx-list-cell:even:selected .jfx-list-cell-container { 
+	-fx-background-color: -color-primary-ligth;
+}
+
+.jfx-list-cell {
+	-fx-background-insets: 0.0 ; 
+}
+.jfx-list-cell:odd, 
+.jfx-list-cell:even {
+	-fx-background-color: -color-background;
+}
+
+
+.jfx-list-cell .jfx-rippler {
+	-fx-rippler-fill: -color-primary;
+}
+
+.jfx-list-view {
+	-fx-background-insets: 0.0;
+  	-fx-cell-horizontal-margin: 0.0;
+  	-fx-cell-vertical-margin: 5.0;
+  	-fx-vertical-gap : 10.0;
+  	-fx-expanded : false;
+}
+.list-cell .label {
+    -fx-text-fill: -color-primary-text;
+}
+
+.list-cell:disabled .label {
+    -fx-opacity: 1.0 ;
+}
+
+

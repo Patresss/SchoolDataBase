@@ -29,8 +29,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.geometry.*?>
 
-<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
-	xmlns="http://javafx.com/javafx/2.2" fx:controller="com.patres.school.gui.controller.MainController">
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.patres.school.gui.controller.MainController">
 	<!-- Header -->
 	<BorderPane>
 
@@ -48,8 +47,7 @@
 						<Label text="%name" />
 					</leftItems>
 					<rightItems>
-						<JFXRippler fx:id="optionsRippler" maskType="CIRCLE"
-							style="-fx-ripple-color:WHITE;">
+						<JFXRippler fx:id="optionsRippler" maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
 							<StackPane fx:id="optionsBurger">
 								<JFXHamburger styleClass="jfx-options-burger">
 								</JFXHamburger>
@@ -62,9 +60,7 @@
 
 		<!-- Content Area -->
 		<center>
-			<JFXDrawer fx:id="drawer" defaultDrawerSize="250"
-				direction="LEFT">
-
+			<JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
 				<styleClass>
 					<String fx:value="body" />
 				</styleClass>
@@ -92,15 +88,13 @@
 			<Label>
 				Contact Us
 				<graphic>
-					<Icon awesomeIcon="USER" size="1.5em" style=";"
-						styleClass="option-jfx-list-view-icon" />
+					<Icon awesomeIcon="USER" size="1.5em" style=";" styleClass="option-jfx-list-view-icon" />
 				</graphic>
 			</Label>
 			<Label fx:id="exit">
 				Exit
 				<graphic>
-					<Icon awesomeIcon="REPLY" size="1.5em" style=";"
-						styleClass="option-jfx-list-view-icon" />
+					<Icon awesomeIcon="REPLY" size="1.5em" style=";" styleClass="option-jfx-list-view-icon" />
 				</graphic>
 			</Label>
 		</JFXListView>

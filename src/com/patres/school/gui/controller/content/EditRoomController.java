@@ -1,15 +1,14 @@
 package com.patres.school.gui.controller.content;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.patres.school.Main;
-import com.patres.school.database.connector.RoomConnector;
-import com.patres.school.database.table.Room;
+import com.patres.school.database.connector.table.RoomConnector;
+import com.patres.school.database.model.AbstractModel;
+import com.patres.school.database.model.Room;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,13 +23,13 @@ public class EditRoomController extends AbstractController {
 	// Components
 	// ================================================================================
 	@FXML
-	private TableView<Room> roomsTable;
+	private TableView<AbstractModel> roomsTable;
 	@FXML
-	private TableColumn<Room, String> idTableColumn;
+	private TableColumn<AbstractModel, String> idTableColumn;
 	@FXML
-	private TableColumn<Room, String> nameTableColumn;
+	private TableColumn<AbstractModel, String> nameTableColumn;
 	@FXML
-	private TableColumn<Room, Integer> limitTableColumn;
+	private TableColumn<AbstractModel, Integer> limitTableColumn;
 
 	@FXML
 	private Label nameLabel;
@@ -46,23 +45,31 @@ public class EditRoomController extends AbstractController {
 	private JFXButton editButton;
 	@FXML
 	private JFXButton removeButton;
-
+	
+	// ================================================================================
+	// Properties
+	// ================================================================================
+	private LinkedList<AbstractModel> roomsList;
+	private ObservableList<AbstractModel> roomsObservableList;
+	RoomConnector connector;
+	
 	// ================================================================================
 	// Configuration methods
 	// ================================================================================
 	public void initialize() {
 		initRoomsTable();
 		initLabels();
-
-		roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showRoomDetails(newValue));
+		
+		showDetailsListner();
 	}
 
 	// ================================================================================
 	// Initialize components
 	// ================================================================================
 	private void initRoomsTable() {
-		LinkedList<Room> roomsList = RoomConnector.getRooms();
-		ObservableList<Room> roomsObservableList = FXCollections.observableList(roomsList);
+		connector = new RoomConnector();
+		roomsList = connector.select();
+		roomsObservableList = FXCollections.observableList(roomsList);
 
 		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
 		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
@@ -75,32 +82,44 @@ public class EditRoomController extends AbstractController {
 		limitLabel.setText(Main.getBundle().getString("room.limit") + ":");
 	}
 
+	// ================================================================================
+	// FXML methods
+	// ================================================================================
 	@FXML
 	private void addRoom() {
 		String name = nameTextField.getText();
 		int limit = Integer.parseInt(limitTextField.getText());
-		RoomConnector.insertRoom(name, limit);
+		Room room = new Room(name, limit);
+		connector.insert(room);
+		
+		refreshTable();
 	}
 
 	@FXML
 	private void editRoom() {
-
+		int id = getSelectedItem().getId();
+		String name = nameTextField.getText();
+		int limit = Integer.parseInt(limitTextField.getText());
+		Room room = new Room(id, name, limit);
+		connector.update(room);
+		
+		refreshTable();
 	}
 
 	@FXML
 	private void removeRoom() {
-		refreshTable();
-		Room room = getSelectedItem();
-		int id = room.getId();
-		RoomConnector.deleteRoom(id);
+		AbstractModel model = getSelectedItem();
+		connector.delete(model);
+		
 		refreshTable();
 	}
 
-	private void showRoomDetails(Room room) {
+	
+	private void showRoomDetails(AbstractModel model) {
+		Room room = (Room) model;
 		if (room != null) {
 			nameTextField.setText(setNotNullString(room.getRoomName()));
 			limitTextField.setText(setNotNullString(room.getLimitPeople().toString()));
-
 		}
 	}
 
@@ -109,21 +128,18 @@ public class EditRoomController extends AbstractController {
 	}
 	
 
-	private Room getSelectedItem() {
+	private AbstractModel getSelectedItem() {
 		return roomsTable.getSelectionModel().getSelectedItem();
 	}
 	
 	private void refreshTable() {
-	    final List<Room> items = roomsTable.getItems();
-	    if( items == null || items.size() == 0) return;
-
-	    final Room item = roomsTable.getItems().get(0);
-	    items.remove(0);
-	    Platform.runLater(new Runnable(){
-	        @Override
-	        public void run() {
-	            items.add(0, item);
-	        }
-	    });
+		roomsList = connector.select();
+		roomsObservableList = FXCollections.observableList(roomsList);
+		roomsTable.setItems(roomsObservableList);
+		
 	 }
+	
+	private void showDetailsListner() {
+		roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showRoomDetails(newValue));
+	}
 }

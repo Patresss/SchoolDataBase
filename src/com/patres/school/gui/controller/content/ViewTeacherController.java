@@ -63,8 +63,9 @@ public class ViewTeacherController extends AbstractController {
 			
 			ObservableList<String> items = FXCollections.observableArrayList(staffList);
 			staffListView.setItems(items);
-			changeItem(staffListView);
-			
+			staffListView.setMinWidth(500);
+			staffListView.setOpacity(1.0);
+			staffListView.setDisable(true);
 			Label subjectLabel = new Label(header + ":");
 			subjectLabel.getStyleClass().add("label-staff-header");
 			
@@ -74,17 +75,6 @@ public class ViewTeacherController extends AbstractController {
 	
 	
 	
-	private void changeItem(JFXListView<String> list) {
-		list.setMinWidth(500);
-		list.setOpacity(1.0);
-		list.setDisable(true);
-		list.setCellFactory(i -> new ListCell<String>() {
-			@Override
-			protected void updateItem(String item, boolean empty) {
-				super.updateItem(item, empty);
-				setText(item);
-			}
-		});
-	}
+
 	
 }

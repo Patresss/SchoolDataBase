@@ -24,6 +24,7 @@ public class Connector {
 	
 	@Getter
 	private Statement statement;
+	@Getter
 	private Connection connection;
 
 

@@ -1,7 +1,6 @@
 package com.patres.school.gui.controller;
 
 import com.patres.school.gui.controller.content.AbstractController;
-import com.patres.school.gui.controller.content.AddRoomController;
 import com.patres.school.gui.controller.content.EditRoomController;
 import com.patres.school.gui.controller.content.ViewRoomController;
 import com.patres.school.gui.controller.content.ViewTeacherController;
@@ -14,8 +13,7 @@ public enum SchoolPane {
     WELCOME("Welcome.fxml", new WelcomeController()), 
     LIST_TEACHER("ViewTeacher.fxml", new ViewTeacherController()),
 	LIST_ROOM("ViewRoom.fxml", new ViewRoomController()),
-	EDIT_ROOM("EditRoom.fxml", new EditRoomController()),
-	ADD_ROOM("AddRoom.fxml", new AddRoomController());
+	EDIT_ROOM("EditRoom.fxml", new EditRoomController());
 
 	private final static String RESOURCE_PATH = "/resources/fxml/ui/";
 	@Getter private final String path;

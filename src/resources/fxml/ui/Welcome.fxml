@@ -11,12 +11,9 @@
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
 	<Label styleClass="title-label" text="%welcome.header" />
-   <StackPane >
-
-         <Button mnemonicParsing="false" text="Button" />
-
-      <padding>
-         <Insets left="50.0" />
-      </padding>
-   </StackPane>
+	<StackPane>
+		<padding>
+			<Insets left="50.0" />
+		</padding>
+	</StackPane>
 </StackPane>

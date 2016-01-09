@@ -2,8 +2,9 @@ package com.patres.school.gui.controller.content;
 
 import java.util.LinkedList;
 
-import com.patres.school.database.connector.RoomConnector;
-import com.patres.school.database.table.Room;
+import com.patres.school.database.connector.table.RoomConnector;
+import com.patres.school.database.model.AbstractModel;
+import com.patres.school.database.model.Room;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,11 +19,11 @@ public class ViewRoomController extends AbstractController {
 	// Components
 	// ================================================================================
 	@FXML
-	private TableView<Room> roomsTable;
+	private TableView<AbstractModel> roomsTable;
 	@FXML
-	private TableColumn<Room, String> nameTableColumn;
+	private TableColumn<AbstractModel, String> nameTableColumn;
 	@FXML
-	private TableColumn<Room, Integer> limitTableColumn;
+	private TableColumn<AbstractModel, Integer> limitTableColumn;
 
 	// ================================================================================
 	// Configuration methods
@@ -35,8 +36,9 @@ public class ViewRoomController extends AbstractController {
 	// Initialize components
 	// ================================================================================
 	private void initRoomsTable() {
-		LinkedList<Room> roomsList = RoomConnector.getRooms();
-		ObservableList<Room> roomsObservableList = FXCollections.observableList(roomsList);
+		RoomConnector connector = new RoomConnector();
+		LinkedList<AbstractModel> roomsList = connector.select();
+		ObservableList<AbstractModel> roomsObservableList = FXCollections.observableList(roomsList);
 
 		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
 		limitTableColumn.setCellValueFactory(new PropertyValueFactory<>("limitPeople"));
