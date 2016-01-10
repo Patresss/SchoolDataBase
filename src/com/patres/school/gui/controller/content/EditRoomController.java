@@ -14,10 +14,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class EditRoomController extends AbstractController {
 
@@ -42,12 +45,17 @@ public class EditRoomController extends AbstractController {
 	@FXML
 	private JFXTextField limitTextField;
 	@FXML
+	private VBox editVBox;
+	@FXML
+	private ButtonBar buttonBar;
+	@FXML
 	private JFXButton addButton;
 	@FXML
 	private JFXButton editButton;
 	@FXML
 	private JFXButton removeButton;
 
+	private int buttonBarWidth = (300/3 + 4 );
 	// ================================================================================
 	// Properties
 	// ================================================================================
@@ -65,6 +73,7 @@ public class EditRoomController extends AbstractController {
 
 		selectedListner();
 		onlyDigitListner();
+		buttonBar.setButtonMinWidth(buttonBarWidth);
 	}
 
 	// ================================================================================
@@ -72,7 +81,7 @@ public class EditRoomController extends AbstractController {
 	// ================================================================================
 	private void initRoomsTable() {
 		connector = new RoomConnector();
-		
+
 		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
 		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
 		limitTableColumn.setCellValueFactory(new PropertyValueFactory<>("limitPeople"));
@@ -83,12 +92,11 @@ public class EditRoomController extends AbstractController {
 		nameLabel.setText(Main.getBundle().getString("room.name") + ":");
 		limitLabel.setText(Main.getBundle().getString("room.limit") + ":");
 	}
-	
-	private void initButons() {
-		editButton.setVisible(false);
-		removeButton.setVisible(false);
-	}
 
+	private void initButons() {
+		editButton.setDisable(true);
+		removeButton.setDisable(true);
+	}
 
 	// ================================================================================
 	// FXML methods
@@ -127,17 +135,18 @@ public class EditRoomController extends AbstractController {
 	// ================================================================================
 	private void selectedListner() {
 		roomsTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-		if(newValue==null) {
-			editButton.setVisible(false);
-			removeButton.setVisible(false);
-		} else {
-			editButton.setVisible(true);
-			removeButton.setVisible(true);
-			showRoomDetails(newValue);
-		}
-			
+			if (newValue == null) {
+				editButton.setDisable(true);
+				removeButton.setDisable(true);
+			} else {
+				editButton.setDisable(false);
+				removeButton.setDisable(false);
+				showRoomDetails(newValue);
+			}
+
 		});
 	}
+
 	public void onlyDigitListner() {
 		limitTextField.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -148,6 +157,7 @@ public class EditRoomController extends AbstractController {
 			}
 		});
 	}
+
 
 	// ================================================================================
 	// Other methods
@@ -174,6 +184,5 @@ public class EditRoomController extends AbstractController {
 		roomsTable.setItems(roomsObservableList);
 		roomsTable.getSortOrder().add(idTableColumn);
 	}
-
 
 }

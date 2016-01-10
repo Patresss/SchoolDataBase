@@ -35,35 +35,35 @@
 					<Insets left="50.0" />
 				</BorderPane.margin>
 				<children>
-					<VBox prefHeight="200.0" prefWidth="100.0">
+					<VBox fx:id="editVBox">
 						<children>
-							<GridPane>
-								<columnConstraints>
-									<ColumnConstraints halignment="LEFT" minWidth="-Infinity" />
-									<ColumnConstraints minWidth="200.0" />
-								</columnConstraints>
-								<rowConstraints>
-									<RowConstraints vgrow="SOMETIMES" />
-									<RowConstraints vgrow="SOMETIMES" />
-									<RowConstraints vgrow="SOMETIMES" />
-								</rowConstraints>
-								<children>
-									<Label fx:id="nameLabel" styleClass="label-text-field" text="nameLabel" />
-									<Label fx:id="limitLabel" styleClass="label-text-field" text="limitLabel" GridPane.rowIndex="1" />
-									<JFXTextField fx:id="nameTextField" GridPane.columnIndex="1" />
-									<JFXTextField fx:id="limitTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-								</children>
-							</GridPane>
-							<ButtonBar prefHeight="40.0" prefWidth="200.0">
-								<buttons>
-									<JFXButton fx:id="removeButton" mnemonicParsing="false" onAction="#removeRoom" text="%button.remove" />
-									<JFXButton fx:id="editButton" mnemonicParsing="false" onAction="#editRoom" text="%button.edit" />
-									<JFXButton fx:id="addButton" mnemonicParsing="false" onAction="#addRoom" text="%button.add" />
-								</buttons>
+      							<GridPane fx:id="editGridPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="300.0">
+      								<columnConstraints>
+      									<ColumnConstraints halignment="LEFT" minWidth="-Infinity" />
+      									<ColumnConstraints maxWidth="-Infinity" percentWidth="0.0" />
+      								</columnConstraints>
+      								<rowConstraints>
+      									<RowConstraints vgrow="SOMETIMES" />
+      									<RowConstraints vgrow="SOMETIMES" />
+      									<RowConstraints vgrow="SOMETIMES" />
+      								</rowConstraints>
+      								<children>
+      									<Label fx:id="nameLabel" styleClass="label-text-field" text="nameLabel" />
+      									<Label fx:id="limitLabel" styleClass="label-text-field" text="limitLabel" GridPane.rowIndex="1" />
+      									<JFXTextField fx:id="nameTextField" GridPane.columnIndex="1" />
+      									<JFXTextField fx:id="limitTextField" maxWidth="243.0" prefHeight="27.0" prefWidth="243.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      								</children>
+      							</GridPane>
+      							<ButtonBar fx:id="buttonBar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0">
+      								<buttons>
+      									<JFXButton fx:id="addButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addRoom" text="%button.add" />
+      									<JFXButton fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editRoom" text="%button.edit" />
+      									<JFXButton fx:id="removeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeRoom" text="%button.remove" />
+      								</buttons>
                         <VBox.margin>
                            <Insets top="20.0" />
                         </VBox.margin>
-							</ButtonBar>
+      							</ButtonBar>
 						</children>
 					</VBox>
 				</children>
