@@ -14,7 +14,7 @@
 		<content>
 			<VBox>
 				<children>
-					<Label styleClass="title-label" text="%room.list.header" />
+					<Label styleClass="label-title" text="%room.list.header" />
 					<TableView fx:id="roomsTable">
 						<columns>
 							<TableColumn fx:id="nameTableColumn" text="%room.name" />

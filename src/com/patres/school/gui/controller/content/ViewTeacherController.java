@@ -11,7 +11,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
 import javafx.scene.layout.VBox;
 
 public class ViewTeacherController extends AbstractController {
@@ -66,6 +65,8 @@ public class ViewTeacherController extends AbstractController {
 			staffListView.setMinWidth(500);
 			staffListView.setOpacity(1.0);
 			staffListView.setDisable(true);
+			staffListView.getStyleClass().add("list-staf");
+			
 			Label subjectLabel = new Label(header + ":");
 			subjectLabel.getStyleClass().add("label-staff-header");
 			

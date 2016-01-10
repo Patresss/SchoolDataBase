@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import com.jfoenix.controls.JFXDecorator;
 import com.patres.school.database.connector.Connector;
-import com.patres.school.database.connector.table.Table;
 import com.patres.school.gui.controller.SchoolPane;
 import com.patres.school.gui.helper.PaneSetter;
 
@@ -39,7 +38,6 @@ public class Main extends Application {
 		Connector connector = new Connector();
 		statement = connector.getStatement();
 		connection = connector.getConnection();
-		Table.ROOM.getClass();
 		launch(args);
 		connector.closeConncetion();
 	}
@@ -67,7 +65,6 @@ public class Main extends Application {
 		loader.setResources(bundle);
 
 		Pane mainPane = (Pane) loader.load();
-
 		PaneSetter.setMainController(loader.getController());
 		PaneSetter.loadNewContent(SchoolPane.WELCOME);
 		PaneSetter.loadSideMenu("/resources/fxml/SideMenu.fxml");

@@ -14,14 +14,14 @@
 				<children>
 					<VBox>
 						<children>
-							<Label styleClass="title-label" text="%list.schoolStaff.header" />
+							<Label styleClass="label-title" text="%list.schoolStaff.header" />
 							<VBox fx:id="staffSchoolVBox" />
 						</children>
 					</VBox>
 					<VBox>
 						<children>
 
-							<Label styleClass="title-label" text="%list.teacher.header" />
+							<Label styleClass="label-title" text="%list.teacher.header" />
 							<VBox fx:id="teacherVBox" />
 						</children>
 					</VBox>

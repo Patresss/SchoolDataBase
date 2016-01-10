@@ -2,9 +2,6 @@ package com.patres.school.gui.controller;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
-import com.jfoenix.controls.JFXPopup;
-import com.jfoenix.controls.JFXPopup.PopupHPosition;
-import com.jfoenix.controls.JFXPopup.PopupVPosition;
 import com.jfoenix.controls.JFXRippler;
 
 import javafx.animation.TranslateTransition;
@@ -13,7 +10,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -44,10 +40,6 @@ public class MainController {
 
 	@FXML
 	private JFXDrawer drawer;
-	@FXML
-	private JFXPopup toolbarPopup;
-	@FXML
-	private Label exit;
 
 	// ================================================================================
 	// Configuration methods
@@ -57,7 +49,6 @@ public class MainController {
 	}
 
 	private void initComponents() {
-		initOptionsBurger();
 		initDrawer();
 		initTitleBurgerContainer();
 	}
@@ -65,14 +56,6 @@ public class MainController {
 	// ================================================================================
 	// Initialize components
 	// ================================================================================
-	private void initOptionsBurger() {
-		toolbarPopup.setPopupContainer(root);
-		toolbarPopup.setSource(optionsRippler);
-
-		optionsBurger.setOnMouseClicked((e) -> {
-			toolbarPopup.show(PopupVPosition.TOP, PopupHPosition.RIGHT, -12, 15);
-		});
-	}
 
 	private void initDrawer() {
 		drawer.setOnDrawingAction((e) -> {
