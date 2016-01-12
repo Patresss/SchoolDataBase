@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.patres.school.Main;
 import com.patres.school.database.QueryGenerator;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.gui.controller.content.AbstractController;
+import com.patres.school.gui.controller.content.edit.AbstractEditController;
 
 public abstract class AbstractConnector {
 	
@@ -20,7 +20,7 @@ public abstract class AbstractConnector {
 	// Properties
 	// ================================================================================
 	private QueryGenerator queryGenerator;
-	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractEditController.class);
 	private static Statement statement = Main.getStatement();
 	
 	// ================================================================================

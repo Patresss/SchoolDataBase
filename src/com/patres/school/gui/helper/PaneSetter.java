@@ -34,6 +34,7 @@ public class PaneSetter {
 			mainController.setPane((Node) loader.load());
 		} catch (IOException e) {
 			LOGGER.error("I/O Exception", e);
+			System.out.println(e.getMessage());
 		}
 	}
 

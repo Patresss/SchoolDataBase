@@ -15,6 +15,8 @@ public class SideMenuController {
 	@FXML private Label listTeacherLabel;
 	@FXML private Label listRoomLabel;
 	@FXML private Label editRoomLabel;
+	@FXML private Label editStaffLabel;
+	@FXML private Label editSubjectLabel;
 	@FXML private JFXListView<?> sideList;
 
 	// ================================================================================
@@ -36,6 +38,12 @@ public class SideMenuController {
 		
 		editRoomLabel.setOnMouseClicked((e) -> {
 			PaneSetter.loadNewContent(SchoolPane.EDIT_ROOM);
+		});
+		editStaffLabel.setOnMouseClicked((e) -> {
+			PaneSetter.loadNewContent(SchoolPane.EDIT_STAFF);
+		});
+		editSubjectLabel.setOnMouseClicked((e) -> {
+			PaneSetter.loadNewContent(SchoolPane.EDIT_SUBJECT);
 		});
 	}
 

@@ -27,12 +27,16 @@ public class Main extends Application {
 	@Getter
 	private static ResourceBundle bundle = ResourceBundle.getBundle("resources/language/Bundle", new Locale("pl"));
 	private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
-	private Stage mainStage;
+	@Getter
+	private static Stage mainStage;
+	
 	private final static String TITTLE = "School DataBase";
 	@Getter
 	private static Statement statement;
 	@Getter
 	private static Connection connection;
+	private final int SCENE_WIDTH = 900;
+	private final int SCENE_HEIGHT = 600;
 
 	public static void main(String[] args) {
 		Connector connector = new Connector();
@@ -53,6 +57,7 @@ public class Main extends Application {
 
 			mainStage.setMinWidth(700);
 			mainStage.setMinHeight(500);
+			System.out.println(mainStage.getScene().getHeight());
 			mainStage.show();
 		} catch (IOException e) {
 			LOGGER.error("Error in start method - I/O Exception");
@@ -72,7 +77,7 @@ public class Main extends Application {
 	}
 
 	private Scene createScene(final Pane mainPane) {
-		Scene scene = new Scene(new JFXDecorator(mainStage, mainPane), 800, 600);
+		Scene scene = new Scene(new JFXDecorator(mainStage, mainPane), SCENE_WIDTH, SCENE_HEIGHT);
 		setStyle(scene);
 		return scene;
 	}
@@ -80,6 +85,10 @@ public class Main extends Application {
 	private void setStyle(Scene scene) {
 	//	scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-fonts.css").toExternalForm());
 		scene.getStylesheets().add(Main.class.getResource("/resources/css/style_day.css").toExternalForm());
+	}
+	
+	public static double getWidth() {
+		return mainStage.getScene().getWidth();
 	}
 
 }

@@ -18,9 +18,10 @@
 				<content>
 					<TableView fx:id="modelTableView">
 						<columns>
-						<TableColumn fx:id="idTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%id" />
-							<TableColumn fx:id="nameTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.name" />
-							<TableColumn fx:id="limitTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.limit" />
+						<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="-1.0" text="%id" />
+                     <TableColumn fx:id="degreeTableColumn" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="%staff.degree" />
+							<TableColumn fx:id="firstNameTableColumn" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="%staff.firstName" />
+							<TableColumn fx:id="lastNameTableColumn" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="-1.0" text="%staff.lastName" />
 						</columns>
 					</TableView>
 				</content>
@@ -37,28 +38,30 @@
 				<children>
 					<VBox>
 						<children>
-      							<GridPane fx:id="editGridPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
+      							<GridPane fx:id="editGridPane">
       								<columnConstraints>
-      									<ColumnConstraints halignment="LEFT" minWidth="-Infinity" percentWidth="30.0" />
+      									<ColumnConstraints halignment="LEFT" percentWidth="30.0" />
       									<ColumnConstraints maxWidth="-Infinity" percentWidth="70.0" />
       								</columnConstraints>
       								<rowConstraints>
       									<RowConstraints vgrow="SOMETIMES" />
       									<RowConstraints vgrow="SOMETIMES" />
-      									<RowConstraints vgrow="SOMETIMES" />
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       								</rowConstraints>
       								<children>
-      									<Label fx:id="nameLabel" styleClass="label-text-field" text="nameLabel" />
-      									<Label fx:id="limitLabel" styleClass="label-text-field" text="limitLabel" GridPane.rowIndex="1" />
-      									<JFXTextField fx:id="nameTextField" GridPane.columnIndex="1" />
-      									<JFXTextField fx:id="limitTextField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      									<Label fx:id="degreeLabel" styleClass="label-text-field" text="degree" />
+      									<Label fx:id="firstNameLabel" styleClass="label-text-field" text="firstName" GridPane.rowIndex="1" />
+      									<JFXTextField fx:id="degreeTextField" GridPane.columnIndex="1" />
+      									<JFXTextField fx:id="firstNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <Label fx:id="lastNameLabel" styleClass="label-text-field" text="lastName" GridPane.rowIndex="2" />
+                           <JFXTextField fx:id="lastNameTextField" prefColumnCount="1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       								</children>
       							</GridPane>
                      <GridPane hgap="10.0">
                        <columnConstraints>
-                         <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
-                           <ColumnConstraints hgrow="SOMETIMES" />
-                         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+                           <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+                           <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
                        </columnConstraints>
                        <rowConstraints>
                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -69,7 +72,7 @@
                         <children>
       									<JFXButton fx:id="removeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeModel" text="%button.remove" />
       									<JFXButton fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editModel" text="%button.edit" GridPane.columnIndex="1" />
-      									<JFXButton fx:id="addButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addModel" text="%button.add" GridPane.columnIndex="2" />
+      									<JFXButton fx:id="addButton" alignment="CENTER" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addModel" text="%button.add" GridPane.columnIndex="2" />
                         </children>
                      </GridPane>
 						</children>
@@ -78,7 +81,7 @@
 			</StackPane>
 		</center>
 		<top>
-			<Label styleClass="label-title" text="%room.edit.header" BorderPane.alignment="TOP_LEFT" />
+			<Label styleClass="label-title" text="%staff.edit.header" BorderPane.alignment="TOP_LEFT" />
 		</top>
 	</BorderPane>
 </StackPane>

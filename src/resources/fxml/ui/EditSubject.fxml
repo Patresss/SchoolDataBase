@@ -18,9 +18,8 @@
 				<content>
 					<TableView fx:id="modelTableView">
 						<columns>
-						<TableColumn fx:id="idTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%id" />
-							<TableColumn fx:id="nameTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.name" />
-							<TableColumn fx:id="limitTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.limit" />
+						<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="50.0" text="%id" />
+                     <TableColumn fx:id="subjectNameTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="100.0" text="%subject.name" />
 						</columns>
 					</TableView>
 				</content>
@@ -37,40 +36,36 @@
 				<children>
 					<VBox>
 						<children>
-      							<GridPane fx:id="editGridPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
+      							<GridPane fx:id="editGridPane" maxWidth="-Infinity" minWidth="-Infinity">
       								<columnConstraints>
       									<ColumnConstraints halignment="LEFT" minWidth="-Infinity" percentWidth="30.0" />
       									<ColumnConstraints maxWidth="-Infinity" percentWidth="70.0" />
       								</columnConstraints>
       								<rowConstraints>
       									<RowConstraints vgrow="SOMETIMES" />
-      									<RowConstraints vgrow="SOMETIMES" />
-      									<RowConstraints vgrow="SOMETIMES" />
       								</rowConstraints>
       								<children>
-      									<Label fx:id="nameLabel" styleClass="label-text-field" text="nameLabel" />
-      									<Label fx:id="limitLabel" styleClass="label-text-field" text="limitLabel" GridPane.rowIndex="1" />
-      									<JFXTextField fx:id="nameTextField" GridPane.columnIndex="1" />
-      									<JFXTextField fx:id="limitTextField" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      									<Label fx:id="subjectNameLabel" styleClass="label-text-field" text="subjectName" />
+      									<JFXTextField fx:id="subjectNameTextField" GridPane.columnIndex="1" />
       								</children>
       							</GridPane>
                      <GridPane hgap="10.0">
                        <columnConstraints>
                          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
-                           <ColumnConstraints hgrow="SOMETIMES" />
+                           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
                        </columnConstraints>
                        <rowConstraints>
                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                        </rowConstraints>
-                        <VBox.margin>
-                           <Insets top="20.0" />
-                        </VBox.margin>
                         <children>
       									<JFXButton fx:id="removeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeModel" text="%button.remove" />
-      									<JFXButton fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editModel" text="%button.edit" GridPane.columnIndex="1" />
       									<JFXButton fx:id="addButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addModel" text="%button.add" GridPane.columnIndex="2" />
+      									<JFXButton fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editModel" text="%button.edit" GridPane.columnIndex="1" />
                         </children>
+                        <padding>
+                           <Insets top="20.0" />
+                        </padding>
                      </GridPane>
 						</children>
 					</VBox>
@@ -78,7 +73,7 @@
 			</StackPane>
 		</center>
 		<top>
-			<Label styleClass="label-title" text="%room.edit.header" BorderPane.alignment="TOP_LEFT" />
+			<Label styleClass="label-title" text="%subject.edit.header" BorderPane.alignment="TOP_LEFT" />
 		</top>
 	</BorderPane>
 </StackPane>
