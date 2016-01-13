@@ -13,7 +13,7 @@ public class RoomConnector extends AbstractConnector {
 	// Constructor
 	// ================================================================================
 	public RoomConnector() {
-		super(Table.ROOM);
+		super(DatabaseTable.ROOM);
 	}
 
 	// ================================================================================
@@ -29,12 +29,11 @@ public class RoomConnector extends AbstractConnector {
 	}
 
 	@Override
-	protected ArrayList<String> getValuesToInsert(AbstractModel model) throws SQLException {
-		ArrayList<String> list = new ArrayList<String>();
+	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException {
 		Room room = (Room) model;
-		list.add(getStringForm(room.getRoomName()));
-		list.add(getStringForm(room.getLimitPeople()));
-		return list;
+		valueList.add(getStringForm(room.getRoomName()));
+		valueList.add(getStringForm(room.getLimitPeople()));
+		return valueList;
 	}
 
 }

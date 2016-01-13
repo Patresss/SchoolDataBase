@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXRippler;
 
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -46,6 +48,7 @@ public class MainController {
 	// ================================================================================
 	public void initialize() {
 		initComponents();
+		sizeListener();
 	}
 
 	private void initComponents() {
@@ -79,6 +82,25 @@ public class MainController {
 	}
 
 	// ================================================================================
+	// Listener
+	// ================================================================================
+	private void sizeListener() {
+		contentScrollPane.widthProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) {
+				content.setPrefWidth((double) newWidth);
+			}
+		});
+
+		contentScrollPane.heightProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight) {
+				content.setPrefHeight((double) newHeight);
+			}
+		});
+	}
+
+	// ================================================================================
 	// Other methods
 	// ================================================================================
 	public void setPane(Node node) {
@@ -87,26 +109,26 @@ public class MainController {
 		tt.setByX(contentScrollPane.getWidth());
 		tt.setAutoReverse(true);
 		tt.play();
-		
+
 		tt.setOnFinished(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent event) {
+			@Override
+			public void handle(ActionEvent event) {
 				content.setTranslateX(-contentScrollPane.getWidth());
 				content.getChildren().setAll(node);
 				content.setAlignment(Pos.CENTER);
-				
+
 				TranslateTransition tt2 = new TranslateTransition(Duration.millis(durationTime), content);
 				tt2.setByX(contentScrollPane.getWidth());
 				tt2.setAutoReverse(true);
 				tt2.play();
-//				content.setOpacity(0.0);
-//				FadeTransition ft = new FadeTransition(Duration.millis(300), content);
-//				ft.setFromValue(0.0);
-//				ft.setToValue(1.0);
-//				ft.play();
-		    }
+				// content.setOpacity(0.0);
+				// FadeTransition ft = new FadeTransition(Duration.millis(300),
+				// content);
+				// ft.setFromValue(0.0);
+				// ft.setToValue(1.0);
+				// ft.play();
+			}
 		});
-		
 
 	}
 

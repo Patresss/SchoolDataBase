@@ -22,11 +22,15 @@ public class AbstractModel {
 	// ================================================================================
 	// Accessors
 	// ================================================================================
+	public SimpleIntegerProperty getIdProperty() {
+        return id;
+    }
+	
 	public Integer getId() {
         return id.get();
     }
 	
-    public void setId(Integer idRoom) {
-    	id.set(idRoom);
+    public void setId(Integer idName) {
+    	id.set(idName);
     }
 }

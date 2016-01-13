@@ -2,13 +2,13 @@ package com.patres.school.database;
 
 import java.util.ArrayList;
 
-import com.patres.school.database.connector.table.Table;
+import com.patres.school.database.connector.table.DatabaseTable;
 
 public class QueryGenerator {
 	
-	private Table table;
+	private DatabaseTable table;
 
-	public QueryGenerator(Table table){
+	public QueryGenerator(DatabaseTable table){
 		this.table = table;
 	}
 	
@@ -21,12 +21,16 @@ public class QueryGenerator {
 		return sql.toString();
 	}
 	
-	public String getInsert(ArrayList<String> valuesToInsert) {
+	public String getInsert(ArrayList<String> valuesToInsert, boolean withNewId) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("INSERT INTO ");
 			sql.append(table.getTableName());
 			sql.append(" (");
+			if(withNewId) {
 			sql.append(String.join(", ", table.getColumnWithoutId()));
+			} else {
+				sql.append(String.join(", ", table.getColumn()));
+			}
 			sql.append(") ");
 		sql.append("VALUES ");
 			sql.append(" (");
@@ -58,13 +62,13 @@ public class QueryGenerator {
 	}
     
 	private ArrayList<String> getUpdateMap(ArrayList<String> valuesToUpdate) {
-		if(valuesToUpdate.size() != table.getColumnWithoutId().size()) {
+		if(valuesToUpdate.size() != table.getColumn().size()) {
 			 throw new RuntimeException("Size of values to update isn'r equals column size");
 		}
 		
 		ArrayList<String> updateMap = new ArrayList<String>();
 		for(int i=0; i<valuesToUpdate.size(); i++) {
-			String column = table.getColumnWithoutId().get(i);
+			String column = table.getColumn().get(i);
 			String value = valuesToUpdate.get(i);
 			updateMap.add(column + "=" + value);
 		}

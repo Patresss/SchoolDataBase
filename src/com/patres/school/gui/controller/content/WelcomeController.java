@@ -1,7 +1,5 @@
 package com.patres.school.gui.controller.content;
 
-import com.patres.school.Main;
-
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -22,8 +20,5 @@ public class WelcomeController implements Controllable {
 	// ================================================================================
 	public void initialize() {
 		headerLabel.setAlignment(Pos.CENTER);
-		//System.out.println(root.getScene().getHeight());
-		//root.setPrefWidth(Main.getWidth());
-		
 	}
 }

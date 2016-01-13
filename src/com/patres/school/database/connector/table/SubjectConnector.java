@@ -13,7 +13,7 @@ public class SubjectConnector extends AbstractConnector {
 	// Constructor
 	// ================================================================================
 	public SubjectConnector() {
-		super(Table.SUBJECT);
+		super(DatabaseTable.SUBJECT);
 	}
 
 	// ================================================================================
@@ -28,11 +28,10 @@ public class SubjectConnector extends AbstractConnector {
 	}
 
 	@Override
-	protected ArrayList<String> getValuesToInsert(AbstractModel model) throws SQLException {
-		ArrayList<String> list = new ArrayList<String>();
+	protected ArrayList<String> getValuesFromModel(AbstractModel model,ArrayList<String> valueList) throws SQLException {
 		Subject subject = (Subject) model;
-		list.add(getStringForm(subject.getSubjectName()));
-		return list;
+		valueList.add(getStringForm(subject.getSubjectName()));
+		return valueList;
 	}
-
+	
 }

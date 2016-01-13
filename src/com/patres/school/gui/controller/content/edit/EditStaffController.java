@@ -1,14 +1,12 @@
 package com.patres.school.gui.controller.content.edit;
 
-import com.jfoenix.controls.JFXTextField;
-import com.patres.school.Main;
+import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.StaffConnector;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Staff;
 import com.patres.school.gui.controller.content.Controllable;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -24,24 +22,13 @@ public class EditStaffController extends AbstractEditController implements Contr
 	@FXML
 	private TableColumn<AbstractModel, String> lastNameTableColumn;
 
-	@FXML
-	private Label degreeLabel;
-	@FXML
-	private Label firstNameLabel;
-	@FXML
-	private Label lastNameLabel;
-	@FXML
-	private JFXTextField degreeTextField;
-	@FXML
-	private JFXTextField firstNameTextField;
-	@FXML
-	private JFXTextField lastNameTextField;
-
 	// ================================================================================
 	// Configuration methods
 	// ================================================================================
 	public void initialize() {
 		connector = new StaffConnector();
+		table = DatabaseTable.STAFF;
+		
 		initEditor();
 	}
 
@@ -57,33 +44,21 @@ public class EditStaffController extends AbstractEditController implements Contr
 		refreshTable();
 	}
 
-	@Override
-	protected void initLabels() {
-		degreeLabel.setText(Main.getBundle().getString("staff.degree") + ":");
-		firstNameLabel.setText(Main.getBundle().getString("staff.firstName") + ":");
-		lastNameLabel.setText(Main.getBundle().getString("staff.lastName") + ":");
-	}
-
 	// ================================================================================
 	// Get Model
 	// ================================================================================
 	@Override
-	protected AbstractModel getNewModel() {
-		String degree = degreeTextField.getText();
-		String firstName = firstNameTextField.getText();
-		String lastName = lastNameTextField.getText();
-		Staff staff = new Staff(degree, firstName, lastName);
-		return staff;
-	}
-
-	@Override
-	protected AbstractModel getEditModel() {
-		int id = getSelectedItem().getId();
-		String degree = degreeTextField.getText();
-		String firstName = firstNameTextField.getText();
-		String lastName = lastNameTextField.getText();
-		Staff staff = new Staff(id, degree, firstName, lastName);
-		return staff;
+	protected AbstractModel getModel() {
+		String degree = textFieldMap.get("degree").getText();
+		String firstName = textFieldMap.get("first_name").getText();
+		String lastName = textFieldMap.get("last_name").getText();
+		
+		if (isNumeric(textFieldMap.get("id").getText())) {
+			int id = Integer.parseInt(textFieldMap.get("id").getText());
+			return new Staff(id, degree, firstName, lastName);
+		} else {
+			return new Staff(degree, firstName, lastName);
+		}
 	}
 
 	// ================================================================================
@@ -93,9 +68,10 @@ public class EditStaffController extends AbstractEditController implements Contr
 	protected void showDetails(AbstractModel model) {
 		Staff staff = (Staff) model;
 		if (staff != null) {
-			degreeTextField.setText(setNotNullString(staff.getDegree()));
-			firstNameTextField.setText(setNotNullString(staff.getFirstName()));
-			lastNameTextField.setText(setNotNullString(staff.getLastName()));
+			textFieldMap.get("id").setText(setNotNullString(staff.getId().toString()));
+			textFieldMap.get("degree").setText(setNotNullString(staff.getDegree()));
+			textFieldMap.get("first_name").setText(setNotNullString(staff.getFirstName()));
+			textFieldMap.get("last_name").setText(setNotNullString(staff.getLastName()));
 		}
 	}
 

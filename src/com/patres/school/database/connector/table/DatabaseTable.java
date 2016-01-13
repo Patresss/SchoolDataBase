@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import com.patres.school.Main;
 
-public enum Table {
+public enum DatabaseTable {
 
 	// ================================================================================
 	// Table
@@ -24,12 +24,12 @@ public enum Table {
 	// ================================================================================
 	private String tableName;
 	private ArrayList<String> columnName;
-	private static final Logger LOGGER = LoggerFactory.getLogger(Table.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseTable.class);
 
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	Table(String tableName) {
+	DatabaseTable(String tableName) {
 		this.tableName = tableName;
 		setColumnsName();
 	}

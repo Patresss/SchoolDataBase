@@ -35,8 +35,8 @@ public class Main extends Application {
 	private static Statement statement;
 	@Getter
 	private static Connection connection;
-	private final int SCENE_WIDTH = 900;
-	private final int SCENE_HEIGHT = 600;
+	private final static int SCENE_WIDTH = 900;
+	private final static int SCENE_HEIGHT = 600;
 
 	public static void main(String[] args) {
 		Connector connector = new Connector();
@@ -57,7 +57,6 @@ public class Main extends Application {
 
 			mainStage.setMinWidth(700);
 			mainStage.setMinHeight(500);
-			System.out.println(mainStage.getScene().getHeight());
 			mainStage.show();
 		} catch (IOException e) {
 			LOGGER.error("Error in start method - I/O Exception");
@@ -86,9 +85,6 @@ public class Main extends Application {
 	//	scene.getStylesheets().add(Main.class.getResource("/resources/css/jfoenix-fonts.css").toExternalForm());
 		scene.getStylesheets().add(Main.class.getResource("/resources/css/style_day.css").toExternalForm());
 	}
-	
-	public static double getWidth() {
-		return mainStage.getScene().getWidth();
-	}
+
 
 }

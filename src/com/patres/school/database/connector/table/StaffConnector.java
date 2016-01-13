@@ -13,7 +13,7 @@ public class StaffConnector extends AbstractConnector {
 	// Constructor
 	// ================================================================================
 	public StaffConnector() {
-		super(Table.STAFF);
+		super(DatabaseTable.STAFF);
 	}
 
 	// ================================================================================
@@ -30,13 +30,12 @@ public class StaffConnector extends AbstractConnector {
 	}
 
 	@Override
-	protected ArrayList<String> getValuesToInsert(AbstractModel model) throws SQLException {
-		ArrayList<String> list = new ArrayList<String>();
+	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException {
 		Staff staff = (Staff) model;
-		list.add(getStringForm(staff.getDegree()));
-		list.add(getStringForm(staff.getFirstName()));
-		list.add(getStringForm(staff.getLastName()));
-		return list;
+		valueList.add(getStringForm(staff.getDegree()));
+		valueList.add(getStringForm(staff.getFirstName()));
+		valueList.add(getStringForm(staff.getLastName()));
+		return valueList;
 	}
 
 }

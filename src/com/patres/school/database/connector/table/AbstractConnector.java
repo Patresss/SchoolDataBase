@@ -26,7 +26,7 @@ public abstract class AbstractConnector {
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public AbstractConnector(Table table) {
+	public AbstractConnector(DatabaseTable table) {
 		this.queryGenerator = new QueryGenerator(table);
 	}
 	
@@ -54,9 +54,9 @@ public abstract class AbstractConnector {
 		return list;
 	}
 	
-	public void insert(AbstractModel model) {
+	public void insert(AbstractModel model, boolean withNewId) {
 		try {
-			String sql = queryGenerator.getInsert(getValuesToInsert(model));
+			String sql = queryGenerator.getInsert(getValues(model), withNewId);
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -76,9 +76,9 @@ public abstract class AbstractConnector {
 		}
 	}
 	
-	public void update(AbstractModel model) {
+	public void update(AbstractModel model, int id) {
 		try {
-			String sql = queryGenerator.getUpdate(getValuesToInsert(model), model.getId());
+			String sql = queryGenerator.getUpdate(getValues(model), id);
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -90,8 +90,17 @@ public abstract class AbstractConnector {
 	// ================================================================================
 	// Abstract sql
 	// ================================================================================
+	protected ArrayList<String> getValues(AbstractModel model) throws SQLException {
+		ArrayList<String> list = new ArrayList<String>();
+		
+		if(model.getIdProperty() != null) {
+			list.add(getStringForm(model.getId()));
+		}
+		return getValuesFromModel(model, list);
+	}
+	
 	abstract protected AbstractModel selectModel(ResultSet resultSet) throws SQLException;
-	abstract protected ArrayList<String> getValuesToInsert(AbstractModel model) throws SQLException;
+	abstract protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException;
 
 
 	// ================================================================================
