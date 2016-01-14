@@ -19,7 +19,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -32,9 +31,6 @@ public abstract class AbstractEditController {
 	@FXML
 	protected TableView<AbstractModel> modelTableView;
 	@FXML
-	protected TableColumn<AbstractModel, String> idTableColumn;
-
-	@FXML
 	protected GridPane editGridPane;
 
 	@FXML
@@ -45,9 +41,6 @@ public abstract class AbstractEditController {
 	protected JFXButton editButton;
 	@FXML
 	protected JFXButton removeButton;
-
-	@FXML
-	protected ScrollPane tableScrollPane;
 
 	// ================================================================================
 	// Properties
@@ -69,7 +62,7 @@ public abstract class AbstractEditController {
 		initSizeGridePane();
 		
 		selectedListner();
-		onlyDigitListner(textFieldMap.get("id"));
+		//onlyDigitListner(textFieldMap.get("id"));
 	}
 
 	// ================================================================================
@@ -89,10 +82,9 @@ public abstract class AbstractEditController {
 		buttonGridPane.setMaxWidth(EDIT_PANE_WIDTH);
 	}
 
-	private void initEditGridPane() {
+	protected void initEditGridPane() {
 		textFieldMap = new HashMap<String, JFXTextField>();
 		List<String> columnList = table.getColumn();
-		columnList.get(0);
 
 		String prefix = table.getTableName() + ".";
 		int counterColumn = 0;
@@ -184,7 +176,6 @@ public abstract class AbstractEditController {
 		modelList = connector.select();
 		modelObservableList = FXCollections.observableList(modelList);
 		modelTableView.setItems(modelObservableList);
-		modelTableView.getSortOrder().add(idTableColumn);
 	}
 
 	protected boolean isNumeric(String str) {

@@ -3,11 +3,11 @@
 ALTER SEQUENCE seq_lesson RESTART;
 
 CREATE TABLE lesson (
-	id INT DEFAULT nextval('seq_lesson') NOT NULL,
+	id_lesson INT DEFAULT nextval('seq_lesson') NOT NULL,
 	number INTEGER  NOT NULL,
 	start_time TIME  NOT NULL,
 	dyration TIME  NOT NULL DEFAULT '0:45',
-	PRIMARY KEY(id)
+	PRIMARY KEY(id_lesson)
 );
 
 INSERT INTO lesson (number, start_time) VALUES (0, '7:10');

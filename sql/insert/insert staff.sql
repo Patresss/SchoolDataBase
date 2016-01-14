@@ -3,11 +3,11 @@
 ALTER SEQUENCE seq_staff RESTART;
 
 CREATE TABLE staff (
-	id INT DEFAULT nextval('seq_staff') NOT NULL,
+	id_staff INT DEFAULT nextval('seq_staff') NOT NULL,
 	degree VARCHAR(45),
 	first_name VARCHAR(45) NOT NULL,
 	last_name VARCHAR(45) NOT NULL,
-	PRIMARY KEY(id)
+	PRIMARY KEY(id_staff)
 );
 
 INSERT INTO staff (degree, first_name, last_name) VALUES ('mgr', 'Witold', 'Deptuch');

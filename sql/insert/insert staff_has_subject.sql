@@ -1,8 +1,8 @@
 ﻿DROP TABLE IF EXISTS staff_has_subject;
 
 create table staff_has_subject (
-	staff_id integer references staff (id),
-	subject_id integer references subject (id),
+	staff_id integer references staff (id_staff),
+	subject_id integer references subject (id_subject),
 	primary key (staff_id, subject_id)
 );
 

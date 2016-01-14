@@ -3,9 +3,9 @@
 ALTER SEQUENCE seq_subject RESTART;
 
 CREATE TABLE subject (
-	id INT DEFAULT nextval('seq_subject') NOT NULL,
+	id_subject INT DEFAULT nextval('seq_subject') NOT NULL,
 	subject_name VARCHAR(45) NOT NULL,
-	PRIMARY KEY(id)
+	PRIMARY KEY(id_subject)
 );
   
 INSERT INTO subject (subject_name) VALUES ('Historia');

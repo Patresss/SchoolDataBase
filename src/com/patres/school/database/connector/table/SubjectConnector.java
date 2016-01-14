@@ -4,24 +4,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.patres.school.database.QueryGenerator;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Subject;
 
 public class SubjectConnector extends AbstractConnector {
 
+	private static QueryGenerator queryGenerator = new QueryGenerator(DatabaseTable.SUBJECT);
 	// ================================================================================
 	// Constructor
 	// ================================================================================
 	public SubjectConnector() {
-		super(DatabaseTable.SUBJECT);
+		super();
 	}
 
+	@Override
+	public QueryGenerator getQueryGenerator() {
+		return queryGenerator;
+	}
 	// ================================================================================
 	// SQL Query
 	// ================================================================================
 	@Override
 	protected AbstractModel selectModel(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id");
+		int id = resultSet.getInt("id_subject");
 		String subjectName = resultSet.getString("subject_name");
 
 		return new Subject(id, subjectName);

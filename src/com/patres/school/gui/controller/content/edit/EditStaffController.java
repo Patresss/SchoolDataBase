@@ -16,6 +16,8 @@ public class EditStaffController extends AbstractEditController implements Contr
 	// Components
 	// ================================================================================
 	@FXML
+	private TableColumn<AbstractModel, String> idTableColumn;
+	@FXML
 	private TableColumn<AbstractModel, String> degreeTableColumn;
 	@FXML
 	private TableColumn<AbstractModel, String> firstNameTableColumn;
@@ -30,6 +32,7 @@ public class EditStaffController extends AbstractEditController implements Contr
 		table = DatabaseTable.STAFF;
 		
 		initEditor();
+		onlyDigitListner(textFieldMap.get("id_staff"));
 	}
 
 	// ================================================================================
@@ -53,8 +56,8 @@ public class EditStaffController extends AbstractEditController implements Contr
 		String firstName = textFieldMap.get("first_name").getText();
 		String lastName = textFieldMap.get("last_name").getText();
 		
-		if (isNumeric(textFieldMap.get("id").getText())) {
-			int id = Integer.parseInt(textFieldMap.get("id").getText());
+		if (isNumeric(textFieldMap.get("id_staff").getText())) {
+			int id = Integer.parseInt(textFieldMap.get("id_staff").getText());
 			return new Staff(id, degree, firstName, lastName);
 		} else {
 			return new Staff(degree, firstName, lastName);
@@ -68,7 +71,7 @@ public class EditStaffController extends AbstractEditController implements Contr
 	protected void showDetails(AbstractModel model) {
 		Staff staff = (Staff) model;
 		if (staff != null) {
-			textFieldMap.get("id").setText(setNotNullString(staff.getId().toString()));
+			textFieldMap.get("id_staff").setText(setNotNullString(staff.getId().toString()));
 			textFieldMap.get("degree").setText(setNotNullString(staff.getDegree()));
 			textFieldMap.get("first_name").setText(setNotNullString(staff.getFirstName()));
 			textFieldMap.get("last_name").setText(setNotNullString(staff.getLastName()));

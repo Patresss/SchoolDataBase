@@ -4,6 +4,7 @@ CREATE VIEW view_duty_staff AS
 SELECT 
 	d.id_duty,
 	d.duty_name,
+	d.importance,
 	s.id_staff,
 	s.degree,
 	s.first_name, 
@@ -18,4 +19,3 @@ INNER JOIN
     ON dhs.duty_id = d.id_duty
 ORDER BY
 	d.importance;
-

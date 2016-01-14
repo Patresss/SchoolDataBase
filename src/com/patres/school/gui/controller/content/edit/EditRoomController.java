@@ -16,6 +16,8 @@ public class EditRoomController extends AbstractEditController implements Contro
 	// Components
 	// ================================================================================
 	@FXML
+	private TableColumn<AbstractModel, String> idTableColumn;
+	@FXML
 	private TableColumn<AbstractModel, String> nameTableColumn;
 	@FXML
 	private TableColumn<AbstractModel, Integer> limitTableColumn;
@@ -27,6 +29,8 @@ public class EditRoomController extends AbstractEditController implements Contro
 		connector = new RoomConnector();
 		table = DatabaseTable.ROOM;
 		initEditor();
+		
+		onlyDigitListner(textFieldMap.get("id_room"));
 		onlyDigitListner(textFieldMap.get("limit_people"));
 	}
 
@@ -49,8 +53,8 @@ public class EditRoomController extends AbstractEditController implements Contro
 		String roomName = textFieldMap.get("room_name").getText();
 		int limit = Integer.parseInt(textFieldMap.get("limit_people").getText());
 		
-		if (isNumeric(textFieldMap.get("id").getText())) {
-			int id = Integer.parseInt(textFieldMap.get("id").getText());
+		if (isNumeric(textFieldMap.get("id_room").getText())) {
+			int id = Integer.parseInt(textFieldMap.get("id_room").getText());
 			return new Room(id, roomName, limit);
 		} else {
 			return new Room(roomName, limit);
@@ -64,7 +68,7 @@ public class EditRoomController extends AbstractEditController implements Contro
 	protected void showDetails(AbstractModel model) {
 		Room room = (Room) model;
 		if (room != null) {
-			textFieldMap.get("id").setText(setNotNullString(room.getId().toString()));
+			textFieldMap.get("id_room").setText(setNotNullString(room.getId().toString()));
 			textFieldMap.get("room_name").setText(setNotNullString(room.getRoomName()));
 			textFieldMap.get("limit_people").setText(setNotNullString(room.getLimitPeople().toString()));
 		}

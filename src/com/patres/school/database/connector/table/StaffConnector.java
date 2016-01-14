@@ -4,24 +4,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.patres.school.database.QueryGenerator;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Staff;
 
 public class StaffConnector extends AbstractConnector {
 
+	private static QueryGenerator queryGenerator = new QueryGenerator(DatabaseTable.STAFF);
+	
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public StaffConnector() {
-		super(DatabaseTable.STAFF);
-	}
+	public StaffConnector() {}
 
+	@Override
+	public QueryGenerator getQueryGenerator() {
+		return queryGenerator;
+	}
 	// ================================================================================
 	// SQL Query
 	// ================================================================================
 	@Override
 	protected AbstractModel selectModel(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id");
+		int id = resultSet.getInt("id_staff");
 		String degree = resultSet.getString("degree");
 		String firstName = resultSet.getString("first_name");
 		String lastName = resultSet.getString("last_name");
@@ -37,5 +42,7 @@ public class StaffConnector extends AbstractConnector {
 		valueList.add(getSqlForm(staff.getLastName()));
 		return valueList;
 	}
+	
+
 
 }

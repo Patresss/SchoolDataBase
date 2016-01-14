@@ -4,28 +4,36 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.patres.school.database.QueryGenerator;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Duty;
 
 public class DutyConnector extends AbstractConnector {
 
+	private static QueryGenerator queryGenerator = new QueryGenerator(DatabaseTable.DUTY);
+	
 	// ================================================================================
 	// Constructor
 	// ================================================================================
 	public DutyConnector() {
-		super(DatabaseTable.DUTY);
+		super();
 	}
-
+	
+	@Override
+	public QueryGenerator getQueryGenerator() {
+		return queryGenerator;
+	}
+	
 	// ================================================================================
 	// SQL Query
 	// ================================================================================
 	@Override
 	protected AbstractModel selectModel(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id");
+		int id = resultSet.getInt("id_duty");
 		String dutyName = resultSet.getString("duty_name");
-		Integer validity = resultSet.getInt("importance");
+		Integer importance = resultSet.getInt("importance");
 		
-		return new Duty(id, dutyName, validity);
+		return new Duty(id, dutyName, importance);
 	}
 
 	@Override
@@ -35,5 +43,5 @@ public class DutyConnector extends AbstractConnector {
 		valueList.add(getSqlForm(subject.getImportance()));
 		return valueList;
 	}
-	
+
 }

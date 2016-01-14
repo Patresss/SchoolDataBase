@@ -21,6 +21,26 @@ public class QueryGenerator {
 		return sql.toString();
 	}
 	
+	public String getSelect(int id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT ");
+			sql.append(String.join(", ", table.getColumn()));
+		sql.append(" FROM ");
+			sql.append(table.getTableName());	
+		sql.append(" WHERE ");
+			sql.append("id=");
+			sql.append(id);
+		return sql.toString();
+	}
+	
+	public String getSelect(String view) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT *");
+		sql.append(" FROM ");
+			sql.append(view);	
+		return sql.toString();
+	}
+	
 	public String getInsert(ArrayList<String> valuesToInsert, boolean withNewId) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("INSERT INTO ");
@@ -44,8 +64,19 @@ public class QueryGenerator {
 		sql.append("DELETE FROM ");
 			sql.append(table.getTableName());
 		sql.append(" WHERE ");
-			sql.append("id=");
+			sql.append("id_");
+			sql.append(table.getTableName());
+			sql.append("=");
 			sql.append(id);
+		return sql.toString();
+	}
+	
+	public String getDelete(int id1,int id2) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("DELETE FROM ");
+			sql.append(table.getTableName());
+		sql.append(" WHERE ");
+			sql.append(getWhereString(id1, id2));
 		return sql.toString();
 	}
     
@@ -56,7 +87,9 @@ public class QueryGenerator {
 		sql.append(" SET ");
 			sql.append(String.join(", ", getUpdateMap(valuesToUpdate)));
 		sql.append(" WHERE ");
-			sql.append("id=");
+			sql.append("id_");
+			sql.append(table.getTableName());
+			sql.append("=");
 			sql.append(id);
 		return sql.toString();
 	}
@@ -73,5 +106,17 @@ public class QueryGenerator {
 			updateMap.add(column + "=" + value);
 		}
 		return updateMap;
+	}
+	
+	private String getWhereString(int id1, int id2) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(table.getColumn().get(0));
+		sql.append("=");
+		sql.append(id1);
+		sql.append(" AND ");
+		sql.append(table.getColumn().get(1));
+		sql.append("=");
+		sql.append(id2);
+		return sql.toString();
 	}
 }

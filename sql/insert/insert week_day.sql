@@ -1,9 +1,9 @@
 ﻿DROP TABLE IF EXISTS week_day;
 
 CREATE TABLE week_day (
-	id INTEGER  NOT NULL,
+	id_week_day INTEGER  NOT NULL,
 	name VARCHAR(20) NOT NULL,
-	PRIMARY KEY(id)
+	PRIMARY KEY(id_week_day)
 );
 
 INSERT INTO week_day VALUES (1, 'Poniedziałek');

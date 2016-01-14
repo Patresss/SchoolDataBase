@@ -19,7 +19,7 @@ public enum DatabaseTable {
 	STAFF("staff"),
 	SUBJECT("subject"),
 	DUTY("duty"),
-	STAFF_HAS_DUTY("staff_has_duty");
+	DUTY_HAS_STAFF("duty_has_staff");
 	
 	// ================================================================================
 	// Properties

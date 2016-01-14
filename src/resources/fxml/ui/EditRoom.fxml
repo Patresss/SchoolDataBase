@@ -16,7 +16,7 @@
 		<left>
 					<TableView fx:id="modelTableView">
 						<columns>
-						<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="50.0" text="%room.id" />
+						<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="50.0" text="%room.id_room" />
 							<TableColumn fx:id="nameTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%room.room_name" />
 							<TableColumn fx:id="limitTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%room.limit_people" />
 						</columns>

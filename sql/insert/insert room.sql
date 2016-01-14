@@ -3,10 +3,10 @@
 ALTER SEQUENCE seq_room RESTART;
 
 CREATE TABLE room (
-	id INT DEFAULT nextval('seq_room') NOT NULL,
+	id_room INT DEFAULT nextval('seq_room') NOT NULL,
 	room_name VARCHAR(126) NOT NULL,
 	limit_people INTEGER NOT NULL,
-	PRIMARY KEY(id)
+	PRIMARY KEY(id_room)
 );
 
 

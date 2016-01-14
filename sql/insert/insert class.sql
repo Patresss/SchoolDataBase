@@ -3,11 +3,11 @@
 ALTER SEQUENCE seq_class RESTART;
 
 CREATE TABLE class (
-	id INT DEFAULT nextval('seq_class') NOT NULL,
+	id_class INT DEFAULT nextval('seq_class') NOT NULL,
 	year INTEGER NOT NULL,
 	letter_class CHAR,
 	people_count INTEGER  NOT NULL  ,
-	PRIMARY KEY(id)
+	PRIMARY KEY(id_class)
 );
 
 INSERT INTO class (year, letter_class, people_count) VALUES (1, 'A', 30);

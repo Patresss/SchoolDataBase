@@ -20,22 +20,20 @@ public abstract class AbstractConnector {
 	// ================================================================================
 	// Properties
 	// ================================================================================
-	private QueryGenerator queryGenerator;
-	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractEditController.class);
-	private static Statement statement = Main.getStatement();
+	protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractEditController.class);
+	protected static Statement statement = Main.getStatement();
 	
+	abstract QueryGenerator getQueryGenerator();
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public AbstractConnector(DatabaseTable table) {
-		this.queryGenerator = new QueryGenerator(table);
-	}
+	public AbstractConnector() {}
 	
 	// ================================================================================
 	// SQL Query
 	// ================================================================================
 	public LinkedList<AbstractModel> select() {
-		String sql = queryGenerator.getSelect();
+		String sql = getQueryGenerator().getSelect();
 		
 		LinkedList<AbstractModel> list = new LinkedList<AbstractModel>();
 		ResultSet resultSet;
@@ -60,7 +58,7 @@ public abstract class AbstractConnector {
 	
 	public void insert(AbstractModel model, boolean withNewId) {
 		try {
-			String sql = queryGenerator.getInsert(getValues(model), withNewId);
+			String sql = getQueryGenerator().getInsert(getValues(model), withNewId);
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -74,7 +72,7 @@ public abstract class AbstractConnector {
 	
 	public void delete(AbstractModel model) {
 		try {
-			String sql = queryGenerator.getDelete(model.getId());
+			String sql = getQueryGenerator().getDelete(model.getId());
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -88,7 +86,7 @@ public abstract class AbstractConnector {
 	
 	public void update(AbstractModel model, int id) {
 		try {
-			String sql = queryGenerator.getUpdate(getValues(model), id);
+			String sql = getQueryGenerator().getUpdate(getValues(model), id);
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);

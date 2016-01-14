@@ -16,6 +16,8 @@ public class EditDutyController extends AbstractEditController implements Contro
 	// Components
 	// ================================================================================
 	@FXML
+	private TableColumn<AbstractModel, String> idTableColumn;
+	@FXML
 	private TableColumn<AbstractModel, String> nameTableColumn;
 	@FXML
 	private TableColumn<AbstractModel, Integer> importanceTableColumn;
@@ -27,6 +29,8 @@ public class EditDutyController extends AbstractEditController implements Contro
 		connector = new DutyConnector();
 		table = DatabaseTable.DUTY;
 		initEditor();
+		
+		onlyDigitListner(textFieldMap.get("id_duty"));
 		onlyDigitListner(textFieldMap.get("importance"));
 	}
 
@@ -49,8 +53,8 @@ public class EditDutyController extends AbstractEditController implements Contro
 		String dutyName = textFieldMap.get("duty_name").getText();
 		int importance = Integer.parseInt(textFieldMap.get("importance").getText());
 		
-		if (isNumeric(textFieldMap.get("id").getText())) {
-			int id = Integer.parseInt(textFieldMap.get("id").getText());
+		if (isNumeric(textFieldMap.get("id_duty").getText())) {
+			int id = Integer.parseInt(textFieldMap.get("id_duty").getText());
 			return new Duty(id, dutyName, importance);
 		} else {
 			return new Duty(dutyName, importance);
@@ -64,7 +68,7 @@ public class EditDutyController extends AbstractEditController implements Contro
 	protected void showDetails(AbstractModel model) {
 		Duty duty = (Duty) model;
 		if (duty != null) {
-			textFieldMap.get("id").setText(setNotNullString(duty.getId().toString()));
+			textFieldMap.get("id_duty").setText(setNotNullString(duty.getId().toString()));
 			textFieldMap.get("duty_name").setText(setNotNullString(duty.getDutyName()));
 			textFieldMap.get("importance").setText(setNotNullString(duty.getImportance().toString()));
 		}

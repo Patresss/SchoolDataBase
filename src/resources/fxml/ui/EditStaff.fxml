@@ -16,7 +16,7 @@
 		<left>
 					<TableView fx:id="modelTableView" maxHeight="1.7976931348623157E308">
 						<columns>
-						<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="-1.0" text="%staff.id" />
+						<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="-1.0" text="%staff.id_staff" />
                <TableColumn fx:id="degreeTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%staff.degree" />
 							<TableColumn fx:id="firstNameTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%staff.first_name" />
 							<TableColumn fx:id="lastNameTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%staff.last_name" />

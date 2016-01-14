@@ -16,6 +16,8 @@ public class EditSubjectController extends AbstractEditController implements Con
 	// Components
 	// ================================================================================
 	@FXML
+	private TableColumn<AbstractModel, String> idTableColumn;
+	@FXML
 	private TableColumn<AbstractModel, String> subjectNameTableColumn;
 
 	// ================================================================================
@@ -26,6 +28,7 @@ public class EditSubjectController extends AbstractEditController implements Con
 		table = DatabaseTable.SUBJECT;
 		
 		initEditor();
+		onlyDigitListner(textFieldMap.get("id_subject"));
 	}
 
 	// ================================================================================
@@ -44,8 +47,8 @@ public class EditSubjectController extends AbstractEditController implements Con
 	@Override
 	protected AbstractModel getModel() {
 		String subjectName = textFieldMap.get("subject_name").getText();
-		if (isNumeric(textFieldMap.get("id").getText())) {
-			int id = Integer.parseInt(textFieldMap.get("id").getText());
+		if (isNumeric(textFieldMap.get("id_subject").getText())) {
+			int id = Integer.parseInt(textFieldMap.get("id_subject").getText());
 			return new Subject(id, subjectName);
 		} else {
 			return new Subject(subjectName);
@@ -59,7 +62,7 @@ public class EditSubjectController extends AbstractEditController implements Con
 	protected void showDetails(AbstractModel model) {
 		Subject subject = (Subject) model;
 		if (subject != null) {
-			textFieldMap.get("id").setText(setNotNullString(subject.getId().toString()));
+			textFieldMap.get("id_subject").setText(setNotNullString(subject.getId().toString()));
 			textFieldMap.get("subject_name").setText(setNotNullString(subject.getSubjectName()));
 		}
 	}

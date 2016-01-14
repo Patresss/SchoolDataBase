@@ -29,6 +29,21 @@ public class Staff extends AbstractModel {
 	}
 	
 	// ================================================================================
+	// To String
+	// ================================================================================
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(getDegree());
+		builder.append(" ");
+		builder.append(getFirstName());
+		builder.append(" " );
+		builder.append(getLastName());
+		
+		return builder.toString();
+	}
+	
+	// ================================================================================
 	// Accessors
 	// ================================================================================
 	public String getDegree() {
