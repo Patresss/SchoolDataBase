@@ -32,9 +32,9 @@ public class StaffConnector extends AbstractConnector {
 	@Override
 	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException {
 		Staff staff = (Staff) model;
-		valueList.add(getStringForm(staff.getDegree()));
-		valueList.add(getStringForm(staff.getFirstName()));
-		valueList.add(getStringForm(staff.getLastName()));
+		valueList.add(getSqlForm(staff.getDegree()));
+		valueList.add(getSqlForm(staff.getFirstName()));
+		valueList.add(getSqlForm(staff.getLastName()));
 		return valueList;
 	}
 

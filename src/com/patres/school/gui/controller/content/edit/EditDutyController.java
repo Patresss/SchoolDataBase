@@ -1,16 +1,16 @@
 package com.patres.school.gui.controller.content.edit;
 
 import com.patres.school.database.connector.table.DatabaseTable;
-import com.patres.school.database.connector.table.RoomConnector;
+import com.patres.school.database.connector.table.DutyConnector;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Room;
+import com.patres.school.database.model.Duty;
 import com.patres.school.gui.controller.content.Controllable;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class EditRoomController extends AbstractEditController implements Controllable {
+public class EditDutyController extends AbstractEditController implements Controllable {
 
 	// ================================================================================
 	// Components
@@ -18,16 +18,16 @@ public class EditRoomController extends AbstractEditController implements Contro
 	@FXML
 	private TableColumn<AbstractModel, String> nameTableColumn;
 	@FXML
-	private TableColumn<AbstractModel, Integer> limitTableColumn;
+	private TableColumn<AbstractModel, Integer> importanceTableColumn;
 
 	// ================================================================================
 	// Configuration methods
 	// ================================================================================
 	public void initialize() {
-		connector = new RoomConnector();
-		table = DatabaseTable.ROOM;
+		connector = new DutyConnector();
+		table = DatabaseTable.DUTY;
 		initEditor();
-		onlyDigitListner(textFieldMap.get("limit_people"));
+		onlyDigitListner(textFieldMap.get("importance"));
 	}
 
 	// ================================================================================
@@ -36,8 +36,8 @@ public class EditRoomController extends AbstractEditController implements Contro
 	@Override
 	protected void initModelTable() {
 		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
-		limitTableColumn.setCellValueFactory(new PropertyValueFactory<>("limitPeople"));
+		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("dutyName"));
+		importanceTableColumn.setCellValueFactory(new PropertyValueFactory<>("importance"));
 		refreshTable();
 	}
 	
@@ -46,14 +46,14 @@ public class EditRoomController extends AbstractEditController implements Contro
 	// ================================================================================
 	@Override
 	protected AbstractModel getModel() {
-		String roomName = textFieldMap.get("room_name").getText();
-		int limit = Integer.parseInt(textFieldMap.get("limit_people").getText());
+		String dutyName = textFieldMap.get("duty_name").getText();
+		int importance = Integer.parseInt(textFieldMap.get("importance").getText());
 		
 		if (isNumeric(textFieldMap.get("id").getText())) {
 			int id = Integer.parseInt(textFieldMap.get("id").getText());
-			return new Room(id, roomName, limit);
+			return new Duty(id, dutyName, importance);
 		} else {
-			return new Room(roomName, limit);
+			return new Duty(dutyName, importance);
 		}
 	}
 
@@ -62,11 +62,11 @@ public class EditRoomController extends AbstractEditController implements Contro
 	// ================================================================================
 	@Override
 	protected void showDetails(AbstractModel model) {
-		Room room = (Room) model;
-		if (room != null) {
-			textFieldMap.get("id").setText(setNotNullString(room.getId().toString()));
-			textFieldMap.get("room_name").setText(setNotNullString(room.getRoomName()));
-			textFieldMap.get("limit_people").setText(setNotNullString(room.getLimitPeople().toString()));
+		Duty duty = (Duty) model;
+		if (duty != null) {
+			textFieldMap.get("id").setText(setNotNullString(duty.getId().toString()));
+			textFieldMap.get("duty_name").setText(setNotNullString(duty.getDutyName()));
+			textFieldMap.get("importance").setText(setNotNullString(duty.getImportance().toString()));
 		}
 	}
 

@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import com.patres.school.database.connector.table.RoomConnector;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Room;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

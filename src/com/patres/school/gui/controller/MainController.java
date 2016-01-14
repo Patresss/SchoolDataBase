@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import lombok.Getter;
 
 public class MainController {
 
@@ -23,7 +24,7 @@ public class MainController {
 	// ================================================================================
 	@FXML
 	private StackPane root;
-	@FXML
+	@FXML @Getter
 	private StackPane content;
 	@FXML
 	private ScrollPane contentScrollPane;

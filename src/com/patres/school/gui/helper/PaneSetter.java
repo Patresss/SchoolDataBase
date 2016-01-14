@@ -24,6 +24,10 @@ public class PaneSetter {
 	public static void setMainController(MainController mainController) {
 		PaneSetter.mainController = mainController;
 	}
+	
+	public static MainController getMainController() {
+		return mainController;
+	}
 
 	public static void loadNewContent(SchoolPane controller) {
 		FXMLLoader loader = new FXMLLoader();

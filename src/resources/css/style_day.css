@@ -15,6 +15,41 @@
 	
 	}
 	
+/* ================================================================================*\
+ * SQL Table View
+\* ================================================================================*/
+.table-view {
+    -fx-control-inner-background: -color-background;
+    -fx-background-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 0 50 50;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -color-background;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: 
+        transparent
+        transparent
+        derive(-fx-base, 80%) 
+        transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 11pt;
+    -fx-alignment: center-left;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
 
 
 /* ================================================================================*\

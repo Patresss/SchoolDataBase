@@ -17,7 +17,9 @@ public enum DatabaseTable {
 	// ================================================================================
 	ROOM("room"),
 	STAFF("staff"),
-	SUBJECT("subject");
+	SUBJECT("subject"),
+	DUTY("duty"),
+	STAFF_HAS_DUTY("staff_has_duty");
 	
 	// ================================================================================
 	// Properties

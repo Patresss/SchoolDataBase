@@ -5,15 +5,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Subject;
+import com.patres.school.database.model.Duty;
 
-public class SubjectConnector extends AbstractConnector {
+public class DutyConnector extends AbstractConnector {
 
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public SubjectConnector() {
-		super(DatabaseTable.SUBJECT);
+	public DutyConnector() {
+		super(DatabaseTable.DUTY);
 	}
 
 	// ================================================================================
@@ -22,15 +22,17 @@ public class SubjectConnector extends AbstractConnector {
 	@Override
 	protected AbstractModel selectModel(ResultSet resultSet) throws SQLException {
 		int id = resultSet.getInt("id");
-		String subjectName = resultSet.getString("subject_name");
-
-		return new Subject(id, subjectName);
+		String dutyName = resultSet.getString("duty_name");
+		Integer validity = resultSet.getInt("importance");
+		
+		return new Duty(id, dutyName, validity);
 	}
 
 	@Override
-	protected ArrayList<String> getValuesFromModel(AbstractModel model,ArrayList<String> valueList) throws SQLException {
-		Subject subject = (Subject) model;
-		valueList.add(getSqlForm(subject.getSubjectName()));
+	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException {
+		Duty subject = (Duty) model;
+		valueList.add(getSqlForm(subject.getDutyName()));
+		valueList.add(getSqlForm(subject.getImportance()));
 		return valueList;
 	}
 	

@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS staff_has_teacher;
+﻿DROP TABLE IF EXISTS staff_has_subject;
 
 create table staff_has_subject (
 	staff_id integer references staff (id),

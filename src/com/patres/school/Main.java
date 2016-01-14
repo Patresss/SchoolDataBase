@@ -35,8 +35,8 @@ public class Main extends Application {
 	private static Statement statement;
 	@Getter
 	private static Connection connection;
-	private final static int SCENE_WIDTH = 900;
-	private final static int SCENE_HEIGHT = 600;
+	private final static int SCENE_WIDTH = 1200;
+	private final static int SCENE_HEIGHT = 700;
 
 	public static void main(String[] args) {
 		Connector connector = new Connector();

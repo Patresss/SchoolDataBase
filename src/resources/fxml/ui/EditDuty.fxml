@@ -14,57 +14,52 @@
 <StackPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
 	<BorderPane>
 		<left>
-					<TableView fx:id="modelTableView">
-						<columns>
-							<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="50.0" text="%subject.id" />
-							<TableColumn fx:id="subjectNameTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%subject.subject_name" />
-						</columns>
-					</TableView>
+			<TableView fx:id="modelTableView" styleClass="table-view-sql">
+				<columns>
+					<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="50.0" text="%duty.id" />
+					<TableColumn fx:id="nameTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%duty.duty_name" />
+					<TableColumn fx:id="importanceTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%duty.importance" />
+				</columns>
+			</TableView>
 		</left>
 		<center>
 			<VBox>
 				<children>
-					<GridPane fx:id="editGridPane" maxWidth="-Infinity" minWidth="-Infinity">
+					<GridPane fx:id="editGridPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0">
 						<columnConstraints>
 							<ColumnConstraints halignment="LEFT" minWidth="-Infinity" percentWidth="30.0" />
 							<ColumnConstraints maxWidth="-Infinity" percentWidth="70.0" />
 						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints vgrow="SOMETIMES" />
+						</rowConstraints>
 					</GridPane>
 					<GridPane fx:id="buttonGridPane" hgap="10.0">
 						<columnConstraints>
 							<ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
-							<ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
+							<ColumnConstraints hgrow="SOMETIMES" />
 							<ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
 						</columnConstraints>
 						<rowConstraints>
 							<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 						</rowConstraints>
+						<VBox.margin>
+							<Insets top="20.0" />
+						</VBox.margin>
 						<children>
 							<JFXButton fx:id="removeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#removeModel" text="%button.remove" />
-							<JFXButton fx:id="addButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addModel" text="%button.add" GridPane.columnIndex="2" />
 							<JFXButton fx:id="editButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#editModel" text="%button.edit" GridPane.columnIndex="1" />
+							<JFXButton fx:id="addButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addModel" text="%button.add" GridPane.columnIndex="2" />
 						</children>
-						<padding>
-							<Insets top="20.0" />
-						</padding>
-                  <VBox.margin>
-                     <Insets top="20.0" />
-                  </VBox.margin>
 					</GridPane>
 				</children>
-				<opaqueInsets>
-					<Insets left="20.0" />
-				</opaqueInsets>
-				<BorderPane.margin>
-					<Insets />
-				</BorderPane.margin>
 				<padding>
 					<Insets left="30.0" right="30.0" />
 				</padding>
 			</VBox>
 		</center>
 		<top>
-			<Label styleClass="label-title" text="%subject.edit.header" BorderPane.alignment="TOP_LEFT" />
+			<Label styleClass="label-title" text="%duty.edit.header" BorderPane.alignment="TOP_LEFT" />
 		</top>
 	</BorderPane>
 </StackPane>

@@ -31,8 +31,8 @@ public class RoomConnector extends AbstractConnector {
 	@Override
 	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException {
 		Room room = (Room) model;
-		valueList.add(getStringForm(room.getRoomName()));
-		valueList.add(getStringForm(room.getLimitPeople()));
+		valueList.add(getSqlForm(room.getRoomName()));
+		valueList.add(getSqlForm(room.getLimitPeople()));
 		return valueList;
 	}
 

@@ -14,20 +14,13 @@
 <StackPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
 	<BorderPane>
 		<left>
-			<ScrollPane BorderPane.alignment="CENTER">
-				<content>
 					<TableView fx:id="modelTableView">
 						<columns>
-						<TableColumn fx:id="idTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.id" />
-							<TableColumn fx:id="nameTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.room_name" />
-							<TableColumn fx:id="limitTableColumn" maxWidth="-1.0" minWidth="100.0" prefWidth="-1.0" text="%room.limit_people" />
+						<TableColumn fx:id="idTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="50.0" text="%room.id" />
+							<TableColumn fx:id="nameTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%room.room_name" />
+							<TableColumn fx:id="limitTableColumn" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="150.0" text="%room.limit_people" />
 						</columns>
 					</TableView>
-				</content>
-				<opaqueInsets>
-					<Insets />
-				</opaqueInsets>
-			</ScrollPane>
 		</left>
 		<center>
 					<VBox>

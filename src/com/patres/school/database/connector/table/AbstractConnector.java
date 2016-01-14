@@ -13,6 +13,7 @@ import com.patres.school.Main;
 import com.patres.school.database.QueryGenerator;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.gui.controller.content.edit.AbstractEditController;
+import com.patres.school.gui.dialog.ExceptionHandlerDialog;
 
 public abstract class AbstractConnector {
 	
@@ -49,6 +50,9 @@ public abstract class AbstractConnector {
 			resultSet.close();
 			LOGGER.info("Executed query: {}", sql);
 		} catch (SQLException e) {
+			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
+			dialog.show();
+			
 			LOGGER.error("SQLException: {}", e);
 		}
 		return list;
@@ -61,6 +65,9 @@ public abstract class AbstractConnector {
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
 		} catch (SQLException e) {
+			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
+			dialog.show();
+			
 			LOGGER.error("SQLException: {}", e);
 		}
 	}
@@ -72,6 +79,9 @@ public abstract class AbstractConnector {
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
 		} catch (SQLException e) {
+			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
+			dialog.show();
+			
 			LOGGER.error("SQLException: {}", e);
 		}
 	}
@@ -83,6 +93,9 @@ public abstract class AbstractConnector {
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
 		} catch (SQLException e) {
+			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
+			dialog.show();
+			
 			LOGGER.error("SQLException: {}", e);
 		}
 	}
@@ -94,7 +107,7 @@ public abstract class AbstractConnector {
 		ArrayList<String> list = new ArrayList<String>();
 		
 		if(model.getIdProperty() != null) {
-			list.add(getStringForm(model.getId()));
+			list.add(getSqlForm(model.getId()));
 		}
 		return getValuesFromModel(model, list);
 	}
@@ -106,9 +119,14 @@ public abstract class AbstractConnector {
 	// ================================================================================
 	// Other methods
 	// ================================================================================
-	protected String getStringForm(Object o) {
+	protected String getSqlForm(Object o) {
 		if(o instanceof String) {
-			return "'" + o.toString() + "'";
+			if(((String) o).isEmpty()) {
+				return "null";
+			} else {
+				return "'" + o.toString() + "'";
+			}
+			
 		} else {
 			return o.toString();
 		}

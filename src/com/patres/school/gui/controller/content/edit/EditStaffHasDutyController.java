@@ -1,33 +1,35 @@
 package com.patres.school.gui.controller.content.edit;
 
 import com.patres.school.database.connector.table.DatabaseTable;
-import com.patres.school.database.connector.table.RoomConnector;
+import com.patres.school.database.connector.table.StaffConnector;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Room;
+import com.patres.school.database.model.Staff;
 import com.patres.school.gui.controller.content.Controllable;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class EditRoomController extends AbstractEditController implements Controllable {
+public class EditStaffHasDutyController extends AbstractEditController implements Controllable {
 
 	// ================================================================================
 	// Components
 	// ================================================================================
 	@FXML
-	private TableColumn<AbstractModel, String> nameTableColumn;
+	private TableColumn<AbstractModel, String> degreeTableColumn;
 	@FXML
-	private TableColumn<AbstractModel, Integer> limitTableColumn;
+	private TableColumn<AbstractModel, String> firstNameTableColumn;
+	@FXML
+	private TableColumn<AbstractModel, String> lastNameTableColumn;
 
 	// ================================================================================
 	// Configuration methods
 	// ================================================================================
 	public void initialize() {
-		connector = new RoomConnector();
-		table = DatabaseTable.ROOM;
+		connector = new StaffConnector();
+		table = DatabaseTable.STAFF;
+		
 		initEditor();
-		onlyDigitListner(textFieldMap.get("limit_people"));
 	}
 
 	// ================================================================================
@@ -36,24 +38,26 @@ public class EditRoomController extends AbstractEditController implements Contro
 	@Override
 	protected void initModelTable() {
 		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
-		limitTableColumn.setCellValueFactory(new PropertyValueFactory<>("limitPeople"));
+		degreeTableColumn.setCellValueFactory(new PropertyValueFactory<>("degree"));
+		firstNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+		lastNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		refreshTable();
 	}
-	
+
 	// ================================================================================
 	// Get Model
 	// ================================================================================
 	@Override
 	protected AbstractModel getModel() {
-		String roomName = textFieldMap.get("room_name").getText();
-		int limit = Integer.parseInt(textFieldMap.get("limit_people").getText());
+		String degree = textFieldMap.get("degree").getText();
+		String firstName = textFieldMap.get("first_name").getText();
+		String lastName = textFieldMap.get("last_name").getText();
 		
 		if (isNumeric(textFieldMap.get("id").getText())) {
 			int id = Integer.parseInt(textFieldMap.get("id").getText());
-			return new Room(id, roomName, limit);
+			return new Staff(id, degree, firstName, lastName);
 		} else {
-			return new Room(roomName, limit);
+			return new Staff(degree, firstName, lastName);
 		}
 	}
 
@@ -62,11 +66,12 @@ public class EditRoomController extends AbstractEditController implements Contro
 	// ================================================================================
 	@Override
 	protected void showDetails(AbstractModel model) {
-		Room room = (Room) model;
-		if (room != null) {
-			textFieldMap.get("id").setText(setNotNullString(room.getId().toString()));
-			textFieldMap.get("room_name").setText(setNotNullString(room.getRoomName()));
-			textFieldMap.get("limit_people").setText(setNotNullString(room.getLimitPeople().toString()));
+		Staff staff = (Staff) model;
+		if (staff != null) {
+			textFieldMap.get("id").setText(setNotNullString(staff.getId().toString()));
+			textFieldMap.get("degree").setText(setNotNullString(staff.getDegree()));
+			textFieldMap.get("first_name").setText(setNotNullString(staff.getFirstName()));
+			textFieldMap.get("last_name").setText(setNotNullString(staff.getLastName()));
 		}
 	}
 

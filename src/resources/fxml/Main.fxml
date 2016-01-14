@@ -53,7 +53,7 @@
 		</top>
 
 		<!-- Content Area -->
-		<center >
+		<center>
 			<JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
 				<sidePane>
 					<StackPane fx:id="sideContent">
@@ -63,9 +63,6 @@
 					<ScrollPane fx:id="contentScrollPane">
 						<content>
 							<StackPane fx:id="content">
-								<padding>
-									<Insets left="50.0" />
-								</padding>
 							</StackPane>
 						</content>
 					</ScrollPane>
