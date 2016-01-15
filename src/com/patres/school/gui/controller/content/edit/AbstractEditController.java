@@ -1,13 +1,8 @@
 package com.patres.school.gui.controller.content.edit;
 
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
-import com.patres.school.Main;
 import com.patres.school.database.connector.table.AbstractConnector;
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
@@ -17,8 +12,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -49,7 +42,6 @@ public abstract class AbstractEditController {
 	protected ObservableList<AbstractModel> modelObservableList;
 	protected AbstractConnector connector;
 	protected DatabaseTable table;
-	protected Map<String, JFXTextField> textFieldMap;
 	protected final int EDIT_PANE_WIDTH = 350;
 
 	// ================================================================================
@@ -60,9 +52,8 @@ public abstract class AbstractEditController {
 		initEditGridPane();
 		initButons();
 		initSizeGridePane();
-		
+
 		selectedListner();
-		//onlyDigitListner(textFieldMap.get("id"));
 	}
 
 	// ================================================================================
@@ -82,56 +73,8 @@ public abstract class AbstractEditController {
 		buttonGridPane.setMaxWidth(EDIT_PANE_WIDTH);
 	}
 
-	protected void initEditGridPane() {
-		textFieldMap = new HashMap<String, JFXTextField>();
-		List<String> columnList = table.getColumn();
-
-		String prefix = table.getTableName() + ".";
-		int counterColumn = 0;
-
-		for (String column : columnList) {
-			String columnName = Main.getBundle().getString(prefix + column);
-			Label label = new Label(columnName + ":");
-			label.getStyleClass().add("label-text-field");
-			JFXTextField textField = new JFXTextField();
-			textFieldMap.put(column, textField);
-			editGridPane.add(label, 0, counterColumn);
-			editGridPane.add(textField, 1, counterColumn);
-			counterColumn++;
-		}
-	}
-
-	abstract protected void initModelTable();
-
-	// ================================================================================
-	// FXML methods
-	// ================================================================================
-	@FXML
-	private void addModel() {
-		if (getModel().getIdProperty() == null) {
-			connector.insert(getModel(), true);
-		} else {
-			connector.insert(getModel(), false);
-		}
-
-		refreshTable();
-	}
-
-	@FXML
-	private void editModel() {
-		int id = getSelectedItem().getId();
-		connector.update(getModel(), id);
-		refreshTable();
-
-	}
-
-	@FXML
-	private void removeModel() {
-		AbstractModel model = getSelectedItem();
-		connector.delete(model);
-		refreshTable();
-	}
-
+	protected abstract void initEditGridPane();
+	protected abstract  void initModelTable();
 	protected abstract AbstractModel getModel();
 
 	// ================================================================================
@@ -153,13 +96,13 @@ public abstract class AbstractEditController {
 	protected void onlyDigitListner(TextField textField) {
 		textField.textProperty().addListener(new ChangeListener<String>() {
 			@Override
- 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
- 				if (!newValue.matches("\\d*")) {
- 					textField.setText(oldValue);
- 				}
- 			}
-  		});
-  	}
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches("\\d*")) {
+					textField.setText(oldValue);
+				}
+			}
+		});
+	}
 
 	// ================================================================================
 	// Other methods

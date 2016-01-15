@@ -8,7 +8,7 @@ public class Staff extends AbstractModel {
 	// Properties
 	// ================================================================================
 	private SimpleStringProperty degree;
-	private SimpleStringProperty firstName;
+	private SimpleStringProperty first;
 	private SimpleStringProperty lastName;
 	
 	// ================================================================================
@@ -17,14 +17,14 @@ public class Staff extends AbstractModel {
 	public Staff(int id, String degree, String firstName, String lastName) {
 		super(id);
 		this.degree = new SimpleStringProperty(degree);
-		this.firstName = new SimpleStringProperty(firstName);
+		this.first = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 	}
 	
 	public Staff(String degree, String firstName, String lastName) {
 		super();
 		this.degree = new SimpleStringProperty(degree);
-		this.firstName = new SimpleStringProperty(firstName);
+		this.first = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 	}
 	
@@ -55,7 +55,7 @@ public class Staff extends AbstractModel {
     }
     
 	public String getFirstName() {
-        return firstName.get();
+        return first.get();
     }
 	
     public void setLastName(String name) {
@@ -67,7 +67,7 @@ public class Staff extends AbstractModel {
     }
 	
     public void setFirstName(String name) {
-    	firstName.set(name);
+    	first.set(name);
     }
     
 	

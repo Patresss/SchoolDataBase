@@ -4,11 +4,11 @@ import com.patres.school.gui.controller.content.Controllable;
 import com.patres.school.gui.controller.content.ViewRoomController;
 import com.patres.school.gui.controller.content.ViewTeacherController;
 import com.patres.school.gui.controller.content.WelcomeController;
-import com.patres.school.gui.controller.content.edit.EditDutyController;
-import com.patres.school.gui.controller.content.edit.EditRoomController;
-import com.patres.school.gui.controller.content.edit.EditStaffController;
-import com.patres.school.gui.controller.content.edit.EditDutyHasStaffController;
-import com.patres.school.gui.controller.content.edit.EditSubjectController;
+import com.patres.school.gui.controller.content.edit.multiple.EditDutyHasStaffController;
+import com.patres.school.gui.controller.content.edit.single.EditDutyController;
+import com.patres.school.gui.controller.content.edit.single.EditRoomController;
+import com.patres.school.gui.controller.content.edit.single.EditStaffController;
+import com.patres.school.gui.controller.content.edit.single.EditSubjectController;
 
 import lombok.Getter;
 

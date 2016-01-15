@@ -15,7 +15,7 @@ public class DutyHasStaff extends AbstractModel {
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public DutyHasStaff(Staff staff, Duty duty) {
+	public DutyHasStaff(Duty duty, Staff staff) {
 		this.staff = staff;
 		this.duty = duty;
 	}

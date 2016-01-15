@@ -1,4 +1,4 @@
-package com.patres.school.gui.controller.content.edit;
+package com.patres.school.gui.controller.content.edit.single;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.RoomConnector;
@@ -6,21 +6,7 @@ import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Room;
 import com.patres.school.gui.controller.content.Controllable;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-public class EditRoomController extends AbstractEditController implements Controllable {
-
-	// ================================================================================
-	// Components
-	// ================================================================================
-	@FXML
-	private TableColumn<AbstractModel, String> idTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, String> nameTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, Integer> limitTableColumn;
+public class EditRoomController extends AbstractEditSingle  implements Controllable {
 
 	// ================================================================================
 	// Configuration methods
@@ -34,17 +20,6 @@ public class EditRoomController extends AbstractEditController implements Contro
 		onlyDigitListner(textFieldMap.get("limit_people"));
 	}
 
-	// ================================================================================
-	// Initialize components
-	// ================================================================================
-	@Override
-	protected void initModelTable() {
-		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("roomName"));
-		limitTableColumn.setCellValueFactory(new PropertyValueFactory<>("limitPeople"));
-		refreshTable();
-	}
-	
 	// ================================================================================
 	// Get Model
 	// ================================================================================

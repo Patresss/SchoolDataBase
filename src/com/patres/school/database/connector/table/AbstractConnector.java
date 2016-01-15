@@ -22,18 +22,27 @@ public abstract class AbstractConnector {
 	// ================================================================================
 	protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractEditController.class);
 	protected static Statement statement = Main.getStatement();
-	
-	abstract QueryGenerator getQueryGenerator();
+	protected QueryGenerator queryGenerator;
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public AbstractConnector() {}
+	public AbstractConnector(DatabaseTable table) {
+		System.out.println("TWORZY  " + table);
+		this.queryGenerator = new QueryGenerator(table);
+	}
 	
 	// ================================================================================
 	// SQL Query
+	//
+	// ================================================================================
+	
+	// ================================================================================
+	// Select
 	// ================================================================================
 	public LinkedList<AbstractModel> select() {
-		String sql = getQueryGenerator().getSelect();
+		System.out.println("___generator" + queryGenerator);
+		queryGenerator.getSelect();
+		String sql = queryGenerator.getSelect();
 		
 		LinkedList<AbstractModel> list = new LinkedList<AbstractModel>();
 		ResultSet resultSet;
@@ -56,9 +65,12 @@ public abstract class AbstractConnector {
 		return list;
 	}
 	
-	public void insert(AbstractModel model, boolean withNewId) {
+	// ================================================================================
+	// Insert
+	// ================================================================================
+	public void insert(AbstractModel model) {
 		try {
-			String sql = getQueryGenerator().getInsert(getValues(model), withNewId);
+			String sql = queryGenerator.getInsert(getValues(model));
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -70,9 +82,26 @@ public abstract class AbstractConnector {
 		}
 	}
 	
+	public void insert(AbstractModel model, boolean withNewId) {
+		try {
+			String sql = queryGenerator.getInsert(getValues(model), withNewId);
+			LOGGER.info("Executing query... : {}", sql);
+			Main.getStatement().executeUpdate(sql);
+			LOGGER.info("Executed query: {}", sql);
+		} catch (SQLException e) {
+			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
+			dialog.show();
+			
+			LOGGER.error("SQLException: {}", e);
+		}
+	}
+	
+	// ================================================================================
+	// Delete
+	// ================================================================================
 	public void delete(AbstractModel model) {
 		try {
-			String sql = getQueryGenerator().getDelete(model.getId());
+			String sql = queryGenerator.getDelete(model.getId());
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -86,7 +115,7 @@ public abstract class AbstractConnector {
 	
 	public void update(AbstractModel model, int id) {
 		try {
-			String sql = getQueryGenerator().getUpdate(getValues(model), id);
+			String sql = queryGenerator.getUpdate(getValues(model), id);
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);

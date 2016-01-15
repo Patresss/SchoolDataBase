@@ -10,18 +10,12 @@ import com.patres.school.database.model.Duty;
 
 public class DutyConnector extends AbstractConnector {
 
-	private static QueryGenerator queryGenerator = new QueryGenerator(DatabaseTable.DUTY);
 	
 	// ================================================================================
 	// Constructor
 	// ================================================================================
 	public DutyConnector() {
-		super();
-	}
-	
-	@Override
-	public QueryGenerator getQueryGenerator() {
-		return queryGenerator;
+		super(DatabaseTable.DUTY);
 	}
 	
 	// ================================================================================

@@ -1,4 +1,4 @@
-package com.patres.school.gui.controller.content.edit;
+package com.patres.school.gui.controller.content.edit.single;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.DutyConnector;
@@ -6,21 +6,7 @@ import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Duty;
 import com.patres.school.gui.controller.content.Controllable;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-public class EditDutyController extends AbstractEditController implements Controllable {
-
-	// ================================================================================
-	// Components
-	// ================================================================================
-	@FXML
-	private TableColumn<AbstractModel, String> idTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, String> nameTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, Integer> importanceTableColumn;
+public class EditDutyController extends AbstractEditSingle implements Controllable {
 
 	// ================================================================================
 	// Configuration methods
@@ -29,22 +15,11 @@ public class EditDutyController extends AbstractEditController implements Contro
 		connector = new DutyConnector();
 		table = DatabaseTable.DUTY;
 		initEditor();
-		
+
 		onlyDigitListner(textFieldMap.get("id_duty"));
 		onlyDigitListner(textFieldMap.get("importance"));
 	}
 
-	// ================================================================================
-	// Initialize components
-	// ================================================================================
-	@Override
-	protected void initModelTable() {
-		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-		nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("dutyName"));
-		importanceTableColumn.setCellValueFactory(new PropertyValueFactory<>("importance"));
-		refreshTable();
-	}
-	
 	// ================================================================================
 	// Get Model
 	// ================================================================================
@@ -52,7 +27,7 @@ public class EditDutyController extends AbstractEditController implements Contro
 	protected AbstractModel getModel() {
 		String dutyName = textFieldMap.get("duty_name").getText();
 		int importance = Integer.parseInt(textFieldMap.get("importance").getText());
-		
+
 		if (isNumeric(textFieldMap.get("id_duty").getText())) {
 			int id = Integer.parseInt(textFieldMap.get("id_duty").getText());
 			return new Duty(id, dutyName, importance);

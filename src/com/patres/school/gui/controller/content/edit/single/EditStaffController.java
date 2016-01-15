@@ -1,4 +1,4 @@
-package com.patres.school.gui.controller.content.edit;
+package com.patres.school.gui.controller.content.edit.single;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.StaffConnector;
@@ -6,23 +6,7 @@ import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Staff;
 import com.patres.school.gui.controller.content.Controllable;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-public class EditStaffController extends AbstractEditController implements Controllable {
-
-	// ================================================================================
-	// Components
-	// ================================================================================
-	@FXML
-	private TableColumn<AbstractModel, String> idTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, String> degreeTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, String> firstNameTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, String> lastNameTableColumn;
+public class EditStaffController extends AbstractEditSingle implements Controllable {
 
 	// ================================================================================
 	// Configuration methods
@@ -33,18 +17,6 @@ public class EditStaffController extends AbstractEditController implements Contr
 		
 		initEditor();
 		onlyDigitListner(textFieldMap.get("id_staff"));
-	}
-
-	// ================================================================================
-	// Initialize components
-	// ================================================================================
-	@Override
-	protected void initModelTable() {
-		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-		degreeTableColumn.setCellValueFactory(new PropertyValueFactory<>("degree"));
-		firstNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-		lastNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-		refreshTable();
 	}
 
 	// ================================================================================

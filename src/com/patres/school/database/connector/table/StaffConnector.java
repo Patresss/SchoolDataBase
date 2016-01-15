@@ -15,12 +15,10 @@ public class StaffConnector extends AbstractConnector {
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public StaffConnector() {}
-
-	@Override
-	public QueryGenerator getQueryGenerator() {
-		return queryGenerator;
+	public StaffConnector() {
+		super(DatabaseTable.STAFF);
 	}
+
 	// ================================================================================
 	// SQL Query
 	// ================================================================================

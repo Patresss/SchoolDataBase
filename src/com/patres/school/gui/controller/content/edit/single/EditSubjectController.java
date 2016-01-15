@@ -1,4 +1,4 @@
-package com.patres.school.gui.controller.content.edit;
+package com.patres.school.gui.controller.content.edit.single;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.SubjectConnector;
@@ -6,19 +6,7 @@ import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Subject;
 import com.patres.school.gui.controller.content.Controllable;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-public class EditSubjectController extends AbstractEditController implements Controllable {
-
-	// ================================================================================
-	// Components
-	// ================================================================================
-	@FXML
-	private TableColumn<AbstractModel, String> idTableColumn;
-	@FXML
-	private TableColumn<AbstractModel, String> subjectNameTableColumn;
+public class EditSubjectController extends AbstractEditSingle implements Controllable {
 
 	// ================================================================================
 	// Configuration methods
@@ -29,16 +17,6 @@ public class EditSubjectController extends AbstractEditController implements Con
 		
 		initEditor();
 		onlyDigitListner(textFieldMap.get("id_subject"));
-	}
-
-	// ================================================================================
-	// Initialize components
-	// ================================================================================
-	@Override
-	protected void initModelTable() {
-		idTableColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-		subjectNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
-		refreshTable();
 	}
 
 	// ================================================================================

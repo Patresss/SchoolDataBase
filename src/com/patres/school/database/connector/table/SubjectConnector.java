@@ -15,13 +15,9 @@ public class SubjectConnector extends AbstractConnector {
 	// Constructor
 	// ================================================================================
 	public SubjectConnector() {
-		super();
+		super(DatabaseTable.SUBJECT);
 	}
 
-	@Override
-	public QueryGenerator getQueryGenerator() {
-		return queryGenerator;
-	}
 	// ================================================================================
 	// SQL Query
 	// ================================================================================

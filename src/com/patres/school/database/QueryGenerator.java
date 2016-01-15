@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 
+import lombok.Getter;
+
 public class QueryGenerator {
-	
+	@Getter
 	private DatabaseTable table;
 
 	public QueryGenerator(DatabaseTable table){
@@ -13,6 +15,7 @@ public class QueryGenerator {
 	}
 	
 	public String getSelect() {
+		System.out.println("_______" + table);
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT ");
 			sql.append(String.join(", ", table.getColumn()));
@@ -38,6 +41,20 @@ public class QueryGenerator {
 		sql.append("SELECT *");
 		sql.append(" FROM ");
 			sql.append(view);	
+		return sql.toString();
+	}
+	
+	public String getInsert(ArrayList<String> valuesToInsert) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("INSERT INTO ");
+			sql.append(table.getTableName());
+			sql.append(" (");
+			sql.append(String.join(", ", table.getColumn()));
+			sql.append(") ");
+		sql.append("VALUES ");
+			sql.append(" (");
+			sql.append(String.join(", ", valuesToInsert));
+			sql.append(") ");	
 		return sql.toString();
 	}
 	
@@ -71,12 +88,12 @@ public class QueryGenerator {
 		return sql.toString();
 	}
 	
-	public String getDelete(int id1,int id2) {
+	public String getDelete(ArrayList<Integer> ids) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("DELETE FROM ");
 			sql.append(table.getTableName());
 		sql.append(" WHERE ");
-			sql.append(getWhereString(id1, id2));
+			sql.append(getWhereString(ids));
 		return sql.toString();
 	}
     
@@ -91,6 +108,17 @@ public class QueryGenerator {
 			sql.append(table.getTableName());
 			sql.append("=");
 			sql.append(id);
+		return sql.toString();
+	}
+	
+	public String getUpdate(ArrayList<String> valuesToUpdate, ArrayList<Integer> ids) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("UPDATE ");
+			sql.append(table.getTableName());
+		sql.append(" SET ");
+			sql.append(String.join(", ", getUpdateMap(valuesToUpdate)));
+		sql.append(" WHERE ");
+			sql.append(getWhereString(ids));
 		return sql.toString();
 	}
     
@@ -108,15 +136,17 @@ public class QueryGenerator {
 		return updateMap;
 	}
 	
-	private String getWhereString(int id1, int id2) {
+	private String getWhereString(ArrayList<Integer> ids) {
+		int counterColumn = 0;
 		StringBuilder sql = new StringBuilder();
-		sql.append(table.getColumn().get(0));
-		sql.append("=");
-		sql.append(id1);
-		sql.append(" AND ");
-		sql.append(table.getColumn().get(1));
-		sql.append("=");
-		sql.append(id2);
-		return sql.toString();
+		for(Integer i : ids) {
+			sql.append(table.getColumn().get(counterColumn));
+			sql.append("=");
+			sql.append(i);
+			sql.append(" AND ");
+			counterColumn++;
+		}
+		String s = sql.toString();
+		return s.substring(0, s.length()-5);
 	}
 }

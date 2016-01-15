@@ -4,21 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.patres.school.database.QueryGenerator;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Room;
 
 public class RoomConnector extends AbstractConnector {
 
-	private static QueryGenerator queryGenerator = new QueryGenerator(DatabaseTable.ROOM);
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public RoomConnector() {}
-	
-	@Override
-	public QueryGenerator getQueryGenerator() {
-		return queryGenerator;
+	public RoomConnector() {
+		super(DatabaseTable.ROOM);
 	}
 
 	// ================================================================================

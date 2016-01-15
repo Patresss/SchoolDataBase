@@ -1,6 +1,6 @@
-﻿DROP VIEW IF EXISTS view_duty_staff;
+﻿DROP VIEW IF EXISTS view_duty_has_staff;
 
-CREATE VIEW view_duty_staff AS
+CREATE VIEW view_duty_has_staff AS
 SELECT 
 	d.id_duty,
 	d.duty_name,
