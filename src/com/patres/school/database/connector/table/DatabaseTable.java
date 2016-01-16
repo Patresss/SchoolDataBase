@@ -9,6 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.patres.school.Main;
+import com.patres.school.database.connector.table.multiple.DutyHasStaffConnector;
+import com.patres.school.database.connector.table.single.DutyConnector;
+import com.patres.school.database.connector.table.single.RoomConnector;
+import com.patres.school.database.connector.table.single.StaffConnector;
+import com.patres.school.database.connector.table.single.SubjectConnector;
 
 public enum DatabaseTable {
 
@@ -64,13 +69,15 @@ public enum DatabaseTable {
 		try {
 			return connector.newInstance();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error("InstantiationException: {}", e);
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LOGGER.error("IllegalAccessException: {}", e);
 		}
 		return null;
+	}
+	
+	public String getView() {
+		return "view_" + tableName;
 	}
 	
 	public ArrayList<String> getColumn() {

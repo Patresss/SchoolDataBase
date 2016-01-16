@@ -23,26 +23,19 @@ public abstract class AbstractConnector {
 	protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractEditController.class);
 	protected static Statement statement = Main.getStatement();
 	protected QueryGenerator queryGenerator;
+	
 	// ================================================================================
 	// Constructor
 	// ================================================================================
 	public AbstractConnector(DatabaseTable table) {
-		System.out.println("TWORZY  " + table);
 		this.queryGenerator = new QueryGenerator(table);
 	}
-	
-	// ================================================================================
-	// SQL Query
-	//
-	// ================================================================================
 	
 	// ================================================================================
 	// Select
 	// ================================================================================
 	public LinkedList<AbstractModel> select() {
-		System.out.println("___generator" + queryGenerator);
-		queryGenerator.getSelect();
-		String sql = queryGenerator.getSelect();
+		String sql = getSelectSql();
 		
 		LinkedList<AbstractModel> list = new LinkedList<AbstractModel>();
 		ResultSet resultSet;
@@ -51,19 +44,20 @@ public abstract class AbstractConnector {
 			resultSet = statement.executeQuery(sql);
 
 			while (resultSet.next()) {
-				AbstractModel model = selectModel(resultSet);
+				AbstractModel model = selectModelSql(resultSet);
 				list.add(model);
 			}
 			resultSet.close();
 			LOGGER.info("Executed query: {}", sql);
 		} catch (SQLException e) {
+			LOGGER.error("SQLException: {}", e);
 			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
 			dialog.show();
-			
-			LOGGER.error("SQLException: {}", e);
 		}
 		return list;
 	}
+	
+	protected abstract String getSelectSql();
 	
 	// ================================================================================
 	// Insert
@@ -71,20 +65,6 @@ public abstract class AbstractConnector {
 	public void insert(AbstractModel model) {
 		try {
 			String sql = queryGenerator.getInsert(getValues(model));
-			LOGGER.info("Executing query... : {}", sql);
-			Main.getStatement().executeUpdate(sql);
-			LOGGER.info("Executed query: {}", sql);
-		} catch (SQLException e) {
-			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
-			dialog.show();
-			
-			LOGGER.error("SQLException: {}", e);
-		}
-	}
-	
-	public void insert(AbstractModel model, boolean withNewId) {
-		try {
-			String sql = queryGenerator.getInsert(getValues(model), withNewId);
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -113,6 +93,9 @@ public abstract class AbstractConnector {
 		}
 	}
 	
+	// ================================================================================
+	// Update
+	// ================================================================================
 	public void update(AbstractModel model, int id) {
 		try {
 			String sql = queryGenerator.getUpdate(getValues(model), id);
@@ -127,20 +110,31 @@ public abstract class AbstractConnector {
 		}
 	}
 	
+	public void update(AbstractModel model, ArrayList<Integer> ids) {
+		try {
+			String sql = queryGenerator.getUpdate(getValues(model), ids);
+			LOGGER.info("Executing query... : {}", sql);
+			Main.getStatement().executeUpdate(sql);
+			LOGGER.info("Executed query: {}", sql);
+		} catch (SQLException e) {
+			ExceptionHandlerDialog dialog = new ExceptionHandlerDialog(e);
+			dialog.show();
+			
+			LOGGER.error("SQLException: {}", e);
+		}
+	}
+
+	
+
+	
+	
+	
 	// ================================================================================
 	// Abstract sql
 	// ================================================================================
-	protected ArrayList<String> getValues(AbstractModel model) throws SQLException {
-		ArrayList<String> list = new ArrayList<String>();
-		
-		if(model.getIdProperty() != null) {
-			list.add(getSqlForm(model.getId()));
-		}
-		return getValuesFromModel(model, list);
-	}
+	protected abstract ArrayList<String> getValues(AbstractModel model);
 	
-	abstract protected AbstractModel selectModel(ResultSet resultSet) throws SQLException;
-	abstract protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException;
+	abstract protected AbstractModel selectModelSql(ResultSet resultSet) throws SQLException;
 
 
 	// ================================================================================

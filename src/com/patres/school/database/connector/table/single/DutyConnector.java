@@ -1,14 +1,14 @@
-package com.patres.school.database.connector.table;
+package com.patres.school.database.connector.table.single;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.patres.school.database.QueryGenerator;
+import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Duty;
 
-public class DutyConnector extends AbstractConnector {
+public class DutyConnector extends AbstractSingleConnector {
 
 	
 	// ================================================================================
@@ -19,10 +19,10 @@ public class DutyConnector extends AbstractConnector {
 	}
 	
 	// ================================================================================
-	// SQL Query
+	// Select Model SQL
 	// ================================================================================
 	@Override
-	protected AbstractModel selectModel(ResultSet resultSet) throws SQLException {
+	protected AbstractModel selectModelSql(ResultSet resultSet) throws SQLException {
 		int id = resultSet.getInt("id_duty");
 		String dutyName = resultSet.getString("duty_name");
 		Integer importance = resultSet.getInt("importance");
@@ -30,11 +30,15 @@ public class DutyConnector extends AbstractConnector {
 		return new Duty(id, dutyName, importance);
 	}
 
+	
+	// ================================================================================
+	// Get value from model
+	// ================================================================================
 	@Override
-	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException {
-		Duty subject = (Duty) model;
-		valueList.add(getSqlForm(subject.getDutyName()));
-		valueList.add(getSqlForm(subject.getImportance()));
+	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) {
+		Duty duty = (Duty) model;
+		valueList.add(getSqlForm(duty.getDutyName()));
+		valueList.add(getSqlForm(duty.getImportance()));
 		return valueList;
 	}
 

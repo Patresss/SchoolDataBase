@@ -1,7 +1,7 @@
 package com.patres.school.gui.controller.content.edit.single;
 
 import com.patres.school.database.connector.table.DatabaseTable;
-import com.patres.school.database.connector.table.SubjectConnector;
+import com.patres.school.database.connector.table.single.SubjectConnector;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Subject;
 import com.patres.school.gui.controller.content.Controllable;

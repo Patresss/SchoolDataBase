@@ -1,7 +1,7 @@
 package com.patres.school.gui.controller.content.edit.single;
 
 import com.patres.school.database.connector.table.DatabaseTable;
-import com.patres.school.database.connector.table.RoomConnector;
+import com.patres.school.database.connector.table.single.RoomConnector;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Room;
 import com.patres.school.gui.controller.content.Controllable;

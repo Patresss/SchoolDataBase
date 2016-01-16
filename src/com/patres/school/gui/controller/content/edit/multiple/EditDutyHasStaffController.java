@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 import com.patres.school.database.connector.table.DatabaseTable;
-import com.patres.school.database.connector.table.DutyHasStaffConnector;
+import com.patres.school.database.connector.table.multiple.DutyHasStaffConnector;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Duty;
 import com.patres.school.database.model.DutyHasStaff;
@@ -15,7 +15,7 @@ import com.patres.school.gui.controller.content.Controllable;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
-public class EditDutyHasStaffController extends AbstractEditHasController implements Controllable {
+public class EditDutyHasStaffController extends AbstractEditMultipleController implements Controllable {
 
 
 	// ================================================================================
@@ -39,12 +39,7 @@ public class EditDutyHasStaffController extends AbstractEditHasController implem
 	// ================================================================================
 	@FXML 
 	protected void editModel() {
-		DutyHasStaff model = (DutyHasStaff) getSelectedItem();
-		ArrayList<Integer> ids = new ArrayList<Integer>();
-		ids.add(model.getDuty().getId());
-		ids.add(model.getStaff().getId());
-		
-		((DutyHasStaffConnector) connector).update(getModel(), ids);
+		((DutyHasStaffConnector) connector).update(getModel(), getSelectedIds());
 		refreshTable();
 	}
 
@@ -56,6 +51,14 @@ public class EditDutyHasStaffController extends AbstractEditHasController implem
 		Staff staff = (Staff) comboBoxMap.get("staff").getValue();
 		Duty duty = (Duty) comboBoxMap.get("duty").getValue();
 		return new DutyHasStaff(duty, staff);
+	}
+	
+	protected ArrayList<Integer> getSelectedIds() {
+		DutyHasStaff model = (DutyHasStaff) getSelectedItem();
+		ArrayList<Integer> ids = new ArrayList<Integer>();
+		ids.add(model.getDuty().getId());
+		ids.add(model.getStaff().getId());
+		return ids;
 	}
 
 	// ================================================================================

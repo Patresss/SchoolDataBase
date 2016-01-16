@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public abstract class AbstractEditHasController extends AbstractEditController {
+public abstract class AbstractEditMultipleController extends AbstractEditController {
 
 	// ================================================================================
 	// Components

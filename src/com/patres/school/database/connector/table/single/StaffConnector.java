@@ -1,17 +1,15 @@
-package com.patres.school.database.connector.table;
+package com.patres.school.database.connector.table.single;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.patres.school.database.QueryGenerator;
+import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
 import com.patres.school.database.model.Staff;
 
-public class StaffConnector extends AbstractConnector {
+public class StaffConnector extends AbstractSingleConnector {
 
-	private static QueryGenerator queryGenerator = new QueryGenerator(DatabaseTable.STAFF);
-	
 	// ================================================================================
 	// Constructor
 	// ================================================================================
@@ -20,10 +18,10 @@ public class StaffConnector extends AbstractConnector {
 	}
 
 	// ================================================================================
-	// SQL Query
+	// Select Model SQL
 	// ================================================================================
 	@Override
-	protected AbstractModel selectModel(ResultSet resultSet) throws SQLException {
+	protected AbstractModel selectModelSql(ResultSet resultSet) throws SQLException {
 		int id = resultSet.getInt("id_staff");
 		String degree = resultSet.getString("degree");
 		String firstName = resultSet.getString("first_name");
@@ -32,8 +30,11 @@ public class StaffConnector extends AbstractConnector {
 		return new Staff(id, degree, firstName, lastName);
 	}
 
+	// ================================================================================
+	// Get value from model
+	// ================================================================================
 	@Override
-	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) throws SQLException {
+	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) {
 		Staff staff = (Staff) model;
 		valueList.add(getSqlForm(staff.getDegree()));
 		valueList.add(getSqlForm(staff.getFirstName()));

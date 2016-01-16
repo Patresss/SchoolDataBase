@@ -54,6 +54,7 @@ public abstract class AbstractEditSingle extends AbstractEditController {
 		return name;
 	}
 
+	@Override
 	protected void initEditGridPane() {
 		textFieldMap = new HashMap<String, JFXTextField>();
 		List<String> columnList = table.getColumn();
@@ -79,9 +80,9 @@ public abstract class AbstractEditSingle extends AbstractEditController {
 	@FXML
 	protected void addModel() {
 		if (getModel().getIdProperty() == null) {
-			connector.insert(getModel(), true);
+			connector.insert(getModel());
 		} else {
-			connector.insert(getModel(), false);
+			connector.insert(getModel());
 		}
 
 		refreshTable();
@@ -102,8 +103,6 @@ public abstract class AbstractEditSingle extends AbstractEditController {
 		refreshTable();
 	}
 
-	protected abstract AbstractModel getModel();
-
 	// ================================================================================
 	// Other methods
 	// ================================================================================
@@ -114,4 +113,5 @@ public abstract class AbstractEditSingle extends AbstractEditController {
 	}
 
 	protected abstract void showDetails(AbstractModel model);
+	protected abstract AbstractModel getModel();
 }
