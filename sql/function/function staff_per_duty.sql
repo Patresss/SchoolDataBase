@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE FUNCTION staff_per_duty()
+﻿CREATE OR REPLACE FUNCTION "School".staff_per_duty()
 RETURNS float AS $total$
 declare
 	count_staff float;

@@ -1,4 +1,5 @@
-﻿DROP VIEW IF EXISTS view_duty_has_staff;
+﻿set schema 'School';
+DROP VIEW IF EXISTS view_duty_has_staff;
 
 CREATE VIEW view_duty_has_staff AS
 SELECT 

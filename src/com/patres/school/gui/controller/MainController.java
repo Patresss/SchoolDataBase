@@ -50,6 +50,7 @@ public class MainController {
 	public void initialize() {
 		initComponents();
 		sizeListener();
+		//drawer.draw();
 	}
 
 	private void initComponents() {

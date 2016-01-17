@@ -1,4 +1,5 @@
-﻿DROP TABLE IF EXISTS lesson;
+﻿set schema 'School';
+DROP TABLE IF EXISTS lesson;
 
 ALTER SEQUENCE seq_lesson RESTART;
 

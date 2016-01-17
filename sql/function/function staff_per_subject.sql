@@ -1,4 +1,4 @@
-﻿CREATE OR REPLACE FUNCTION staff_per_subject()
+﻿CREATE OR REPLACE FUNCTION "School".staff_per_subject()
 RETURNS float AS $total$
 declare
 	count_staff FLOAT;

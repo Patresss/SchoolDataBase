@@ -1,4 +1,5 @@
-﻿DROP TABLE IF EXISTS subject;
+﻿set schema 'School';
+DROP TABLE IF EXISTS subject;
 
 ALTER SEQUENCE seq_subject RESTART;
 

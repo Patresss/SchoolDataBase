@@ -1,4 +1,5 @@
-﻿DROP TABLE IF EXISTS duty;
+﻿set schema 'School';
+DROP TABLE IF EXISTS duty;
 
 ALTER SEQUENCE seq_duty RESTART;
 

@@ -1,4 +1,5 @@
-﻿DROP VIEW IF EXISTS view_staff_has_subject;
+﻿set schema 'School';
+DROP VIEW IF EXISTS view_staff_has_subject;
 
 CREATE VIEW view_staff_has_subject AS
 SELECT 

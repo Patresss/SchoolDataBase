@@ -1,4 +1,5 @@
-﻿DROP TABLE IF EXISTS staff_has_subject;
+﻿set schema 'School';
+DROP TABLE IF EXISTS staff_has_subject;
 
 create table staff_has_subject (
 	staff_id INTEGER NOT NULL,

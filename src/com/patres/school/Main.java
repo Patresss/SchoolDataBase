@@ -37,17 +37,15 @@ public class Main extends Application {
 	private static Connection connection;
 	private final static int SCENE_WIDTH = 1200;
 	private final static int SCENE_HEIGHT = 700;
+	private static Connector connector;
 
+	
 	public static void main(String[] args) {
-		Connector connector = new Connector();
-		statement = connector.getStatement();
-		connection = connector.getConnection();
 		launch(args);
 		connector.closeConncetion();
 	}
 
 	public void start(Stage stage) {
-
 		try {
 			mainStage = stage;
 			mainStage.setTitle(TITTLE);
@@ -57,7 +55,13 @@ public class Main extends Application {
 
 			mainStage.setMinWidth(700);
 			mainStage.setMinHeight(500);
+			connector = new Connector();
+			statement = connector.getStatement();
+			connection = connector.getConnection();
 			mainStage.show();
+			
+			
+
 		} catch (IOException e) {
 			LOGGER.error("Error in start method - I/O Exception");
 		}

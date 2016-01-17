@@ -1,6 +1,6 @@
-﻿CREATE DOMAIN one_digit
+﻿CREATE DOMAIN "School".one_letter
   AS text
         CHECK (
-		VALUE ~ '^[0-9]$'
+		VALUE ~ '^[A-Z]$'
 		)
 		;

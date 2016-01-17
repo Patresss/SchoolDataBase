@@ -1,4 +1,5 @@
-﻿DROP TABLE IF EXISTS staff;
+﻿set schema 'School';
+DROP TABLE IF EXISTS staff;
 
 ALTER SEQUENCE seq_staff RESTART;
 

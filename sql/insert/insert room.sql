@@ -1,4 +1,5 @@
-﻿DROP TABLE IF EXISTS room;
+﻿set schema 'School';
+DROP TABLE IF EXISTS room;
 
 ALTER SEQUENCE seq_room RESTART;
 

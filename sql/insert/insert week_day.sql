@@ -1,4 +1,6 @@
-﻿DROP TABLE IF EXISTS week_day;
+﻿set schema 'School';
+
+DROP TABLE IF EXISTS week_day;
 
 CREATE TABLE week_day (
 	id_week_day INTEGER  NOT NULL,
