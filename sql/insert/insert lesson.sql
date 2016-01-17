@@ -6,7 +6,7 @@ CREATE TABLE lesson (
 	id_lesson INT DEFAULT nextval('seq_lesson') NOT NULL,
 	number INTEGER  NOT NULL,
 	start_time TIME  NOT NULL,
-	dyration TIME  NOT NULL DEFAULT '0:45',
+	duration TIME  NOT NULL DEFAULT '0:45',
 	PRIMARY KEY(id_lesson)
 );
 

@@ -36,7 +36,6 @@ public class DialogController {
 	// ================================================================================	
 	@FXML
 	public void closeDialog() {
-		System.out.println("lcos");
 		exceptionHandlerDialog.closeDialog();
 	}
 	

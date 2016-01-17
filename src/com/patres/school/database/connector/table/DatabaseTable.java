@@ -13,6 +13,7 @@ import com.patres.school.database.connector.table.multiple.DutyHasStaffConnector
 import com.patres.school.database.connector.table.multiple.StaffHasSubjectConnector;
 import com.patres.school.database.connector.table.single.ClassConnector;
 import com.patres.school.database.connector.table.single.DutyConnector;
+import com.patres.school.database.connector.table.single.LaidOffStaffConnector;
 import com.patres.school.database.connector.table.single.LessonConnector;
 import com.patres.school.database.connector.table.single.RoomConnector;
 import com.patres.school.database.connector.table.single.StaffConnector;
@@ -25,6 +26,7 @@ public enum DatabaseTable {
 	// ================================================================================
 	ROOM("room", RoomConnector.class),
 	STAFF("staff", StaffConnector.class),
+	LAID_OFF_STAFF("laid_off_staff", LaidOffStaffConnector.class),
 	SUBJECT("subject", SubjectConnector.class),
 	DUTY("duty", DutyConnector.class),
 	CLASS("class", ClassConnector.class),
@@ -83,7 +85,6 @@ public enum DatabaseTable {
 	}
 	
 	public String getView() {
-		System.out.println("________"+ "view_" + tableName);
 		return "view_" + tableName;
 	}
 	

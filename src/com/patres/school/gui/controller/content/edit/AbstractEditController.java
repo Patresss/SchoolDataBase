@@ -59,12 +59,12 @@ public abstract class AbstractEditController {
 	// ================================================================================
 	// Initialize components
 	// ================================================================================
-	private void initButons() {
+	protected void initButons() {
 		editButton.setDisable(true);
 		removeButton.setDisable(true);
 	}
 
-	private void initSizeGridePane() {
+	protected void initSizeGridePane() {
 		editGridPane.setMinWidth(EDIT_PANE_WIDTH);
 		int buttonSize = (EDIT_PANE_WIDTH - 20) / 3;
 		addButton.setPrefWidth(buttonSize);

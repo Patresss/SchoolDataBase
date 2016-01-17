@@ -5,4 +5,6 @@ CREATE SEQUENCE seq_room;
 CREATE SEQUENCE seq_staff;
 CREATE SEQUENCE seq_subject;
 CREATE SEQUENCE seq_week_day;
+CREATE SEQUENCE seq_laid_off_staff;
+
 

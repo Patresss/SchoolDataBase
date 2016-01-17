@@ -30,8 +30,6 @@ public class ExceptionHandlerDialog {
 	public ExceptionHandlerDialog(Exception exception) {
 		this.exception = exception;
 		Pane dialogPane = PaneSetter.getMainController().getContent();
-		System.out.println(dialogPane);
-		System.out.println(getDialogContent());
 		dialog = new JFXDialog(dialogPane, getDialogContent(), DialogTransition.CENTER);
 	}
 

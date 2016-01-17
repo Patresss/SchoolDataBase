@@ -13,15 +13,15 @@
 	</styleClass>
 	<JFXListView  fx:id="sideList">
 		<Label fx:id="welcomeLabel" text="%welcome.tittle"/>
-		<Label fx:id="listTeacherLabel" text="%list.teacher.tittle"/>
-		<Label fx:id="listRoomLabel" text="%room.list.header"/>
 		<Label fx:id="editRoomLabel" text="%room.edit.header"/>
 		<Label fx:id="editStaffLabel" text="%staff.edit.header"/>
+		<Label fx:id="editLaidOffStaffLabel" text="%laid_off_staff.edit.header"/>
 		<Label fx:id="editSubjectLabel" text="%subject.edit.header"/>
 		<Label fx:id="editDutyLabel" text="%duty.edit.header"/>
 		<Label fx:id="editClassLabel" text="%class.edit.header"/>
 		<Label fx:id="editLessonLabel" text="%lesson.edit.header"/>
 		<Label fx:id="editDutyHasStaffLabel" text="%duty_has_staff.edit.header"/>
 		<Label fx:id="editStaffHasSubjectLabel" text="%staff_has_subject.edit.header"/>
+		<Label fx:id="statisticLabel" text="%statistic.header"/>
 	</JFXListView>
 </StackPane>
