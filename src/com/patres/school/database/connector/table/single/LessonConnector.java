@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.RoomModel;
+import com.patres.school.database.model.LessonModel;
 
-public class RoomConnector extends AbstractSingleConnector {
+public class LessonConnector extends AbstractSingleConnector {
 
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public RoomConnector() {
-		super(DatabaseTable.ROOM);
+	public LessonConnector() {
+		super(DatabaseTable.LESSON);
 	}
 
 	// ================================================================================
@@ -22,11 +22,12 @@ public class RoomConnector extends AbstractSingleConnector {
 	// ================================================================================
 	@Override
 	protected AbstractModel selectModelSql(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id_room");
-		String roomName = resultSet.getString("room_name");
-		String limitPeople = resultSet.getString("limit_people");
+		int id = resultSet.getInt("id_lesson");
+		String number = resultSet.getString("number");
+		String startTime = resultSet.getString("start_time");
+		String dyration = resultSet.getString("duration");
 
-		return new RoomModel(id, roomName, limitPeople);
+		return new LessonModel(id, number, startTime, dyration);
 	}
 
 	// ================================================================================
@@ -34,9 +35,10 @@ public class RoomConnector extends AbstractSingleConnector {
 	// ================================================================================
 	@Override
 	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) {
-		RoomModel room = (RoomModel) model;
-		valueList.add(getSqlForm(room.getRoomName()));
-		valueList.add(getSqlForm(room.getLimitPeople()));
+		LessonModel lesson = (LessonModel) model;
+		valueList.add(getSqlForm(lesson.getNumber()));
+		valueList.add(getSqlForm(lesson.getStartTime()));
+		valueList.add(getSqlForm(lesson.getDuration()));
 		return valueList;
 	}
 

@@ -3,7 +3,7 @@ package com.patres.school.gui.controller.content.edit.single;
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.single.SubjectConnector;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Subject;
+import com.patres.school.database.model.SubjectModel;
 import com.patres.school.gui.controller.content.Controllable;
 
 public class EditSubjectController extends AbstractEditSingle implements Controllable {
@@ -27,9 +27,9 @@ public class EditSubjectController extends AbstractEditSingle implements Control
 		String subjectName = textFieldMap.get("subject_name").getText();
 		if (isNumeric(textFieldMap.get("id_subject").getText())) {
 			int id = Integer.parseInt(textFieldMap.get("id_subject").getText());
-			return new Subject(id, subjectName);
+			return new SubjectModel(id, subjectName);
 		} else {
-			return new Subject(subjectName);
+			return new SubjectModel(subjectName);
 		}
 	}
 
@@ -38,7 +38,7 @@ public class EditSubjectController extends AbstractEditSingle implements Control
 	// ================================================================================
 	@Override
 	protected void showDetails(AbstractModel model) {
-		Subject subject = (Subject) model;
+		SubjectModel subject = (SubjectModel) model;
 		if (subject != null) {
 			textFieldMap.get("id_subject").setText(setNotNullString(subject.getId().toString()));
 			textFieldMap.get("subject_name").setText(setNotNullString(subject.getSubjectName()));

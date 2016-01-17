@@ -1,29 +1,25 @@
 package com.patres.school.database.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Duty extends AbstractModel {
+public class SubjectModel extends AbstractModel {
 
 	// ================================================================================
 	// Properties
 	// ================================================================================
-	private SimpleStringProperty dutyName;
-	private SimpleIntegerProperty importance;
+	private SimpleStringProperty subjectName;
 	
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public Duty(int id, String dutyName, int importance) {
+	public SubjectModel(int id, String subjectName) {
 		super(id);
-		this.dutyName = new SimpleStringProperty(dutyName);
-		this.importance = new SimpleIntegerProperty(importance);
+		this.subjectName = new SimpleStringProperty(subjectName);
 	}
 	
-	public Duty(String dutyName, int importance) {
+	public SubjectModel(String subjectName) {
 		super();
-		this.dutyName = new SimpleStringProperty(dutyName);
-		this.importance = new SimpleIntegerProperty(importance);
+		this.subjectName = new SimpleStringProperty(subjectName);
 	}
 	
 	// ================================================================================
@@ -31,26 +27,18 @@ public class Duty extends AbstractModel {
 	// ================================================================================
 	@Override
 	public String toString() {
-		return getDutyName();
+		return getSubjectName();
 	}
 	
 	// ================================================================================
 	// Accessors
 	// ================================================================================
-	public String getDutyName() {
-        return dutyName.get();
+	public String getSubjectName() {
+        return subjectName.get();
     }
 	
-    public void setDutyName(String name) {
-    	dutyName.set(name);
+    public void setSubjectName(String name) {
+    	subjectName.set(name);
     }
     
-	public Integer getImportance() {
-        return importance.get();
-    }
-	
-    public void setImportance(Integer val) {
-    	importance.set(val);
-    }
-	
 }

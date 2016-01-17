@@ -1,9 +1,17 @@
 ﻿DROP TABLE IF EXISTS staff_has_subject;
 
 create table staff_has_subject (
-	staff_id integer references staff (id_staff),
-	subject_id integer references subject (id_subject),
-	primary key (staff_id, subject_id)
+	staff_id INTEGER NOT NULL,
+	subject_id INTEGER NOT NULL,
+	primary key (staff_id, subject_id),
+	CONSTRAINT staff_has_subject_staff_id_fk
+		FOREIGN KEY(staff_id)
+		REFERENCES staff(id_staff)
+		ON DELETE CASCADE,
+	CONSTRAINT staff_has_subject_subject_id_fk
+		FOREIGN KEY(subject_id)
+		REFERENCES subject(id_subject)
+		ON DELETE CASCADE
 );
 
 

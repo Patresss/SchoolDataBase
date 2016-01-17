@@ -19,6 +19,9 @@
 		<Label fx:id="editStaffLabel" text="%staff.edit.header"/>
 		<Label fx:id="editSubjectLabel" text="%subject.edit.header"/>
 		<Label fx:id="editDutyLabel" text="%duty.edit.header"/>
+		<Label fx:id="editClassLabel" text="%class.edit.header"/>
+		<Label fx:id="editLessonLabel" text="%lesson.edit.header"/>
 		<Label fx:id="editDutyHasStaffLabel" text="%duty_has_staff.edit.header"/>
+		<Label fx:id="editStaffHasSubjectLabel" text="%staff_has_subject.edit.header"/>
 	</JFXListView>
 </StackPane>

@@ -33,8 +33,11 @@ public abstract class AbstractEditMultipleController extends AbstractEditControl
 			String columnName = Main.getBundle().getString(table.getTableName() + ".table");
 			TableColumn<AbstractModel, String> tableColumn = new TableColumn<AbstractModel, String>(columnName);
 			tableColumn.setCellValueFactory(new PropertyValueFactory<>(table.getTableName()));
+			tableColumn.setMinWidth(50);
+			tableColumn.setPrefWidth(150);
 			modelTableView.getColumns().add(tableColumn);
 		}
+		
 		refreshTable();
 	}
 
@@ -50,7 +53,7 @@ public abstract class AbstractEditMultipleController extends AbstractEditControl
 
 			AbstractConnector conectorTable = table.getConnector();
 			comboBox.setItems(FXCollections.observableList(conectorTable.select()));
-
+			comboBox.setPromptText(columnName);
 
 			editGridPane.add(label, 0, row);
 			editGridPane.add(comboBox, 1, row);
@@ -59,9 +62,10 @@ public abstract class AbstractEditMultipleController extends AbstractEditControl
 			comboBox.setMaxWidth(EDIT_PANE_WIDTH * 0.7);
 			comboBoxMap.put(table.getTableName(), comboBox);
 			row++;
+			selectedComboBoxListner(comboBox);
+			
 		}
 	}
-
 
 	// ================================================================================
 	// FXML methods
@@ -77,6 +81,16 @@ public abstract class AbstractEditMultipleController extends AbstractEditControl
 		AbstractModel model = getSelectedItem();
 		connector.delete(model);
 		refreshTable();
+	}
+	
+	// ================================================================================
+	// Listener
+	// ================================================================================
+	protected void selectedComboBoxListner(ComboBox<AbstractModel> cb) {
+		addButton.setDisable(true);
+		cb.valueProperty().addListener((observable, oldValue, newValue) -> {
+			addButton.setDisable(comboBoxMap.values().stream().anyMatch((v) -> v.getValue()==null));
+			});
 	}
 	
 	// ================================================================================

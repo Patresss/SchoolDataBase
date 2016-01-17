@@ -2,20 +2,20 @@ package com.patres.school.database.model;
 
 import lombok.Getter;
 
-public class DutyHasStaff extends AbstractModel {
+public class DutyHasStaffModel extends AbstractModel {
 
 	// ================================================================================
 	// Properties
 	// ================================================================================
 	@Getter
-	private Staff staff;
+	private StaffModel staff;
 	@Getter
-	private Duty duty;
+	private DutyModel duty;
 	
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public DutyHasStaff(Duty duty, Staff staff) {
+	public DutyHasStaffModel(DutyModel duty, StaffModel staff) {
 		this.staff = staff;
 		this.duty = duty;
 	}

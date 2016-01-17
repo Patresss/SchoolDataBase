@@ -4,8 +4,8 @@ ALTER SEQUENCE seq_class RESTART;
 
 CREATE TABLE class (
 	id_class INT DEFAULT nextval('seq_class') NOT NULL,
-	year INTEGER NOT NULL,
-	letter_class CHAR,
+	year one_digit NOT NULL,
+	letter_class one_letter,
 	people_count INTEGER  NOT NULL  ,
 	PRIMARY KEY(id_class)
 );

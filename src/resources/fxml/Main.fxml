@@ -54,7 +54,7 @@
 
 		<!-- Content Area -->
 		<center>
-			<JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
+			<JFXDrawer fx:id="drawer" defaultDrawerSize="280" direction="LEFT">
 				<sidePane>
 					<StackPane fx:id="sideContent">
 					</StackPane>

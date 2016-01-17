@@ -6,7 +6,7 @@ CREATE TABLE duty (
 	id_duty INT DEFAULT nextval('seq_duty') NOT NULL,
 	duty_name VARCHAR(45) NOT NULL,
 	importance INTEGER,
-	PRIMARY KEY(id_duty)
+	CONSTRAINT id_duty PRIMARY KEY(id_duty) 
 );
 
 INSERT INTO duty (duty_name, importance) VALUES ('Dyrektor', 1);

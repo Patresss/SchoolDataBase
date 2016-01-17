@@ -5,9 +5,9 @@ ALTER SEQUENCE seq_staff RESTART;
 CREATE TABLE staff (
 	id_staff INT DEFAULT nextval('seq_staff') NOT NULL,
 	degree VARCHAR(45),
-	first_name VARCHAR(45) NOT NULL,
-	last_name VARCHAR(45) NOT NULL,
-	PRIMARY KEY(id_staff)
+	first_name start_upper NOT NULL,
+	last_name start_upper NOT NULL,
+	CONSTRAINT pk_staff PRIMARY KEY(id_staff)
 );
 
 INSERT INTO staff (degree, first_name, last_name) VALUES ('mgr', 'Witold', 'Deptuch');

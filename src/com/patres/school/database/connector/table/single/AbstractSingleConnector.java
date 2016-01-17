@@ -2,19 +2,11 @@ package com.patres.school.database.connector.table.single;
 
 import java.util.ArrayList;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.patres.school.database.connector.table.AbstractConnector;
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
 
 public abstract class AbstractSingleConnector extends AbstractConnector {
-	
-	// ================================================================================
-	// Properties
-	// ================================================================================
-	protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractSingleConnector.class);
 	
 	// ================================================================================
 	// Constructor
@@ -29,6 +21,10 @@ public abstract class AbstractSingleConnector extends AbstractConnector {
 	@Override
 	protected String getSelectSql() {
 		return queryGenerator.getSelect();
+	}
+	@Override
+	protected String getDeleteSql(AbstractModel model) {
+		return queryGenerator.getDelete(model.getId());
 	}
 
 	@Override

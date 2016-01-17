@@ -6,17 +6,17 @@ import java.util.ArrayList;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.DutyModel;
-import com.patres.school.database.model.DutyHasStaffModel;
 import com.patres.school.database.model.StaffModel;
+import com.patres.school.database.model.StaffHasSubjectModel;
+import com.patres.school.database.model.SubjectModel;
 
-public class DutyHasStaffConnector extends AbstractMultipleConnector {
+public class StaffHasSubjectConnector extends AbstractMultipleConnector {
 
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public DutyHasStaffConnector() {
-		super(DatabaseTable.DUTY_HAS_STAFF);
+	public StaffHasSubjectConnector() {
+		super(DatabaseTable.STAFF_HAS_SUBJECT);
 	}
 
 	// ================================================================================
@@ -24,37 +24,36 @@ public class DutyHasStaffConnector extends AbstractMultipleConnector {
 	// ================================================================================
 	@Override
 	protected AbstractModel selectModelSql(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id_duty");
-		String dutyName = resultSet.getString("duty_name");
-		String importance = resultSet.getString("importance");
-		DutyModel duty = new DutyModel(id, dutyName, importance);
-
 		int idStaff = resultSet.getInt("id_staff");
 		String degree = resultSet.getString("degree");
 		String firstName = resultSet.getString("first_name");
 		String lastName = resultSet.getString("last_name");
 		StaffModel staff = new StaffModel(idStaff, degree, firstName, lastName);
+		
+		int id = resultSet.getInt("id_subject");
+		String subjectName = resultSet.getString("subject_name");
+		SubjectModel subject = new SubjectModel(id, subjectName);
 
-		return new DutyHasStaffModel(duty, staff);
+		return new StaffHasSubjectModel(staff, subject);
 	}
 
 	@Override
 	protected ArrayList<String> getValues(AbstractModel model) {
-		DutyHasStaffModel dhs = (DutyHasStaffModel) model;
+		StaffHasSubjectModel shs = (StaffHasSubjectModel) model;
 		ArrayList<String> list = new ArrayList<String>();
 		
-		list.add(getSqlForm(dhs.getDuty().getId()));
-		list.add(getSqlForm(dhs.getStaff().getId()));
+		list.add(getSqlForm(shs.getStaff().getId()));
+		list.add(getSqlForm(shs.getSubject().getId()));
 		
 		return list;
 	}
 	
 	@Override
 	protected ArrayList<Integer> getDeletedId(AbstractModel model) {
-		DutyHasStaffModel dutyHasStaff = (DutyHasStaffModel) model;
+		StaffHasSubjectModel shs = (StaffHasSubjectModel) model;
 		ArrayList<Integer> ids = new ArrayList<Integer>();
-		ids.add(dutyHasStaff.getDuty().getId());
-		ids.add(dutyHasStaff.getStaff().getId());
+		ids.add(shs.getStaff().getId());
+		ids.add(shs.getSubject().getId());
 		return ids;
 	}
 

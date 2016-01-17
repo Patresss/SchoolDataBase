@@ -38,7 +38,6 @@ public class QueryGenerator {
 	// Insert
 	// ================================================================================
 	public String getInsert(ArrayList<String> valuesToInsert) {
-		System.out.println("JEST");
 		StringBuilder sql = new StringBuilder();
 		sql.append("INSERT INTO ");
 		sql.append(table.getTableName());

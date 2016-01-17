@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Staff;
+import com.patres.school.database.model.StaffModel;
 
 public class StaffConnector extends AbstractSingleConnector {
 
@@ -27,7 +27,7 @@ public class StaffConnector extends AbstractSingleConnector {
 		String firstName = resultSet.getString("first_name");
 		String lastName = resultSet.getString("last_name");
 
-		return new Staff(id, degree, firstName, lastName);
+		return new StaffModel(id, degree, firstName, lastName);
 	}
 
 	// ================================================================================
@@ -35,7 +35,7 @@ public class StaffConnector extends AbstractSingleConnector {
 	// ================================================================================
 	@Override
 	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) {
-		Staff staff = (Staff) model;
+		StaffModel staff = (StaffModel) model;
 		valueList.add(getSqlForm(staff.getDegree()));
 		valueList.add(getSqlForm(staff.getFirstName()));
 		valueList.add(getSqlForm(staff.getLastName()));

@@ -30,10 +30,14 @@ public abstract class AbstractEditSingle extends AbstractEditController {
 		for (String t : table.getColumn()) {
 			String columnName = Main.getBundle().getString(table.getTableName() + "." + t);
 			TableColumn<AbstractModel, String> tableColumn = new TableColumn<AbstractModel, String>(columnName);
-			System.out.println(getPropertyName(t));
 			tableColumn.setCellValueFactory(new PropertyValueFactory<>(getPropertyName(t)));
+			
+			tableColumn.setMinWidth(50);
+			tableColumn.setPrefWidth(150);
+			
 			modelTableView.getColumns().add(tableColumn);
 		}
+		modelTableView.getColumns().get(0).setPrefWidth(50);
 		refreshTable();
 	}
 

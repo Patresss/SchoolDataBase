@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.RoomModel;
+import com.patres.school.database.model.ClassModel;
 
-public class RoomConnector extends AbstractSingleConnector {
+public class ClassConnector extends AbstractSingleConnector {
 
 	// ================================================================================
 	// Constructor
 	// ================================================================================
-	public RoomConnector() {
-		super(DatabaseTable.ROOM);
+	public ClassConnector() {
+		super(DatabaseTable.CLASS);
 	}
 
 	// ================================================================================
@@ -22,11 +22,12 @@ public class RoomConnector extends AbstractSingleConnector {
 	// ================================================================================
 	@Override
 	protected AbstractModel selectModelSql(ResultSet resultSet) throws SQLException {
-		int id = resultSet.getInt("id_room");
-		String roomName = resultSet.getString("room_name");
-		String limitPeople = resultSet.getString("limit_people");
+		int id = resultSet.getInt("id_class");
+		String year = resultSet.getString("year");
+		String letterClass = resultSet.getString("letter_class");
+		String peopleCount = resultSet.getString("people_count");
 
-		return new RoomModel(id, roomName, limitPeople);
+		return new ClassModel(id, year, letterClass, peopleCount);
 	}
 
 	// ================================================================================
@@ -34,9 +35,10 @@ public class RoomConnector extends AbstractSingleConnector {
 	// ================================================================================
 	@Override
 	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) {
-		RoomModel room = (RoomModel) model;
-		valueList.add(getSqlForm(room.getRoomName()));
-		valueList.add(getSqlForm(room.getLimitPeople()));
+		ClassModel classModel = (ClassModel) model;
+		valueList.add(getSqlForm(classModel.getYear()));
+		valueList.add(getSqlForm(classModel.getLetterClass()));
+		valueList.add(getSqlForm(classModel.getPeopleCount()));
 		return valueList;
 	}
 

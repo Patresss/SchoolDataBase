@@ -32,6 +32,8 @@ public abstract class AbstractConnector {
 	}
 	
 	// ================================================================================
+
+	// ================================================================================
 	// Select
 	// ================================================================================
 	public LinkedList<AbstractModel> select() {
@@ -81,7 +83,8 @@ public abstract class AbstractConnector {
 	// ================================================================================
 	public void delete(AbstractModel model) {
 		try {
-			String sql = queryGenerator.getDelete(model.getId());
+			
+			String sql = getDeleteSql(model);
 			LOGGER.info("Executing query... : {}", sql);
 			Main.getStatement().executeUpdate(sql);
 			LOGGER.info("Executed query: {}", sql);
@@ -92,6 +95,8 @@ public abstract class AbstractConnector {
 			LOGGER.error("SQLException: {}", e);
 		}
 	}
+	
+	protected abstract String getDeleteSql(AbstractModel model);
 	
 	// ================================================================================
 	// Update
@@ -124,11 +129,6 @@ public abstract class AbstractConnector {
 		}
 	}
 
-	
-
-	
-	
-	
 	// ================================================================================
 	// Abstract sql
 	// ================================================================================

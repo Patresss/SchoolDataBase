@@ -3,7 +3,7 @@ package com.patres.school.gui.controller.content.edit.single;
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.single.StaffConnector;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Staff;
+import com.patres.school.database.model.StaffModel;
 import com.patres.school.gui.controller.content.Controllable;
 
 public class EditStaffController extends AbstractEditSingle implements Controllable {
@@ -30,9 +30,9 @@ public class EditStaffController extends AbstractEditSingle implements Controlla
 		
 		if (isNumeric(textFieldMap.get("id_staff").getText())) {
 			int id = Integer.parseInt(textFieldMap.get("id_staff").getText());
-			return new Staff(id, degree, firstName, lastName);
+			return new StaffModel(id, degree, firstName, lastName);
 		} else {
-			return new Staff(degree, firstName, lastName);
+			return new StaffModel(degree, firstName, lastName);
 		}
 	}
 
@@ -41,7 +41,7 @@ public class EditStaffController extends AbstractEditSingle implements Controlla
 	// ================================================================================
 	@Override
 	protected void showDetails(AbstractModel model) {
-		Staff staff = (Staff) model;
+		StaffModel staff = (StaffModel) model;
 		if (staff != null) {
 			textFieldMap.get("id_staff").setText(setNotNullString(staff.getId().toString()));
 			textFieldMap.get("degree").setText(setNotNullString(staff.getDegree()));

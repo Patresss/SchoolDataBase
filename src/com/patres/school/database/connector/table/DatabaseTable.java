@@ -10,7 +10,10 @@ import org.slf4j.LoggerFactory;
 
 import com.patres.school.Main;
 import com.patres.school.database.connector.table.multiple.DutyHasStaffConnector;
+import com.patres.school.database.connector.table.multiple.StaffHasSubjectConnector;
+import com.patres.school.database.connector.table.single.ClassConnector;
 import com.patres.school.database.connector.table.single.DutyConnector;
+import com.patres.school.database.connector.table.single.LessonConnector;
 import com.patres.school.database.connector.table.single.RoomConnector;
 import com.patres.school.database.connector.table.single.StaffConnector;
 import com.patres.school.database.connector.table.single.SubjectConnector;
@@ -24,7 +27,10 @@ public enum DatabaseTable {
 	STAFF("staff", StaffConnector.class),
 	SUBJECT("subject", SubjectConnector.class),
 	DUTY("duty", DutyConnector.class),
-	DUTY_HAS_STAFF("duty_has_staff", DutyHasStaffConnector.class);
+	CLASS("class", ClassConnector.class),
+	LESSON("lesson", LessonConnector.class),
+	DUTY_HAS_STAFF("duty_has_staff", DutyHasStaffConnector.class),
+	STAFF_HAS_SUBJECT("staff_has_subject", StaffHasSubjectConnector.class);
 	
 	// ================================================================================
 	// Properties
@@ -77,6 +83,7 @@ public enum DatabaseTable {
 	}
 	
 	public String getView() {
+		System.out.println("________"+ "view_" + tableName);
 		return "view_" + tableName;
 	}
 	

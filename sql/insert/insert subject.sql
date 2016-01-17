@@ -5,7 +5,7 @@ ALTER SEQUENCE seq_subject RESTART;
 CREATE TABLE subject (
 	id_subject INT DEFAULT nextval('seq_subject') NOT NULL,
 	subject_name VARCHAR(45) NOT NULL,
-	PRIMARY KEY(id_subject)
+	CONSTRAINT pk_subject PRIMARY KEY(id_subject) 
 );
   
 INSERT INTO subject (subject_name) VALUES ('Historia');

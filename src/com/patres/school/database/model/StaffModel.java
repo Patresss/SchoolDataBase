@@ -2,7 +2,7 @@ package com.patres.school.database.model;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class Staff extends AbstractModel {
+public class StaffModel extends AbstractModel {
 
 	// ================================================================================
 	// Properties
@@ -14,14 +14,14 @@ public class Staff extends AbstractModel {
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public Staff(int id, String degree, String firstName, String lastName) {
+	public StaffModel(int id, String degree, String firstName, String lastName) {
 		super(id);
 		this.degree = new SimpleStringProperty(degree);
 		this.first = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 	}
 	
-	public Staff(String degree, String firstName, String lastName) {
+	public StaffModel(String degree, String firstName, String lastName) {
 		super();
 		this.degree = new SimpleStringProperty(degree);
 		this.first = new SimpleStringProperty(firstName);

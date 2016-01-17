@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Duty;
+import com.patres.school.database.model.DutyModel;
 
 public class DutyConnector extends AbstractSingleConnector {
 
@@ -25,9 +25,9 @@ public class DutyConnector extends AbstractSingleConnector {
 	protected AbstractModel selectModelSql(ResultSet resultSet) throws SQLException {
 		int id = resultSet.getInt("id_duty");
 		String dutyName = resultSet.getString("duty_name");
-		Integer importance = resultSet.getInt("importance");
+		String importance = resultSet.getString("importance");
 		
-		return new Duty(id, dutyName, importance);
+		return new DutyModel(id, dutyName, importance);
 	}
 
 	
@@ -36,7 +36,7 @@ public class DutyConnector extends AbstractSingleConnector {
 	// ================================================================================
 	@Override
 	protected ArrayList<String> getValuesFromModel(AbstractModel model, ArrayList<String> valueList) {
-		Duty duty = (Duty) model;
+		DutyModel duty = (DutyModel) model;
 		valueList.add(getSqlForm(duty.getDutyName()));
 		valueList.add(getSqlForm(duty.getImportance()));
 		return valueList;

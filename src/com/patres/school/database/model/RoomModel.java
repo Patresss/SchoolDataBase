@@ -1,29 +1,28 @@
 package com.patres.school.database.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Room extends AbstractModel {
+public class RoomModel extends AbstractModel {
 
 	// ================================================================================
 	// Properties
 	// ================================================================================
 	private SimpleStringProperty roomName;
-	private SimpleIntegerProperty limitPeople;
+	private SimpleStringProperty limitPeople;
 	
 	// ================================================================================
 	// Constructors
 	// ================================================================================
-	public Room(int id, String roomName, int limitPeople) {
+	public RoomModel(int id, String roomName, String limitPeople) {
 		super(id);
 		this.roomName = new SimpleStringProperty(roomName);
-		this.limitPeople = new SimpleIntegerProperty(limitPeople);
+		this.limitPeople = new SimpleStringProperty(limitPeople);
 	}
 	
-	public Room(String roomName, int limitPeople) {
+	public RoomModel(String roomName, String limitPeople) {
 		super();
 		this.roomName = new SimpleStringProperty(roomName);
-		this.limitPeople = new SimpleIntegerProperty(limitPeople);
+		this.limitPeople = new SimpleStringProperty(limitPeople);
 	}
 	
 	// ================================================================================
@@ -37,11 +36,11 @@ public class Room extends AbstractModel {
     	roomName.set(name);
     }
     
-	public Integer getLimitPeople() {
+	public String getLimitPeople() {
         return limitPeople.get();
     }
 	
-    public void setLimitPeople(Integer limt) {
+    public void setLimitPeople(String limt) {
     	limitPeople.set(limt);
     }
 	

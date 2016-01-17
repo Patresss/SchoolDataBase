@@ -3,7 +3,7 @@ package com.patres.school.gui.controller.content.edit.single;
 import com.patres.school.database.connector.table.DatabaseTable;
 import com.patres.school.database.connector.table.single.RoomConnector;
 import com.patres.school.database.model.AbstractModel;
-import com.patres.school.database.model.Room;
+import com.patres.school.database.model.RoomModel;
 import com.patres.school.gui.controller.content.Controllable;
 
 public class EditRoomController extends AbstractEditSingle  implements Controllable {
@@ -26,13 +26,13 @@ public class EditRoomController extends AbstractEditSingle  implements Controlla
 	@Override
 	protected AbstractModel getModel() {
 		String roomName = textFieldMap.get("room_name").getText();
-		int limit = Integer.parseInt(textFieldMap.get("limit_people").getText());
+		String limit = textFieldMap.get("limit_people").getText();
 		
 		if (isNumeric(textFieldMap.get("id_room").getText())) {
 			int id = Integer.parseInt(textFieldMap.get("id_room").getText());
-			return new Room(id, roomName, limit);
+			return new RoomModel(id, roomName, limit);
 		} else {
-			return new Room(roomName, limit);
+			return new RoomModel(roomName, limit);
 		}
 	}
 
@@ -41,7 +41,7 @@ public class EditRoomController extends AbstractEditSingle  implements Controlla
 	// ================================================================================
 	@Override
 	protected void showDetails(AbstractModel model) {
-		Room room = (Room) model;
+		RoomModel room = (RoomModel) model;
 		if (room != null) {
 			textFieldMap.get("id_room").setText(setNotNullString(room.getId().toString()));
 			textFieldMap.get("room_name").setText(setNotNullString(room.getRoomName()));
